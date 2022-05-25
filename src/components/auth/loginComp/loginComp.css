@@ -1,0 +1,12 @@
+.login-layout{
+    background-color: #14141F;
+    text-align: center;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+.login-layout .login-title{
+    color: #FFFFFF;
+    font-family: Urbanist, Sans-serif;
+    font-size: 36px;
+    line-height: 44px;
+}

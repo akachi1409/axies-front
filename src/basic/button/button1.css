@@ -1,0 +1,14 @@
+.button1-layout{
+    border-radius: 30px;
+    border-color: #5142FC;
+    background-color: #14141F;
+    margin-top: 1em;
+}
+.button1-layout .button1-title{
+    color: #FFFFFF;
+    padding: 5em 10em;
+}
+
+.button1-layout .button1-title .button1-img{
+    margin: 1em;
+}

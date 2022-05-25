@@ -1,0 +1,14 @@
+.input-layout{
+    width: 100%;
+    border-radius:10px;
+    border-color: #8A8AA0;
+    background-color: #14141F;
+    padding: 1em!important;
+    margin-top: 1em!important;
+}
+
+::placeholder{
+    color: #8A8AA0;
+    font-size: 14px;
+    line-height: 22px;
+}

@@ -1,0 +1,16 @@
+.line-layout{
+    display: flex;
+    margin-top: 1em!important;
+}
+.line-layout .line{
+    flex: 5;
+    height: 1px;
+    width: 100%;
+    margin:auto;
+}
+.line-layout .line-title{
+    flex: 2;
+    ling-height:28px;
+    font-size:18px;
+    color: #EBEBEB;
+}

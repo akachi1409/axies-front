@@ -1,0 +1,10 @@
+.button2-layout{
+    border-radius: 30px;
+    border-color: white;
+    background-color: #14141F;
+    margin-top: 1em!important;
+    padding: 1em!important;
+}
+.button2-layout .button2-title{
+    color: #FFFFFF;
+}

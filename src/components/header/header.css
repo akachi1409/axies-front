@@ -1,0 +1,24 @@
+.itemHeader-contanier{
+    background-color: #343444;
+    height: 300px;
+    position: relative;
+}
+
+.itemHeader-contanier .itemHeader-layout{
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    text-align: center;
+    height: 100%;
+    padding-top: 50px;
+}
+.itemHeader-contanier .itemHeader-layout .itemHeader-title{
+    color: #FFFFFF;
+    font-family: "Urbanist", Sans-serif;
+    font-size: 48px;
+}
+.itemHeader-contanier .itemHeader-layout .itemHeader-text{
+    font-family: "Urbanist", Sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+}
