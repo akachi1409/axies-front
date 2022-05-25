@@ -124,7 +124,7 @@ class Footer extends Component {
                                   className="footer-section1-col-li"
                                   key={indexT}
                                 >
-                                  <a href="#">
+                                  <a href="#section">
                                     <span className="footer-section1-col-text">
                                       {t}
                                     </span>
