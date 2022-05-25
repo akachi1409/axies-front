@@ -62,7 +62,7 @@ class Footer extends Component {
                   <Row>
                     <Col sm="12" md="12" lg="12" className="footer-bar-link">
                       <a href="https://dmc2.tempurl.host/">
-                        <img src={Mono_Logo} />
+                        <img alt="" src={Mono_Logo} />
                       </a>
                     </Col>
                   </Row>
@@ -75,24 +75,28 @@ class Footer extends Component {
                   <Row>
                     <div className="footer-sectiion-icon">
                       <img
+                        alt=""
                         src={Facebook}
                         className="footer-sectiion-icon-round"
                       />
                     </div>
                     <div className="footer-sectiion-icon">
                       <img
+                        alt=""
                         src={Twitter}
                         className="footer-sectiion-icon-round"
                       />
                     </div>
                     <div className="footer-sectiion-icon">
                       <img
+                        alt=""
                         src={Google}
                         className="footer-sectiion-icon-round"
                       />
                     </div>
                     <div className="footer-sectiion-icon">
                       <img
+                        alt=""
                         src={Twitch}
                         className="footer-sectiion-icon-round"
                       />

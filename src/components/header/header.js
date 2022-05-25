@@ -5,10 +5,8 @@ import React from "react";
 //import css
 import "./header.css";
 
-import { Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
-//import components
-import YButton from "../basic/YButton";
 function Header(props) {
     return (
       <>

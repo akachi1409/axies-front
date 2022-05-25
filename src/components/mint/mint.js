@@ -3,7 +3,6 @@ import { Container, Row, Col } from "react-bootstrap";
 
 //import Assets
 // import MintGif from '../../assets/mint.gif';
-import YButton from "../basic/YButton";
 
 import { BsFileMinusFill, BsFilePlusFill } from 'react-icons/bs';
 
@@ -15,8 +14,6 @@ import { fetchData } from "../../redux/data/dataActions";
 function Mint(){
     const dispatch = useDispatch();
     const blockchain = useSelector((state) => state.blockchain);
-    const data = useSelector((state) => state.data);
-    const [feedback, setFeedback] = useState("");
     const [claimingNft, setClaimingNft] = useState(false);
     const [mintNum, setMintNum] = useState(0)
     const claimNFTs = (_amount) => {
@@ -24,7 +21,6 @@ function Mint(){
         if (_amount <= 0) {
             return;
         }
-        setFeedback("Minting your Official BooCrew NFT...");
         setClaimingNft(true);
         blockchain.smartContract.methods
             .mint(blockchain.account, _amount)
@@ -43,13 +39,9 @@ function Mint(){
             })
             .once("error", (err) => {
                 console.log(err);
-                setFeedback("Sorry, something went wrong. Check your transaction on Etherscan to find out what happened!");
                 setClaimingNft(false);
             })
-            .then((receipt) => {
-                setFeedback(
-                    "Your BooCrew NFT has been successfully minted!"
-                );
+            .then(() => {
                 setClaimingNft(false);
                 dispatch(fetchData(blockchain.account));
             });
@@ -61,9 +53,9 @@ function Mint(){
         }
     };
 
-    useEffect(() => {
-        getData();
-    }, [blockchain.account]);
+    // useEffect(() => {
+    //     getData();
+    // }, [blockchain.account]);
 
     const plus_num = () =>{
         // const {mintNum} = this.state;
@@ -71,7 +63,7 @@ function Mint(){
     }
     const minus_num = () =>{
         // const {mintNum} = this.state;
-        if ( mintNum ==0)return;
+        if ( mintNum ===0)return;
         setMintNum(mintNum -1)
     }
     return (
