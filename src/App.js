@@ -13,8 +13,9 @@ import React from "react";
 // import Mint from './components/mint/mint';
 // import About from './components/about/about';
 
-import Login from './page/login/login';
-
+import Login from './page/auth/login';
+import Signup from './page/auth/signup';
+// import Signup
 function App() {
   return (
     <React.Suspense >
@@ -23,7 +24,9 @@ function App() {
           <Route exact path = "/login">
             <Login/>
           </Route>
-          
+          <Route exact path = "/signup">
+            <Signup/>
+          </Route>
         </Switch>
       </Router>
     </React.Suspense>
