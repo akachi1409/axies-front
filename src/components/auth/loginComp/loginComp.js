@@ -4,6 +4,7 @@ import Line1 from "../../../basic/line/line1"
 import Button1 from "../../../basic/button/button1";
 import Button2 from "../../../basic/button/button2"
 import Input1 from "../../../basic/button/input1"
+import Checkbox1 from "../../../basic/button/checkbox1"
 function LoginComp () {
     return (
         <div className="login-layout">
@@ -35,9 +36,20 @@ function LoginComp () {
                 <Row>
                     <Input1 text="Your Email Address"/>
                 </Row>
+                <br/>
+                <Row style={{marginTop: "1em"}}>
+                    <Col lg="6" style={{display:"flex"}}>
+                        <Checkbox1 title= "Remeber me"/>
+                    </Col>
+                    <Col lg="6" style={{display:"flex", flexDirection:"row-reverse"}}>
+                        <h6  className="login-title">Forgot Password?</h6>
+                    </Col>
+                </Row>
+                <br></br>
                 <Row>
                     <Button2 title="Login"></Button2>
                 </Row>
+                <br/>
             </Container>
         </div>
     )

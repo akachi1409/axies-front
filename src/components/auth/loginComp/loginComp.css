@@ -10,3 +10,7 @@
     font-size: 36px;
     line-height: 44px;
 }
+.login-layout h6.login-title{
+    font-size: 12px;
+    cursor: pointer;
+}
