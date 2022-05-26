@@ -15,6 +15,8 @@ import React from "react";
 
 import Login from './page/auth/login';
 import Signup from './page/auth/signup';
+
+import Help from "./page/normal/help"
 // import Signup
 function App() {
   return (
@@ -26,6 +28,9 @@ function App() {
           </Route>
           <Route exact path = "/signup">
             <Signup/>
+          </Route>
+          <Route exact path = "/help">
+            <Help/>
           </Route>
         </Switch>
       </Router>

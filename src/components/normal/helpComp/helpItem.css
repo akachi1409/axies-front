@@ -1,0 +1,21 @@
+.helpItem-layout{
+    background-color: #343444;
+    border-radius:10px;
+    font-align: center;
+    padding: 1em;
+    margin: 1em
+}
+
+.helpItem-layout .helpItem-title{
+    font-size: 14px;
+    line-height: 22px;
+    color: white;
+    margin-top: 1em;
+}
+
+.helpItem-layout .helpItem-text{
+    margin-top: 1em;
+    font-size: 13px;
+    line-height: 20px;
+    color: #EBEBEB;
+}

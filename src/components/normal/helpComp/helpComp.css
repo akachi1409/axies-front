@@ -1,0 +1,29 @@
+.help-layout{
+    background-color: #14141F;
+    text-align: center;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.help-layout .help-title{
+    color: #FFFFFF;
+    font-family: Urbanist, Sans-serif;
+    font-size: 30px;
+    line-height: 42px;
+}
+
+.help-layout .help-text{
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+    color : #EBEBEB
+}
+
+.help-layout  .help-search-input{
+    background-color:black;
+    border-radius: 5px 0% 0% 5px;
+    border-color: #A1A9BA;
+    padding:10px;
+    width: 650px;
+    margin: auto;
+}
