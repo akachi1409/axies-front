@@ -17,6 +17,7 @@ import Login from './page/auth/login';
 import Signup from './page/auth/signup';
 
 import Help from "./page/normal/help"
+import Blog from "./page/normal/blog"
 // import Signup
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route exact path = "/help">
             <Help/>
+          </Route>
+          <Route exact path = "/blog">
+            <Blog/>
           </Route>
         </Switch>
       </Router>
