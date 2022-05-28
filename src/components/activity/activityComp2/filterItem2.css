@@ -1,0 +1,59 @@
+.filteItem2-layout{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1em;
+}
+.filteItem2-layout .label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-top: 5px;
+    /* margin-bottom: 20px; */
+    cursor: pointer;
+    font-size: 14px;
+    color: #FFFFFF
+  }
+  .filteItem2-layout .label input {
+    visibility: hidden;
+    cursor: pointer;
+  }
+  .filteItem2-layout .label .mark {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    height: 20px;
+    width: 20px;
+    background-color: #14141F;
+    border-color: #8A8AA0;
+    border: solid
+  }
+  .filteItem2-layout:hover input ~ .mark {
+    background-color: gray;
+  }
+  .filteItem2-layout input:checked ~ .mark {
+    background-color: #5142FC;
+  }
+  
+  .filteItem2-layout .label .mark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .filteItem2-layout input:checked ~ .mark:after {
+    display: block;
+  }
+  
+  .filteItem2-layout .mark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+  /* .filteItem2-layout filteItem2{
+      background-color:green;
+  } */
+  

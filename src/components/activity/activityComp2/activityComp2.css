@@ -1,0 +1,23 @@
+.activityComp2-layout{
+    background-color: #14141F;
+    text-align: center;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.activityComp2-layout .activityComp2-search-input{
+    background-color:black;
+    border-radius: 5px 0% 0% 5px;
+    border-color: #A1A9BA;
+    margin: 1em;
+    padding: 1em;
+    width: 100%
+}
+
+.activityComp2-layout .activityComp2-filter-title{
+    font-size: 24px;
+    line-height: 30px;
+    text-align: left;
+    color: white;
+    margin: 1em;
+}
