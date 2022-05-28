@@ -1,0 +1,37 @@
+.activityComp1-layout{
+    background-color: #14141F;
+    text-align: center;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.activityComp1-layout .activityComp1-search-input{
+    background-color:black;
+    border-radius: 5px 0% 0% 5px;
+    border-color: #A1A9BA;
+    margin: 1em;
+    padding: 1em;
+    width: 100%
+}
+
+.activityComp1-layout .activityComp1-filter-title{
+    font-size: 24px;
+    line-height: 30px;
+    text-align: left;
+    color: white;
+    margin: 1em;
+}
+
+.activityComp1-layout .activityComp1-filter{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.activityComp1-layout .activityComp1-filter-clear{
+    color : #5142FC;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: bold;
+    text-align: left;
+    margin : 1em;
+}

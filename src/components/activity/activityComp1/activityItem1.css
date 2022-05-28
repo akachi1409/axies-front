@@ -1,0 +1,56 @@
+.activityItem1-layout {
+    background-color: #343444;
+    border-radius:10px;
+    font-align: center;
+    padding: 1em;
+    margin: 1em;
+    display : flex;
+}
+
+.activityItem1-layout .activityItem1-left{
+    flex: 8;
+    display: flex;
+}
+
+.activityItem1-layout .activityItem1-left .activityItem1-img1{
+    width: 112px;
+    height: 112px;
+}
+
+.activityItem1-layout .activityItem1-left .activityItem1-title{
+    font-size: 24px;
+    line-height: 30px;
+    color: white;
+    text-align: left;
+}
+
+.activityItem1-layout .activityItem1-left .activityItem1-description{
+    font-size: 18px;
+    line-height:28px;
+    color: #EBEBEB;
+    text-align: left;
+}
+
+.activityItem1-layout .activityItem1-left .activityItem1-description .activityItem1-author{
+    font-size: 16px;
+    line-height: 26px;
+    color: #5142FC;
+}
+
+.activityItem1-layout .activityItem1-left .activityItem1-date{
+    font-size: 18px;
+    line-height: 28px;
+    color: #EBEBEB;
+}
+
+.activityItem1-layout .activityItem1-right{
+    flex: 4 ;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.activityItem1-layout .activityItem1-right .activityItem1-img2{
+    width: "68px"; 
+    height: "68px"
+}

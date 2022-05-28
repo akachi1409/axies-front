@@ -18,6 +18,8 @@ import Signup from './page/auth/signup';
 
 import Help from "./page/normal/help"
 import Blog from "./page/normal/blog"
+
+import Acticity1 from "./page/activity/activity1.js"
 // import Signup
 function App() {
   return (
@@ -35,6 +37,9 @@ function App() {
           </Route>
           <Route exact path = "/blog">
             <Blog/>
+          </Route>
+          <Route exact path = "/activity1">
+            <Acticity1/>
           </Route>
         </Switch>
       </Router>
