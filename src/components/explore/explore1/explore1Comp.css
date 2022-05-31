@@ -1,0 +1,16 @@
+.explore1Comp-layout{
+    background-color: #14141F;
+    text-align: center;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.explore1Comp-layout .explore1Comp-select{
+    background-color: #343444;
+    color: #EBEBEB;
+    border-color: #8A8AA0;
+    padding: 0.5em;
+    margin-right: 0.5em;
+}
+
+
