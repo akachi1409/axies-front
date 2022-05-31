@@ -1,0 +1,20 @@
+.explore2Comp-layout{
+    background-color: #14141F;
+    text-align: center;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.explore2Comp-layout .explore2Comp-select{
+    background-color: #343444;
+    color: #EBEBEB;
+    border-color: #8A8AA0;
+    padding: 0.5em;
+    margin-right: 0.5em;
+}
+
+.explore2Comp-layout .explore2Comp-button{
+    background-color: #343444;
+    padding: 1em;
+    color: white;
+}

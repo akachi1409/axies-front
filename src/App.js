@@ -23,6 +23,7 @@ import Acticity1 from "./page/activity/activity1.js"
 import Activity2 from "./page/activity/activity2.js"
 
 import Explore1 from './page/explore/explore1';
+import Explore2 from './page/explore/explore2';
 // import Signup
 function App() {
   return (
@@ -52,6 +53,9 @@ function App() {
           </Route>
           <Route exact path = "/explore1">
             <Explore1/>
+          </Route>
+          <Route exact path = "/explore2">
+            <Explore2/>
           </Route>
         </Switch>
       </Router>
