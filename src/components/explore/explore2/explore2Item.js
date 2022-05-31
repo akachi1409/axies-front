@@ -3,7 +3,6 @@ import { Row, Col } from "react-bootstrap";
 
 import HeartImg from "../../../assets/explore/heart.png";
 import UserImg from "../../../assets/explore/user.png";
-import BagImg from "../../../assets/explore/bag.png";
 import ReloadImg from "../../../assets/explore/reload.png";
 
 function Explore2Item(props) {
