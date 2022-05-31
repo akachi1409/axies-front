@@ -1,7 +1,7 @@
 import "./explore3Comp.css";
 
 import React, { Component } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 // import { Carousel }  "react-responsive-carousel"
 // import Explore2Item from "./explore2Item";
 import Slider from "react-slick";
