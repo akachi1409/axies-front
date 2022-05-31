@@ -1,5 +1,5 @@
 import "./explore1Item.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 import HeartImg from "../../../assets/explore/heart.png";
 import UserImg from "../../../assets/explore/user.png";
