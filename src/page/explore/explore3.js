@@ -1,14 +1,14 @@
 import React from "react";
 
 import Header from "../../components/header/header";
-// import Explore2Comp from "../../components/explore/explore2/explore2Comp"
+import Explore3Comp from "../../components/explore/explore3/explore3Comp"
 import Footer from "../../components/footer/footer";
 
 function Explore3(){
     return(
         <div>
             <Header title="Explore 3" text = "Home / Explore / Explore 3"/>
-            {/* <Explore2Comp /> */}
+            <Explore3Comp />
             <Footer/>
         </div>
     )
