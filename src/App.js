@@ -18,7 +18,7 @@ import Signup from './page/auth/signup';
 
 import Help from "./page/normal/help"
 import Blog from "./page/normal/blog"
-
+import BlogDetails from "./page/normal/blogDetails"
 import Acticity1 from "./page/activity/activity1.js"
 import Activity2 from "./page/activity/activity2.js"
 // import Signup
@@ -44,6 +44,9 @@ function App() {
           </Route>
           <Route exact path = "/activity2">
             <Activity2/>
+          </Route>
+          <Route exact path = "/blog_details">
+            <BlogDetails/>
           </Route>
         </Switch>
       </Router>

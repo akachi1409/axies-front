@@ -1,0 +1,15 @@
+.filterItem-layout{
+    background-color: #343444;
+    border-radius:10px;
+    font-align: center;
+    padding: 1em !important;
+    margin: 0.5em !important;
+    display : flex;
+    width: fit-content
+}
+
+.filterItem-layout .filterItem-title{
+    font-size: 15px;
+    line-height: 26px;
+    color: white;
+}
