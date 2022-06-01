@@ -50,7 +50,7 @@
     margin-bottom: 0px;
 }
 
-.explore1Comp-layout .explore1Item-bid{
+.explore1Item-layout .explore1Item-bid{
     border-radius:100px;
     border: solid 1px #5142FC;
     padding: 0.5em;
@@ -58,7 +58,7 @@
     color: white;
 }
 
-.explore1Comp-layout .explore1Item-refresh{
+.explore1Item-layout .explore1Item-refresh{
     padding-top: 0.5em;
     cursor: pointer;
     color: #8A8AA0;
