@@ -28,6 +28,8 @@ import Explore3 from "./page/explore/explore3";
 import Explore4 from "./page/explore/explore4"
 
 import CreateItem from "./page/item/createItem"
+
+import Auction from "./page/auction/auction"
 // import Signup
 function App() {
   return (
@@ -69,6 +71,9 @@ function App() {
           </Route>
           <Route exact path = "/create_item">
             <CreateItem/>
+          </Route>
+          <Route exact path = "/auction">
+            <Auction/>
           </Route>
         </Switch>
       </Router>
