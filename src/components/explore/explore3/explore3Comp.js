@@ -32,6 +32,7 @@ class Explore3Comp extends Component {
           owner: "SalvadorDali",
           priceItem: "Price",
           price: "4.89ETH",
+          bidding: true
         },
         {
           like: 100,

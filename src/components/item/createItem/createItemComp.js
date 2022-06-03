@@ -104,6 +104,9 @@ class CreateItemComp extends Component {
                   </select>
                 </Col>
               </Row>
+              <div style={{display:"flex", flexDirection:"row-reverse"}}>
+                <button className="createItemComp-create-btn">Create Item</button>
+              </div>
             </Col>
           </Row>
         </Container>

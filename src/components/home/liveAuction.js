@@ -31,6 +31,7 @@ class LiveAuctoion extends Component {
           owner: "SalvadorDali",
           priceItem: "Price",
           price: "4.89ETH",
+          bidding: true,
         },
         {
           like: 100,
@@ -114,9 +115,6 @@ class LiveAuctoion extends Component {
           </Container>
         </div>
         <Container>
-          <Row>
-            
-          </Row>
           <Row>
             <Col lg="6" style={{ textAlign: "left" }}>
               <h2 className="liveAuction-title">Live Auction</h2>

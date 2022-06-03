@@ -106,3 +106,10 @@
     margin: 1em;
     margin-top: 0px;
 }
+
+.createItemComp-layout .createItemComp-create-btn{
+    padding: 1em;
+    border-radius: 100px;
+    background-color: #5142FC;
+    color: white;
+}
