@@ -23,6 +23,10 @@ class NavbarComp extends Component {
                 <NavDropdown.Item href="/activity1">Activity1</NavDropdown.Item>
                 <NavDropdown.Item href="/activity2">Activity2</NavDropdown.Item>
               </NavDropdown>
+              <NavDropdown title="Item">
+                <NavDropdown.Item href="/create_item">Create Item</NavDropdown.Item>
+                {/* <NavDropdown.Item href="/activity2">Activity2</NavDropdown.Item> */}
+              </NavDropdown>
             </Nav>
             <Nav>
               <Nav.Item className="nav-wallet-layout">
