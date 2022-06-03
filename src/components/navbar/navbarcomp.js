@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Nav, Navbar, NavDropdown, Container } from "react-bootstrap";
 
 import NavImg from "../../assets/navbar/navbar.png";
+import "./navbarcomp.css";
 class NavbarComp extends Component {
   render() {
     return (
@@ -22,6 +23,12 @@ class NavbarComp extends Component {
                 <NavDropdown.Item href="/activity1">Activity1</NavDropdown.Item>
                 <NavDropdown.Item href="/activity2">Activity2</NavDropdown.Item>
               </NavDropdown>
+            </Nav>
+            <Nav>
+              <Nav.Item className="nav-wallet-layout">
+                <button className="nav-wallet">Connect Wallet</button>
+              </Nav.Item>
+
               {/* <Nav.Link href="#features">Features</Nav.Link>
               <Nav.Link href="#pricing">Pricing</Nav.Link> */}
             </Nav>

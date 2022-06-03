@@ -1,0 +1,11 @@
+.nav-wallet-layout{
+}
+
+.nav-wallet{
+    border-radius: 10px;
+    border-color: #212529;
+    float: right;
+    padding : 0.8em;
+    background-color: black;
+    color: white;
+}
