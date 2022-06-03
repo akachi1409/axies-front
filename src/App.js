@@ -13,6 +13,7 @@ import React from "react";
 // import Mint from './components/mint/mint';
 // import About from './components/about/about';
 
+import Home from "./page/home/home"
 import Login from './page/auth/login';
 import Signup from './page/auth/signup';
 
@@ -74,6 +75,9 @@ function App() {
           </Route>
           <Route exact path = "/auction">
             <Auction/>
+          </Route>
+          <Route path ="/*">
+            <Home/>
           </Route>
         </Switch>
       </Router>
