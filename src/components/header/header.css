@@ -13,7 +13,7 @@
     padding-top: 50px;
 }
 .itemHeader-contanier .itemHeader-layout .itemHeader-title{
-    color: #FFFFFF;
+    color: white;
     font-family: "Urbanist", Sans-serif;
     font-size: 48px;
 }
@@ -21,4 +21,5 @@
     font-family: "Urbanist", Sans-serif;
     font-size: 18px;
     line-height: 28px;
+    color: white;
 }
