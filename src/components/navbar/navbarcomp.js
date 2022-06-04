@@ -30,7 +30,7 @@ class NavbarComp extends Component {
             </Nav>
             <Nav>
               <Nav.Item className="nav-wallet-layout">
-                <button className="nav-wallet">Connect Wallet</button>
+                <Nav.Link className="nav-wallet" href="/connect_wallet">Connect Wallet</Nav.Link>
               </Nav.Item>
 
               {/* <Nav.Link href="#features">Features</Nav.Link>

@@ -1,0 +1,22 @@
+.walletItem-layout{
+    border-radius: 10px;
+    background-color: #343444;
+    text-align: center;
+    padding: 1em;
+    margin: 1em;
+    cursor: pointer;
+}
+
+.walletItem-layout .walletItem-title{
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 26px;
+    margin: 1em;
+}
+
+.walletItem-layout .walletItem-text{
+    color: #EBEBEB;
+    font-size: 13px;
+    line-height:20px;
+}

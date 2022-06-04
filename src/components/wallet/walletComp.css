@@ -1,0 +1,19 @@
+.walletComp-layout{
+    background-color: #14141F;
+    text-align: center;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.walletComp-layout .walletComp-title{
+    font-size: 36px;
+    line-height:44px;
+    font-weight: bold;
+    color: white;
+}
+
+.walletComp-layout .walletComp-text{
+    font-size: 18px;
+    line-height: 28px;
+    color: #EBEBEB;
+}
