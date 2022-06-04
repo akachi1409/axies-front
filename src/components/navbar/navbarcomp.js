@@ -17,7 +17,7 @@ class NavbarComp extends Component {
               <NavDropdown title="Explore">
                 <NavDropdown.Item href="/explore1">Explore1</NavDropdown.Item>
                 {/* <NavDropdown.Item href="/explore2">Explore2</NavDropdown.Item> */}
-                <NavDropdown.Item href="/explore3">Explore3</NavDropdown.Item>
+                <NavDropdown.Item href="/explore2">Explore2</NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Activity">
                 <NavDropdown.Item href="/activity1">Activity1</NavDropdown.Item>

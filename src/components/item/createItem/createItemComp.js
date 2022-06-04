@@ -83,14 +83,11 @@ class CreateItemComp extends Component {
                 placeholder='e.g "This is very limited item"'
               />
               <Row>
-                <Col lg="4">
-                  <h2 className="createItemComp-title">Royalties</h2>
-                  <input placeholder="5%" className="createItemComp-input"/>
+                <Col lg="8">
+                  <h2 className="createItemComp-title">External Link</h2>
+                  <input placeholder="https://yoursite.com" className="createItemComp-input"/>
                 </Col>
-                <Col lg="4">
-                  <h2 className="createItemComp-title">Size</h2>
-                  <input placeholder="e.g 'size'" className="createItemComp-input"/>
-                </Col>
+                
                 <Col lg="4">
                   <h2 className="createItemComp-title">Collection</h2>
                   <select className="explore1Comp-select">

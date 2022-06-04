@@ -9,7 +9,7 @@ function Explore3(){
     return(
         <div>
             <NavbarComp/>
-            <Header title="Explore 3" text = "Home / Explore / Explore 3"/>
+            <Header title="Explore 2" text = "Home / Explore / Explore 2"/>
             <Explore3Comp />
             <Footer/>
         </div>
