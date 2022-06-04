@@ -88,7 +88,7 @@
     padding:10px;
     width: 100%;
     margin: 1em;
-    caret-color: red;
+    caret-color: white;
 }
 
 .createItemComp-layout .explore1Comp-select{
@@ -107,7 +107,7 @@
     width: -webkit-fill-available;
     margin: 1em;
     margin-top: 0px;
-    caret-color: red;
+    caret-color: white;
 }
 
 .createItemComp-layout .createItemComp-create-btn{
