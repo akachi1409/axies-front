@@ -16,7 +16,7 @@ class NavbarComp extends Component {
               <Nav.Link href="/">Home</Nav.Link>
               <NavDropdown title="Explore">
                 <NavDropdown.Item href="/explore1">Explore1</NavDropdown.Item>
-                <NavDropdown.Item href="/explore2">Explore2</NavDropdown.Item>
+                {/* <NavDropdown.Item href="/explore2">Explore2</NavDropdown.Item> */}
                 <NavDropdown.Item href="/explore3">Explore3</NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Activity">
@@ -30,6 +30,7 @@ class NavbarComp extends Component {
               <Nav.Link href="/auction">Auctions</Nav.Link>
               <Nav.Link href="/blog">Blog</Nav.Link>
               <Nav.Link href="/help">Help</Nav.Link>
+              <Nav.Link href="/profile">Profile</Nav.Link>
             </Nav>
             <Nav>
               <Nav.Item className="nav-wallet-layout">

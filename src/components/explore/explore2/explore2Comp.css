@@ -5,6 +5,21 @@
     padding-bottom: 2em;
 }
 
+.explore2Comp-layout .explore2Comp-user{
+    font-size: 26px;
+    line-height: 34px;
+    color: white;
+    font-weight: bold;
+    text-align: left;
+}
+
+.explore2Comp-layout .explore2Comp-wallet{
+    color: #EBEBEB;
+    text-align: left;
+    font-size: 18px;
+    line-height: 26px;
+    margin-bottom: 2em;
+}
 .explore2Comp-layout .explore2Comp-select{
     background-color: #343444;
     color: #EBEBEB;

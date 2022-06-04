@@ -9,7 +9,7 @@ function Explore2(){
     return(
         <div>
             <NavbarComp/>
-            <Header title="Explore 2" text = "Home / Explore / Explore 2"/>
+            <Header title="My Profile" text = "Home / User / My Profile"/>
             <Explore2Comp />
             <Footer/>
         </div>

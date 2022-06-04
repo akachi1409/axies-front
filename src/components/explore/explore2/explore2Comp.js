@@ -10,20 +10,20 @@ class Explore2Comp extends Component {
     this.state = {
       buttons: [
         {
-          text: "All",
+          text: "Collected",
         },
         {
-          text: "Art",
+          text: "Created",
         },
         {
-          text: "Music",
+          text: "Favourite",
         },
-        {
-          text: "Collectibles",
-        },
-        {
-          text: "Sports",
-        },
+        // {
+        //   text: "Collectibles",
+        // },
+        // {
+        //   text: "Sports",
+        // },
       ],
       data: [
         {
@@ -44,6 +44,7 @@ class Explore2Comp extends Component {
           owner: "SalvadorDali",
           priceItem: "Price",
           price: "4.89ETH",
+          bidding: true,
         },
         {
           like: 100,
@@ -114,6 +115,11 @@ class Explore2Comp extends Component {
       <div className="explore2Comp-layout">
         <Container>
           <Row>
+            <h2 className="explore2Comp-user">My Username</h2>
+          </Row>
+          <p className="explore2Comp-wallet">0xf4165678e707125d1d581877417272a3100c251b</p>
+          <hr/>
+          <Row>
             <Col lg="6">
               {this.state.buttons.map((item, index) => (
                 <button key={index} className="explore2Comp-button">
@@ -123,7 +129,7 @@ class Explore2Comp extends Component {
             </Col>
             <Col lg="6">
               <select className="explore2Comp-select">
-                <option>All Artworks</option>
+                <option> Artworks</option>
                 <option>Music</option>
                 <option>Domain Names</option>
                 <option>Virtual World</option>

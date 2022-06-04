@@ -46,7 +46,7 @@ function App() {
           <Route exact path="/activity2" element={<Activity2 />}></Route>
           <Route exact path="/blog_details" element={<BlogDetails />}></Route>
           <Route exact path="/explore1" element={<Explore1 />}></Route>
-          <Route exact path="/explore2" element={<Explore2 />}></Route>
+          <Route exact path="/profile" element={<Explore2 />}></Route>
           <Route exact path="/explore3" element={<Explore3 />}></Route>
           <Route exact path="/explore4" element={<Explore4 />}></Route>
           <Route exact path="/create_item" element={<CreateItem />}></Route>
