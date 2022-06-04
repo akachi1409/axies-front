@@ -3,7 +3,8 @@
     border-radius:10px;
     text-align: left;
     /* padding: 1em; */
-    margin: 1em
+    margin: 1em;
+    pointer: cursor;
 }
 
 .blogItem-layout .blogItem-des{

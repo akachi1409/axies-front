@@ -1,8 +1,14 @@
 import "./blogItem.css"
+import { useNavigate } from "react-router-dom";
 
 function BlogItem(props){
+    let navigate = useNavigate();
+
+    const onItem = () =>{
+        navigate("/blog_details")
+    }
     return(
-        <div className="blogItem-layout">
+        <div className="blogItem-layout" onClick= {() => onItem()}>
             <img className="blogItem-img" src={props.img} alt = ""/>
             <div className="blogItem-des">
                 <div className="blogItem-des-left">
