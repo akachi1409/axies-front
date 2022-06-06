@@ -28,7 +28,7 @@ function Mynft() {
       });
       setFirstLoad(false);
     }
-  });
+  }, [firstLoad, blockchain, navigate]);
   return (
     <div className="mynft-layout">
       <Container>
