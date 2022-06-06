@@ -3,6 +3,7 @@ import "./explore1Comp.css"
 import React, { Component } from "react"
 import { Container, Row, Col } from "react-bootstrap";
 import Explore1Item from "./explore1Item"
+// import axios from "axios";
 
 import Button2 from "../../../basic/button/button2";
 class Explore1Comp extends Component {
@@ -90,8 +91,17 @@ class Explore1Comp extends Component {
                     price: "4.89ETH",
                     bidding: true
                 },
-            ]
+            ],
+            collections:[]
         }
+    }
+    componentDidMount() {
+        // const collections = 
+        // const url = "https://api-rinkeby.reservoir.tools/collections/v4?sortBy=allTimeVolume&includeTopBid=false&limit=8"
+        // axios.get(url).then((res) =>{
+        //     console.log(res);
+        //     this.setState({collections: res.data.collections})
+        // })
     }
     render(){
         return(

@@ -1,0 +1,98 @@
+.explore4Item-layout{
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent transparent rgb(21, 27, 34);
+
+    width: 100%;
+    font-weight: 600;
+    padding: 16px;
+    border: 1px solid #EBEBEB;
+    color: rgb(229, 232, 235);
+    text-align: left;
+    display: flex;
+    
+}
+
+.explore4Item-layout .explore4Item-index{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin-right: 8px;
+}
+
+.explore4Item-layout .explore4Item-index .explore4Item-span{
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+}
+
+.explore4Item-layout .explore4Item-img-layout{
+    display: flex;
+    margin-left: 8px;
+    margin-right: 8px;
+    border: 1px solid rgb(21, 27, 34);
+    border-radius: 50%;
+
+    height: 50px;
+    width: 50px;
+}
+
+.explore4Item-layout .explore4Item-des-layout{
+    align-self: stretch;
+    flex: 1 1 auto;
+    flex-flow: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    margin-right: 16px;
+    order: 3;
+    overflow: hidden;
+    font-size: 16px;
+    align-items: flex-start;
+    display: flex;
+}
+
+.explore4Item-layout .explore4Item-des-layout .explore4Item-des-title{
+    font-weight: 600;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    width: 100%;
+}
+
+.explore4Item-layout .explore4Item-des-layout .explore4Item-des-text{
+    font-weight: 500;
+    font-size: 12px;
+    color: rgb(138, 147, 155);
+}
+
+.explore4Item-layout .explore4Item-price-layout{
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    flex-flow: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    max-width: 40%;
+    order: 4;
+    overflow: hidden;
+    text-align: right;
+}
+
+.explore4Item-layout .explore4Item-price-layout .explore4Item-price-lay{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.explore4Item-layout .explore4Item-price-layout .explore4Item-price-lay .explore4Item-price-per{
+    font-weight: 400;
+    font-size: 14px;
+    /* color: rgb(235, 87, 87); */
+    color: white;
+}
+
+.explore4Item-layout .explore4Item-price-layout .explore4Item-price{
+    display: flex;
+    align-items: center;
+}

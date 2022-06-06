@@ -3,107 +3,50 @@ import "./explore4Comp.css";
 import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-import FilterItem2 from "./fliterItem2";
-
+import axios from "axios";
+// import FilterItem2 from "./fliterItem2";
+import Explore4Item from "./explore4Item";
 class Explore4Comp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [
-        {
-          like: 100,
-          soon: false,
-          title: '"The RenaiXance Rising...',
-          net: "BSC",
-          owner: "SalvadorDali",
-          priceItem: "Price",
-          price: "4.89ETH",
-          bidding: true,
-        },
-        {
-          like: 100,
-          soon: false,
-          title: '"Space babe - Night 2/25"',
-          net: "BSC",
-          owner: "SalvadorDali",
-          priceItem: "Price",
-          price: "4.89ETH",
-        },
-        {
-          like: 100,
-          soon: false,
-          title: '"CyberPrimal 042 LAN”',
-          net: "BSC",
-          owner: "SalvadorDali",
-          priceItem: "Price",
-          price: "4.89ETH",
-          bidding: true,
-        },
-        {
-          like: 100,
-          soon: false,
-          title: '"Crypto Egg Stamp #5”',
-          net: "BSC",
-          owner: "SalvadorDali",
-          priceItem: "Price",
-          price: "4.89ETH",
-          bidding: true,
-        },
-        {
-          like: 100,
-          soon: false,
-          title: '"Travel Monkey Club #45”',
-          net: "BSC",
-          owner: "SalvadorDali",
-          priceItem: "Price",
-          price: "4.89ETH",
-          bidding: true,
-        },
-        {
-          like: 100,
-          soon: false,
-          title: '"Sir. Lion Swag #371”',
-          net: "BSC",
-          owner: "SalvadorDali",
-          priceItem: "Price",
-          price: "4.89ETH",
-          bidding: true,
-        },
-        {
-          like: 100,
-          soon: false,
-          title: '"Cyber Doberman #766”',
-          net: "BSC",
-          owner: "SalvadorDali",
-          priceItem: "Price",
-          price: "4.89ETH",
-          bidding: true,
-        },
-        {
-          like: 100,
-          soon: false,
-          title: '"Living Vase 01 by Lanz...',
-          net: "BSC",
-          owner: "SalvadorDali",
-          priceItem: "Price",
-          price: "4.89ETH",
-          bidding: true,
-        },
-      ],
+      data: [],
     };
+  }
+
+  componentDidMount() {
+    const url =
+      "https://api.reservoir.tools/collections/v4?sortBy=1DayVolume&includeTopBid=false&limit=15";
+    axios.get(url).then((res) => {
+      this.setState({ data: res.data.collections });
+    });
   }
 
   render() {
     return (
-      <div className="explore1Comp-layout">
+      <div className="explore4Comp-layout">
         <Container>
           <Row>
-            <Col lg="4">
-
-            </Col>
-            <Col lg="8">
-
-            </Col>
+            <h2 className="explore4Comp-title">Last 15 collections</h2>
+          </Row>
+          <Row>
+            {this.state.data.map((item, index) => {
+              var title = "";
+              if (item.name.length > 20) {
+                title = item.name.substring(0, 17) + "...";
+              }
+              return (
+                <Col lg="4" key={index} style={{padding: "1em"}}>
+                  <Explore4Item
+                    index={index + 1}
+                    title={title}
+                    price={item.floorAskPrice}
+                    img={item.image}
+                    supply={item.tokenCount}
+                  />
+                </Col>
+              );
+            })}
           </Row>
         </Container>
       </div>
