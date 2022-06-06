@@ -5,6 +5,8 @@ import { Container, Row, Col } from "react-bootstrap";
 
 import axios from "axios";
 // import FilterItem2 from "./fliterItem2";
+
+//Explore all the possible collections
 import Explore4Item from "./explore4Item";
 class Explore4Comp extends Component {
   constructor(props) {
@@ -18,6 +20,7 @@ class Explore4Comp extends Component {
     const url =
       "https://api.reservoir.tools/collections/v4?sortBy=1DayVolume&includeTopBid=false&limit=15";
     axios.get(url).then((res) => {
+      // console.log(res);
       this.setState({ data: res.data.collections });
     });
   }
@@ -35,6 +38,7 @@ class Explore4Comp extends Component {
               if (item.name.length > 20) {
                 title = item.name.substring(0, 17) + "...";
               }
+              var contract = item.tokenSetId.split(":")[1]
               return (
                 <Col lg="4" key={index} style={{padding: "1em"}}>
                   <Explore4Item
@@ -43,6 +47,7 @@ class Explore4Comp extends Component {
                     price={item.floorAskPrice}
                     img={item.image}
                     supply={item.tokenCount}
+                    contract = {contract}
                   />
                 </Col>
               );

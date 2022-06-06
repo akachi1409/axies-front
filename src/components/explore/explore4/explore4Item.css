@@ -10,7 +10,7 @@
     color: rgb(229, 232, 235);
     text-align: left;
     display: flex;
-    
+    cursor: pointer;
 }
 
 .explore4Item-layout .explore4Item-index{

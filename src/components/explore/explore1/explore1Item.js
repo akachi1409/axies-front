@@ -1,30 +1,31 @@
 import "./explore1Item.css";
 import { Row, Col } from "react-bootstrap";
 
-import HeartImg from "../../../assets/explore/heart.png";
+// import HeartImg from "../../../assets/explore/heart.png";
 import UserImg from "../../../assets/explore/user.png";
 import BagImg from "../../../assets/explore/bag.png";
 import ReloadImg from "../../../assets/explore/reload.png";
 
 function Explore1Item(props) {
+  
   return (
     <div className="explore1Item-layout">
       <Row>
-        <div className="explore1Item-box">
-          <div className="explore1Item-like">
-            <img src={HeartImg} alt="" />
-            &nbsp; 100
-          </div>
-        </div>
+        <img src = {props.image} alt = "">
+          {/* <div className="explore1Item-like"> */}
+            {/* <img src={HeartImg} alt="" />
+            &nbsp; 100 */}
+          {/* </div> */}
+        </img>
       </Row>
 
       <Row style={{ marginTop: "1em", alignItems: "center" }}>
-        <Col lg="9">
-          <h1 className="explore1Item-title">{props.title}</h1>
-        </Col>
-        <Col lg="3">
+        {/* <Col lg="9"> */}
+        <h1 className="explore1Item-title">{props.title}</h1>
+        {/* </Col> */}
+        {/* <Col lg="3">
           <div className="explore1Item-net">{props.net}</div>
-        </Col>
+        </Col> */}
       </Row>
 
       <Row style={{ marginTop: "1em", alignItems: "center" }}>
@@ -36,7 +37,7 @@ function Explore1Item(props) {
           <p className="explore1Item-owner">{props.owner}</p>
         </Col>
         <Col lg="3" style={{ textAlign: "right" }}>
-          <h4 className="explore1Item-owner-title">{props.priceItem}</h4>
+          <h4 className="explore1Item-owner-title">Floor Price</h4>
           <p className="explore1Item-owner">{props.price}</p>
         </Col>
       </Row>

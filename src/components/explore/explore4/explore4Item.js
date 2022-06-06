@@ -1,9 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./explore4Item.css"
 function Explore4Item(props){
+    let navigate = useNavigate();
+    const onNavigate = (contract) =>{
+        navigate("/explore_item/"+contract)
+    }
     return(
-        <div className="explore4Item-layout">
+        <div className="explore4Item-layout" onClick={() =>onNavigate(props.contract)}>
             <div className="explore4Item-index">
                 <span className="explore4Item-span">{props.index}</span>
             </div>

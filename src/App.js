@@ -45,7 +45,7 @@ function App() {
           <Route exact path="/activity1" element={<Acticity1 />}></Route>
           <Route exact path="/activity2" element={<Activity2 />}></Route>
           <Route exact path="/blog_details" element={<BlogDetails />}></Route>
-          <Route exact path="/explore1" element={<Explore1 />}></Route>
+          <Route exact path="/explore_item/:contract" element={<Explore1 />}></Route>
           <Route exact path="/profile" element={<Explore2 />}></Route>
           <Route exact path="/explore2" element={<Explore3 />}></Route>
           <Route exact path="/explore" element={<Explore4 />}></Route>
