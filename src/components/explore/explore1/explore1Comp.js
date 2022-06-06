@@ -98,7 +98,7 @@ class Explore1Comp extends Component {
                                 <Col lg="3" key={index}>
                                     <Explore1Item 
                                         image = {this.state.images[index]}
-                                        title={item.title}
+                                        title={item.name}
                                         // net={item.net}
                                         owner = {owner}
                                         price = {price}
