@@ -1,3 +1,24 @@
 .mynft-layout{
-    
+    background-color: #14141F;
+    text-align: center;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.mynft-layout .mynft-title{
+    font-size: 24px;
+    line-height: 32px;
+    color: white;
+}
+
+.mynft-layout .mynft-text{
+    font-size: 18px;
+    line-height: 28px;
+    color: #EBEBEB;
+}
+
+.mynft-layout .mynft-empty{
+    font-size: 22px;
+    line-height: 32px;
+    color: red;
 }
