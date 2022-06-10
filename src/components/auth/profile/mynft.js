@@ -19,7 +19,7 @@ function Mynft() {
         navigate("/");
       }
       const url =
-        "https://api.reservoir.tools/users/" +
+        "https://api-rinkeby.reservoir.tools/users/" +
         blockchain.account +
         "/tokens/v2?sortDirection=desc&offset=0&limit=20";
       axios.get(url).then((res) => {

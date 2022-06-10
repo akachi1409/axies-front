@@ -18,7 +18,7 @@ class Explore4Comp extends Component {
 
   componentDidMount() {
     const url =
-      "https://api.reservoir.tools/collections/v4?sortBy=1DayVolume&includeTopBid=false&limit=15";
+      "https://api-rinkeby.reservoir.tools/collections/v4?sortBy=1DayVolume&includeTopBid=false&limit=15";
     axios.get(url).then((res) => {
       // console.log(res);
       this.setState({ data: res.data.collections });

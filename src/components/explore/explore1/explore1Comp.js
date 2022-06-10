@@ -18,12 +18,12 @@ class Explore1Comp extends Component {
         // console.log(props.id);
     }
     componentDidMount() {
-        const url = "https://api.reservoir.tools/tokens/v4?contract=" + this.props.contract+ "&sortBy=floorAskPrice&limit=20"
+        const url = "https://api-rinkeby.reservoir.tools/tokens/v4?contract=" + this.props.contract+ "&sortBy=floorAskPrice&limit=20"
         axios.get(url).then((res) =>{
             // console.log(res);
             this.setState({data: res.data.tokens})
         })
-        const imageURL = "https://api.reservoir.tools/tokens/details/v4?contract="+ this.props.contract+ "&sortBy=floorAskPrice&limit=20"
+        const imageURL = "https://api-rinkeby.reservoir.tools/tokens/details/v4?contract="+ this.props.contract+ "&sortBy=floorAskPrice&limit=20"
         axios.get(imageURL).then((res)=>{
             var temp = []
             res.data.tokens.map((token, index) =>{
