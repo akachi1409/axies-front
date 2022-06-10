@@ -58,7 +58,7 @@ class Footer extends Component {
           <section className="footer-section1">
             <div className="footer-section1-layout">
               <Row>
-                <Col lg="3">
+                <Col lg="12">
                   <Row>
                     <Col sm="12" md="12" lg="12" className="footer-bar-link">
                       <a href="https://dmc2.tempurl.host/">
@@ -101,52 +101,6 @@ class Footer extends Component {
                         className="footer-sectiion-icon-round"
                       />
                     </div>
-                  </Row>
-                </Col>
-                <Col lg="8">
-                  <Row>
-                    {this.state.data.map((item, index) => (
-                      <Col
-                        lg="3"
-                        md="12"
-                        sm="12"
-                        className="footer-section1-col"
-                        key={index}
-                      >
-                        <div className="footer-section1-col-wrap">
-                          <h4 className="footer-section1-col-title">
-                            {item.title}
-                          </h4>
-                          <div className="footer-section1-col-list">
-                            <ul className="foot-section1-col-ul">
-                              {item.text.map((t, indexT) => (
-                                <li
-                                  className="footer-section1-col-li"
-                                  key={indexT}
-                                >
-                                  <a href="#section">
-                                    <span className="footer-section1-col-text">
-                                      {t}
-                                    </span>
-                                  </a>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
-                      </Col>
-                    ))}
-                    <Col lg="3" md="12" sm="12" className="footer-section1-col">
-                      <div className="footer-section1-col-wrap">
-                        <h4 className="footer-section1-col-title">
-                          Subscribe Us
-                        </h4>
-                        <div className="footer-section1-col-list">
-                            <input className="footer-section1-input" placeholder="info@yourgmail.com"/>
-                            {/* <button></button> */}
-                        </div>
-                      </div>
-                    </Col>
                   </Row>
                 </Col>
               </Row>
