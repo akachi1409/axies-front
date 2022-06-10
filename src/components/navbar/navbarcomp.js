@@ -29,16 +29,15 @@ function NavbarComp() {
               <NavDropdown.Item href="/explore1">Explore1</NavDropdown.Item>
               <NavDropdown.Item href="/explore2">Explore2</NavDropdown.Item>
             </NavDropdown>
-            <NavDropdown title="Activity">
+            {/* <NavDropdown title="Activity">
               <NavDropdown.Item href="/activity1">Activity1</NavDropdown.Item>
               <NavDropdown.Item href="/activity2">Activity2</NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown title="Item">
+            </NavDropdown> */}
+            {/* <NavDropdown title="Item">
               <NavDropdown.Item href="/create_item">
                 Create Item
               </NavDropdown.Item>
-              {/* <NavDropdown.Item href="/activity2">Activity2</NavDropdown.Item> */}
-            </NavDropdown>
+            </NavDropdown> */}
             <Nav.Link href="/auction">Auctions</Nav.Link>
             <Nav.Link href="/blog">Blog</Nav.Link>
             <Nav.Link href="/help">Help</Nav.Link>
