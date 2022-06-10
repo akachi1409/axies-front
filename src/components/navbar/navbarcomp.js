@@ -26,8 +26,8 @@ function NavbarComp() {
               <NavDropdown.Item href="/explore">
                 Explore Collection
               </NavDropdown.Item>
-              <NavDropdown.Item href="/explore1">Explore1</NavDropdown.Item>
-              <NavDropdown.Item href="/explore2">Explore2</NavDropdown.Item>
+              {/* <NavDropdown.Item href="/explore1">Explore1</NavDropdown.Item> */}
+              {/* <NavDropdown.Item href="/explore2">Explore2</NavDropdown.Item> */}
             </NavDropdown>
             {/* <NavDropdown title="Activity">
               <NavDropdown.Item href="/activity1">Activity1</NavDropdown.Item>
