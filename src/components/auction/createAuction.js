@@ -5,9 +5,9 @@ import { Container, Row, Col } from "react-bootstrap";
 import Explore1Item from "../explore/explore1/explore1Item";
 
 import Input1 from "../../basic/button/input1";
-import ClockImg from "../../assets/item/clock.png";
+// import ClockImg from "../../assets/item/clock.png";
 import TagImg from "../../assets/item/tag.png";
-import PeopleImg from "../../assets/item/people.png";
+// import PeopleImg from "../../assets/item/people.png";
 
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -39,7 +39,7 @@ function CreateAuction(props) {
       });
       setFirstLoad(false);
     }
-  }, [firstLoad, blockchain, navigate]);
+  }, [firstLoad, blockchain, navigate, props.contract, props.id]);
   return (
     <div className="createAuction-layout">
       <Container>
