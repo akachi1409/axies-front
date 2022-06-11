@@ -43,7 +43,7 @@ function Mynft() {
                 )
             }
           {data.map((item, index) => {
-            console.log("item: ", item);
+            // console.log("item: ", item);
             // var price = item.token.floorAskPrice == null ? "TBD" : item.token.floorAskPrice;
             var owner =
             blockchain.account.length > 12
@@ -56,6 +56,8 @@ function Mynft() {
                   title={item.name}
                   // net={item.net}
                   owner={owner}
+                  contract = {item.asset_contract.address}
+                  tokenId = {item.token_id}
                   // price={price}
                   // priceItem = {item.priceItem}
                 //   bidding={item.bidding}

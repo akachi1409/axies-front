@@ -33,6 +33,8 @@ import CreateItem from "./page/item/createItem";
 import Auction from "./page/auction/auction";
 import ConnectWallet from "./page/wallet/connetWallet";
 import MyNFT from "./page/auth/mynft"
+
+import MyNFTItem from "./page/auth/mynftItem"
 // import Signup
 function App() {
   return (
@@ -47,12 +49,14 @@ function App() {
           <Route exact path="/activity1" element={<Acticity1 />}></Route>
           <Route exact path="/activity2" element={<Activity2 />}></Route>
           <Route exact path="/blog_details" element={<BlogDetails />}></Route>
-          <Route exact path="/explore_item/:contract" element={<Explore1 />}></Route>
+          <Route exact path="/explore_collection/:contract" element={<Explore1 />}></Route>
           <Route exact path="/profile" element={<Explore2 />}></Route>
           <Route exact path="/explore2" element={<Explore3 />}></Route>
           <Route exact path="/explore" element={<Explore4 />}></Route>
+          {/* explore4 is for explore the collection */}
           <Route exact path="/create_item" element={<CreateItem />}></Route>
           <Route exact path="/auction" element={<Auction />}></Route>
+          <Route exact path="/explore_item/:contract/:id" element = {<MyNFTItem/>}></Route>
           <Route
             exact
             path="/connect_wallet"

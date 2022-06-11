@@ -5,7 +5,7 @@ import "./explore4Item.css"
 function Explore4Item(props){
     let navigate = useNavigate();
     const onNavigate = (contract) =>{
-        navigate("/explore_item/"+contract)
+        navigate("/explore_collection/"+contract)
     }
     return(
         <div className="explore4Item-layout" onClick={() =>onNavigate(props.contract)}>

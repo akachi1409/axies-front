@@ -1,14 +1,20 @@
 import "./explore1Item.css";
 import { Row, Col } from "react-bootstrap";
-
+import React from "react"
 // import HeartImg from "../../../assets/explore/heart.png";
 import UserImg from "../../../assets/explore/user.png";
 import BagImg from "../../../assets/explore/bag.png";
 import ReloadImg from "../../../assets/explore/reload.png";
+import { useNavigate } from "react-router-dom";
 
 function Explore1Item(props) {
+
+  let navigate = useNavigate();
+  const onNavigate = () =>{
+      navigate("/explore_item/"+props.contract + "/" + props.tokenId)
+  }
   return (
-    <div className="explore1Item-layout">
+    <div className="explore1Item-layout" onClick={()=>onNavigate()}>
       <Row>
         <div className="explore1Item-img-layout">
           <img src={props.image} alt="" className="explore1Item-img"></img>

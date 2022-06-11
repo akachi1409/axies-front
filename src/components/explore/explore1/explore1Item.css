@@ -3,6 +3,9 @@
     border-radius: 10px;
     background-color: #343444;
     padding: 1em;
+    cursor: pointer;
+
+    width: fit-content;
 }
 
 /* .explore1Item-layout .explore1Item-box{
@@ -17,7 +20,7 @@
 }
 .explore1Item-layout .explore1Item-img-layout .explore1Item-img{
     height: 100%;
-    width: auto;
+    width: 100%;
 }
 
 .explore1Item-layout .explore1Item-box .explore1Item-like{
