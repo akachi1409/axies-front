@@ -23,7 +23,7 @@ function Mynft() {
         blockchain.account +
         "/tokens/v2?sortDirection=desc&offset=0&limit=20";
       axios.get(url).then((res) => {
-        // console.log(res);
+        console.log(res);
         setData(res.data.tokens)  
       });
       setFirstLoad(false);
@@ -43,7 +43,8 @@ function Mynft() {
                 )
             }
           {data.map((item, index) => {
-            var price = item.floorAskPrice == null ? "TBD" : item.floorAskPrice;
+            console.log("item: ", item);
+            var price = item.token.floorAskPrice == null ? "TBD" : item.token.floorAskPrice;
             var owner =
             blockchain.account.length > 12
                 ? blockchain.account.substring(0, 12) + "..."
@@ -51,8 +52,8 @@ function Mynft() {
             return (
               <Col lg="3" key={index}>
                 <Explore1Item
-                  image={item.image}
-                  title={item.name}
+                  image={item.token.image}
+                  title={item.token.name}
                   // net={item.net}
                   owner={owner}
                   price={price}
