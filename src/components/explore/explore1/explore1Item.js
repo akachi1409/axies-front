@@ -7,16 +7,12 @@ import BagImg from "../../../assets/explore/bag.png";
 import ReloadImg from "../../../assets/explore/reload.png";
 
 function Explore1Item(props) {
-  
   return (
     <div className="explore1Item-layout">
       <Row>
-        <img src = {props.image} alt = "">
-          {/* <div className="explore1Item-like"> */}
-            {/* <img src={HeartImg} alt="" />
-            &nbsp; 100 */}
-          {/* </div> */}
-        </img>
+        <div className="explore1Item-img-layout">
+          <img src={props.image} alt="" className="explore1Item-img"></img>
+        </div>
       </Row>
 
       <Row style={{ marginTop: "1em", alignItems: "center" }}>

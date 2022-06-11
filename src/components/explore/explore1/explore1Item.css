@@ -11,6 +11,15 @@
     height: 300px;
 } */
 
+.explore1Item-layout .explore1Item-img-layout{
+    width: 260px;
+    height: 260px;
+}
+.explore1Item-layout .explore1Item-img-layout .explore1Item-img{
+    height: 100%;
+    width: auto;
+}
+
 .explore1Item-layout .explore1Item-box .explore1Item-like{
     position: relative;
     left: 70%;

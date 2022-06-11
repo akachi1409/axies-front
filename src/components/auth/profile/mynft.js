@@ -19,12 +19,12 @@ function Mynft() {
         navigate("/");
       }
       const url =
-        "https://api-rinkeby.reservoir.tools/users/" +
+        "https://testnets-api.opensea.io/api/v1/assets?owner=" +
         blockchain.account +
-        "/tokens/v2?sortDirection=desc&offset=0&limit=20";
+        "&offset=0&limit=200";
       axios.get(url).then((res) => {
         console.log(res);
-        setData(res.data.tokens)  
+        setData(res.data.assets)  
       });
       setFirstLoad(false);
     }
@@ -44,7 +44,7 @@ function Mynft() {
             }
           {data.map((item, index) => {
             console.log("item: ", item);
-            var price = item.token.floorAskPrice == null ? "TBD" : item.token.floorAskPrice;
+            // var price = item.token.floorAskPrice == null ? "TBD" : item.token.floorAskPrice;
             var owner =
             blockchain.account.length > 12
                 ? blockchain.account.substring(0, 12) + "..."
@@ -52,11 +52,11 @@ function Mynft() {
             return (
               <Col lg="3" key={index}>
                 <Explore1Item
-                  image={item.token.image}
-                  title={item.token.name}
+                  image={item.image_url}
+                  title={item.name}
                   // net={item.net}
                   owner={owner}
-                  price={price}
+                  // price={price}
                   // priceItem = {item.priceItem}
                 //   bidding={item.bidding}
                 />
