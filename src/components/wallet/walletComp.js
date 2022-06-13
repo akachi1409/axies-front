@@ -1,12 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 import WalletItem from "./walletItem";
 import "./walletComp.css";
 import MetaImg from "../../assets/wallet/metamask.png";
 import CoinImg from "../../assets/wallet/coinbase.png";
+import { fetchData } from "../../redux/data/dataActions"
 
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+
 function WalletComp() {
   const data = [
     {
@@ -20,15 +23,23 @@ function WalletComp() {
       text: "Coinbase Wallet is a self-custody crypto wallet, putting you in control of your crypto, keys, and data. Now you can safely store your crypto and rare NFTs in your Coinbase wallet.",
     },
   ];
-
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
+
+  const getData = () => {
+    if (blockchain.account !== "" && blockchain.smartContract !== null) {
+      dispatch(fetchData(blockchain.account));
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, [blockchain.account]);
 
   // console.log("blockchain", blockchain);
   return (
     <div className="walletComp-layout">
       <Container>
-        {blockchain.account === null  ? (
+        {blockchain.account === null ? (
           <div>
             <Row>
               <h2 className="walletComp-title">Connect Wallet</h2>
@@ -52,10 +63,10 @@ function WalletComp() {
           </div>
         ) : (
           <Row>
-            <h2 className="walletComp-title">{blockchain.wallet} is connected.</h2>
-            <p className="walletComp-text">
-                {blockchain.account}
-              </p>
+            <h2 className="walletComp-title">
+              {blockchain.wallet} is connected.
+            </h2>
+            <p className="walletComp-text">{blockchain.account}</p>
           </Row>
         )}
       </Container>

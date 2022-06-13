@@ -33,7 +33,6 @@ const updateAccountRequest = (payload) => {
 };
 
 export const connect = () => {
-  console.log("--:")
   return async (dispatch) => {
     dispatch(connectRequest());
     const { ethereum } = window;
@@ -53,7 +52,7 @@ export const connect = () => {
         if (networkId === "4") { // IMPORTANT. ONCE YOUR CONTRACT IS ON THE MAIN NET, SWITCH THIS NUMBER TO 1.
           const SmartContractObj = new Web3EthContract(
             SmartContract,
-            "0x5DC60F02b222244534c2A7C5e753EDB562A2Ee67" // **IMPORTANT** PASTE CONTRACT ADDRESS HERE
+            "0x55011FB07C7Ac8BcB8111C311BF650ad69211860" // **IMPORTANT** PASTE CONTRACT ADDRESS HERE
           );
           dispatch(
             connectSuccess({

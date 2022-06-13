@@ -3,6 +3,8 @@ const initialState = {
   name: "",
   totalSupply: 0,
   cost: 0,
+  auctionAddress: [],
+  auctionId: [],
   error: false,
   errorMsg: "",
 };

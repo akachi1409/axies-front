@@ -25,24 +25,23 @@ export const fetchData = (account) => {
   return async (dispatch) => {
     dispatch(fetchDataRequest());
     try {
-      let name = await store
+      const auctionAddress = []
+      const auctionId = []
+      let length = await store
         .getState()
-        .blockchain.smartContract.methods.name()
+        .blockchain.smartContract.methods.liveAuctionCount()
         .call();
-      let totalSupply = await store
-        .getState()
-        .blockchain.smartContract.methods.totalSupply()
-        .call();
-      let cost = await store
-        .getState()
-        .blockchain.smartContract.methods.cost()
-        .call();
+      for (let index = 0 ; index<length ; index++) {
+        let add = await getAddress(index);
+        let id = await getId(index);
+        auctionAddress.push(add);
+        auctionId.push(id)
+      }
 
       dispatch(
         fetchDataSuccess({
-          name,
-          totalSupply,
-          cost,
+          auctionAddress,
+          auctionId
         })
       );
     } catch (err) {
@@ -51,3 +50,29 @@ export const fetchData = (account) => {
     }
   };
 };
+
+const getAddress = id => {
+  return getAddresscall(id);
+}
+
+const getAddresscall = id => {
+  return new Promise(resolve =>{
+   return resolve(store
+        .getState()
+        .blockchain.smartContract.methods.liveAuctionAddress(id)
+        .call())
+  })
+}
+
+const getId = id =>{
+  return getIdcall(id);
+}
+
+const getIdcall = id => {
+  return new Promise(resolve =>{
+    return resolve(store
+      .getState()
+      .blockchain.smartContract.methods.liveAuctionId(id)
+      .call)
+  })
+}
