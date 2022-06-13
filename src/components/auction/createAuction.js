@@ -11,14 +11,48 @@ import TagImg from "../../assets/item/tag.png";
 
 import axios from "axios";
 import { useSelector } from "react-redux";
+// import { connect } from "../../redux/blockchain/blockchainActions";
 import { useNavigate } from "react-router-dom";
-
+import Web3EthContract from "web3-eth-contract";
+// import AkachiToken from "../../contracts/AkachiToken.json";
+import EliteChess from "../../contracts/EliteChess.json"
 function CreateAuction(props) {
   const [data, setData] = useState([]);
   const [owner, setOwner ] = useState("")
+  const [buyNow, setBuyNow] = useState(0);
+  const [minPrice, setMinPrice ] = useState(0);
+
   let navigate = useNavigate();
   const blockchain = useSelector((state) => state.blockchain);
   const [firstLoad, setFirstLoad] = useState(true);
+
+  const onCreateAuction = () => {
+    console.log(minPrice, buyNow)
+    const erc721Contract = new Web3EthContract ( 
+      EliteChess, 
+      "0x26D4025EA3B66EA8987B1b1F9B23F9AfCA1eFe11"
+     )
+    erc721Contract.methods
+      .approve(
+        props.contract, props.id
+      )
+      .send({from: blockchain.account})
+      .once("error", err=>{
+        console.log(err)
+      })
+      .then(() =>{
+        console.log("success");
+      })
+    blockchain.smartContract.methods
+      .createDefaultNftAuction(props.contract, props.id, blockchain.web3.utils.toWei(minPrice, "ether")  , blockchain.web3.utils.toWei(buyNow, "ether") )
+      .send({from: blockchain.account})
+      .once("error", err=>{
+        console.log(err)
+      })
+      .then(() =>{
+        console.log("success");
+      })
+  }
   useEffect(() => {
     if (firstLoad) {
       // console.log(props);
@@ -81,8 +115,10 @@ function CreateAuction(props) {
                 </button>
               </Col> */}
             </Row>
-            <h2 className="createAuction-title">Price</h2>
-            <Input1 margin="1em" text="Enter price for one item (ETH)" />
+            <h2 className="createAuction-title">Min Price</h2>
+            <Input1 margin="1em" text="Enter minimum price for one item (AkachiToken)" value = {minPrice} onChange = {(e)=>setMinPrice(e.target.value)}/>
+            <h2 className="createAuction-title">Buy Now</h2>
+            <Input1 margin="1em" text="Enter buy now price for one item (AkachiToken)" value = {buyNow} onChange = {(e)=>setBuyNow(e.target.value)}/>
             {/* <h2 className="createAuction-title">Title</h2>
             <Input1 margin="1em" text="Item Name" />
             <h2 className="createAuction-title">Description</h2>
@@ -114,7 +150,7 @@ function CreateAuction(props) {
               </Col>
             </Row> */}
             <div style={{ display: "flex", flexDirection: "row-reverse" }}>
-              <button className="createAuction-create-btn">Start Auction</button>
+              <button className="createAuction-create-btn" onClick={() => onCreateAuction()}>Start Auction</button>
             </div>
           </Col>
         </Row>

@@ -1,0 +1,366 @@
+[
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "nftContractAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "auctionEndPeriod",
+        "type": "uint64"
+      }
+    ],
+    "name": "AuctionPeriodUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "nftContractAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "bidder",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "ethAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "tokenAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "BidMade",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "nftContractAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "nftSeller",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint128",
+        "name": "nftHighestBid",
+        "type": "uint128"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "nftHighestBidder",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "nftRecipient",
+        "type": "address"
+      }
+    ],
+    "name": "NFTTransferredAndSellerPaid",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "nftContractAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "nftSeller",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint128",
+        "name": "minPrice",
+        "type": "uint128"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint128",
+        "name": "buyNowPrice",
+        "type": "uint128"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "auctionBidPeriod",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "bidIncreasePercentage",
+        "type": "uint32"
+      }
+    ],
+    "name": "NftAuctionCreated",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nftContractAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint128",
+        "name": "_minPrice",
+        "type": "uint128"
+      },
+      {
+        "internalType": "uint128",
+        "name": "_buyNowPrice",
+        "type": "uint128"
+      }
+    ],
+    "name": "createDefaultNftAuction",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "defaultAuctionBidPeriod",
+    "outputs": [
+      {
+        "internalType": "uint32",
+        "name": "",
+        "type": "uint32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "defaultBidIncreasePercentage",
+    "outputs": [
+      {
+        "internalType": "uint32",
+        "name": "",
+        "type": "uint32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "defaultERC20Token",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nftContractAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint128",
+        "name": "_tokenAmount",
+        "type": "uint128"
+      }
+    ],
+    "name": "makeBid",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nftContractAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint128",
+        "name": "_tokenAmount",
+        "type": "uint128"
+      },
+      {
+        "internalType": "address",
+        "name": "_nftRecipient",
+        "type": "address"
+      }
+    ],
+    "name": "makeCustomBid",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "maximumMinPricePercentage",
+    "outputs": [
+      {
+        "internalType": "uint32",
+        "name": "",
+        "type": "uint32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "nftContractAuctions",
+    "outputs": [
+      {
+        "internalType": "uint32",
+        "name": "bidIncreasePercentage",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint32",
+        "name": "auctionBidPeriod",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint64",
+        "name": "auctionEnd",
+        "type": "uint64"
+      },
+      {
+        "internalType": "uint128",
+        "name": "minPrice",
+        "type": "uint128"
+      },
+      {
+        "internalType": "uint128",
+        "name": "buyNowPrice",
+        "type": "uint128"
+      },
+      {
+        "internalType": "uint128",
+        "name": "nftHighestBid",
+        "type": "uint128"
+      },
+      {
+        "internalType": "address",
+        "name": "nftHighestBidder",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "nftSeller",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "whitelistedBuyer",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "nftRecipient",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "ERC20Token",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

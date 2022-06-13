@@ -6,6 +6,7 @@
     padding: 1em!important;
     margin-top: 1em!important;
     caret-color: white;
+    color: white;
 }
 
 ::placeholder{
