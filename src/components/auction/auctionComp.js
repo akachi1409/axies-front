@@ -1,115 +1,109 @@
-import "./auctionComp.css"
+import "./auctionComp.css";
 
-import React, { Component } from "react"
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 import Button2 from "../../basic/button/button2";
-import AuctionItem from "./auctionItem"
-class AuctionComp extends Component {
-    constructor(props) {
-        super(props)
-        this.state ={
-            data: [
-                {
-                    like: 100,
-                    soon: false,
-                    title: '"The RenaiXance Rising...',
-                    net: "BSC",
-                    owner:"SalvadorDali",
-                    priceItem: "Price",
-                    price: "4.89ETH",
-                },
-                {
-                    like: 100,
-                    soon: false,
-                    title: '"Space babe - Night 2/25"',
-                    net: "BSC",
-                    owner:"SalvadorDali",
-                    priceItem: "Price",
-                    price: "4.89ETH",
-                },
-                {
-                    like: 100,
-                    soon: false,
-                    title: '"CyberPrimal 042 LAN”',
-                    net: "BSC",
-                    owner:"SalvadorDali",
-                    priceItem: "Price",
-                    price: "4.89ETH",
-                },
-                {
-                    like: 100,
-                    soon: false,
-                    title: '"Crypto Egg Stamp #5”',
-                    net: "BSC",
-                    owner:"SalvadorDali",
-                    priceItem: "Price",
-                    price: "4.89ETH",
-                },
-                {
-                    like: 100,
-                    soon: false,
-                    title: '"Travel Monkey Club #45”',
-                    net: "BSC",
-                    owner:"SalvadorDali",
-                    priceItem: "Price",
-                    price: "4.89ETH",
-                },
-                {
-                    like: 100,
-                    soon: false,
-                    title: '"Sir. Lion Swag #371”',
-                    net: "BSC",
-                    owner:"SalvadorDali",
-                    priceItem: "Price",
-                    price: "4.89ETH",
-                },
-                {
-                    like: 100,
-                    soon: false,
-                    title: '"Cyber Doberman #766”',
-                    net: "BSC",
-                    owner:"SalvadorDali",
-                    priceItem: "Price",
-                    price: "4.89ETH",
-                },
-                {
-                    like: 100,
-                    soon: false,
-                    title: '"Living Vase 01 by Lanz...',
-                    net: "BSC",
-                    owner:"SalvadorDali",
-                    priceItem: "Price",
-                    price: "4.89ETH",
-                },
-            ]
-        }
-    }
-    render() {
-        return(
-            <div className="auctionComp-layout">
-                <Container>
-                    <h2 className="auctionComp-title">Live Auctions</h2>
-                    <Row>
-                        {
-                            this.state.data.map((item, index) => (
-                                <Col lg="3" key={index}>
-                                    <AuctionItem 
-                                        title={item.title}
-                                        net={item.net}
-                                        owner = {item.owner}
-                                        price = {item.price}
-                                        priceItem = {item.priceItem}
-                                    />
-                                </Col>
-                            ))
-                        }
-                    </Row>
-                    <Button2 title="Load More" />
-                </Container>
-            </div>
+import AuctionItem from "./auctionItem";
+
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+function AuctionComp() {
+  const blockchain = useSelector((state) => state.blockchain);
+  const data = useSelector((state) => state.data);
+
+  const [firstLoad, setFirstLoad] = useState(true);
+  const [flag, setFlag] = useState(true);
+  const [items, setItems] = useState([]);
+  const [prices, setPrices] = useState([])
+  let navigate = useNavigate();
+
+  const getAssetByAddressAndId = (url) => {
+    return new Promise((resolve) => {
+      return resolve(axios.get(url));
+    });
+  };
+
+  const getAsset = (url) => {
+    return getAssetByAddressAndId(url);
+  };
+
+  const getPriceResolve = (address, id) =>{
+    return new Promise((resolve) => {
+        return resolve(
+            blockchain.smartContract.methods.nftContractAuctions(address, id)
+            .call()
         )
+    })
+  }
+  const getPrice = (address, id) =>{
+    return getPriceResolve(address, id)
+  }
+  useEffect(() => {
+    if (firstLoad) {
+      if (blockchain.account === null) {
+        navigate("/");
+      }
+      setFirstLoad(false);
     }
+  }, [firstLoad, blockchain, navigate]);
+
+  useEffect(() => {
+    getData();
+  }, [data.auctionAddress]);
+
+  const getData = async () => {
+    const length = data.auctionAddress.length;
+    let tempItems = [];
+    let tempPrices = [];
+    for (let i = 0; i < length; i++) {
+      const url =
+        "https://testnets-api.opensea.io/api/v1/assets?asset_contract_address=" +
+        data.auctionAddress[i] +
+        "&token_ids=" +
+        data.auctionId[i] +
+        "&offset=0&limit=200";
+      let nft = await getAsset(url);
+      let price = await getPrice(data.auctionAddress[i], data.auctionId[i])
+      tempPrices.push(blockchain.web3.utils.fromWei(price.buyNowPrice, "ether") )
+      console.log(nft);
+      tempItems.push(nft.data.assets[0]);
+    }
+    setPrices(tempPrices)
+    setItems(tempItems);
+    setFlag(!flag);
+  };
+
+  return (
+    <div className="auctionComp-layout">
+      <Container>
+        <h2 className="auctionComp-title">Live Auctions</h2>
+        <Row>
+          {items.map(
+            (item, index) => (
+              <Col lg="3" key={index}>
+                <AuctionItem
+                  title={item.name}
+                  net={item.net}
+                  owner={
+                    item.owner.address.length > 18
+                      ? item.owner.address.substring(0, 12) + "..."
+                      : item.owner.address
+                  }
+                  image = {item.image_url}
+                  price = {prices[index]}
+                />
+              </Col>
+            )
+            // }
+          )}
+        </Row>
+        <Button2 title="Load More" />
+      </Container>
+    </div>
+  );
 }
 
 export default AuctionComp;

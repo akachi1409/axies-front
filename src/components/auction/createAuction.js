@@ -10,8 +10,8 @@ import TagImg from "../../assets/item/tag.png";
 // import PeopleImg from "../../assets/item/people.png";
 
 import axios from "axios";
-import { useSelector } from "react-redux";
-// import { connect } from "../../redux/blockchain/blockchainActions";
+import { useSelector, useDispatch } from "react-redux";
+import { updateAccount } from "../../redux/blockchain/blockchainActions";
 import { useNavigate } from "react-router-dom";
 import Web3EthContract from "web3-eth-contract";
 // import AkachiToken from "../../contracts/AkachiToken.json";
@@ -23,6 +23,7 @@ function CreateAuction(props) {
   const [minPrice, setMinPrice ] = useState(0);
 
   let navigate = useNavigate();
+  const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
   const [firstLoad, setFirstLoad] = useState(true);
 
@@ -50,7 +51,9 @@ function CreateAuction(props) {
         console.log(err)
       })
       .then(() =>{
+        dispatch(updateAccount());
         console.log("success");
+        navigate("/auction")
       })
   }
   useEffect(() => {

@@ -34,14 +34,15 @@ export const fetchData = (account) => {
       for (let index = 0 ; index<length ; index++) {
         let add = await getAddress(index);
         let id = await getId(index);
+        console.log("id", id);
         auctionAddress.push(add);
         auctionId.push(id)
       }
 
       dispatch(
         fetchDataSuccess({
-          auctionAddress,
-          auctionId
+          auctionAddress:auctionAddress,
+          auctionId:auctionId
         })
       );
     } catch (err) {
@@ -73,6 +74,6 @@ const getIdcall = id => {
     return resolve(store
       .getState()
       .blockchain.smartContract.methods.liveAuctionId(id)
-      .call)
+      .call())
   })
 }

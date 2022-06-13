@@ -17,11 +17,11 @@ function NavbarComp() {
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="/">
+          <Navbar.Brand onClick = {()=> onNav("/")}>
             <img src={NavImg} alt="" /> Axies
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link onClick = {()=> onNav("/")}>Home</Nav.Link>
             <NavDropdown title="Explore">
               <NavDropdown.Item href="/explore">
                 Explore Collection
@@ -38,7 +38,7 @@ function NavbarComp() {
                 Create Item
               </NavDropdown.Item>
             </NavDropdown> */}
-            <Nav.Link href="/auction">Auctions</Nav.Link>
+            <Nav.Link onClick = {()=> onNav("/auction")}>Auctions</Nav.Link>
             <Nav.Link href="/blog">Blog</Nav.Link>
             <Nav.Link href="/help">Help</Nav.Link>
             

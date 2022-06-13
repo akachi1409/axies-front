@@ -22,9 +22,8 @@ const dataReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        name: action.payload.name,
-        totalSupply: action.payload.totalSupply,
-        cost: action.payload.cost,
+        auctionAddress: action.payload.auctionAddress,
+        auctionId: action.payload.auctionId,
         error: false,
         errorMsg: "",
       };
