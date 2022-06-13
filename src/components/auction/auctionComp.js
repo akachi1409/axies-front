@@ -52,7 +52,7 @@ function AuctionComp() {
 
   useEffect(() => {
     getData();
-  }, [data.auctionAddress]);
+  }, [data.auctionAddress]);// eslint-disable-line react-hooks/exhaustive-deps
 
   const getData = async () => {
     const length = data.auctionAddress.length;

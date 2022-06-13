@@ -33,7 +33,7 @@ function WalletComp() {
   };
   useEffect(() => {
     getData();
-  }, [blockchain.account]);
+  }, [blockchain.account]);// eslint-disable-line react-hooks/exhaustive-deps
 
   // console.log("blockchain", blockchain);
   return (

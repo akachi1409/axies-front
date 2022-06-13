@@ -73,7 +73,7 @@ function LiveAuctoion() {
 
   useEffect(() => {
     getData();
-  }, [data.auctionAddress]);
+  }, [data.auctionAddress]);// eslint-disable-line react-hooks/exhaustive-deps
   return (
     <div className="liveAuction-layout">
       <div className="liveAuction-layout-header">
