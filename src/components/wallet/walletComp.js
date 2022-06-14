@@ -1,17 +1,18 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 import WalletItem from "./walletItem";
 import "./walletComp.css";
 import MetaImg from "../../assets/wallet/metamask.png";
 import CoinImg from "../../assets/wallet/coinbase.png";
-import { fetchData } from "../../redux/data/dataActions"
+import { fetchData } from "../../redux/data/dataActions";
 
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { Modal } from "react-bootstrap";
 
 function WalletComp() {
-  const data = [
+  const dataWallet = [
     {
       img: MetaImg,
       wallet: "MetaMask",
@@ -25,6 +26,7 @@ function WalletComp() {
   ];
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
+  const data = useSelector((state) => state.data);
 
   const getData = () => {
     if (blockchain.account !== "" && blockchain.smartContract !== null) {
@@ -33,7 +35,7 @@ function WalletComp() {
   };
   useEffect(() => {
     getData();
-  }, [blockchain.account]);// eslint-disable-line react-hooks/exhaustive-deps
+  }, [blockchain.account]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // console.log("blockchain", blockchain);
   return (
@@ -50,7 +52,7 @@ function WalletComp() {
               </p>
             </Row>
             <Row>
-              {data.map((item, index) => (
+              {dataWallet.map((item, index) => (
                 <Col lg="6" key={index}>
                   <WalletItem
                     img={item.img}
@@ -69,6 +71,14 @@ function WalletComp() {
             <p className="walletComp-text">{blockchain.account}</p>
           </Row>
         )}
+        <Modal show={data.loading} backdrop="static" keyboard={false}>
+          <Modal.Header closeButton>
+            <Modal.Title>Wait a min, please!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            We are preparing some data for the marketplace.
+          </Modal.Body>
+        </Modal>
       </Container>
     </div>
   );

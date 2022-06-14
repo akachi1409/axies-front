@@ -102,9 +102,9 @@ function LiveAuctoion() {
           <Col lg="6" style={{ textAlign: "left" }}>
             <h2 className="liveAuction-title">Live Auction</h2>
           </Col>
-          <Col lg="6" style={{ textAlign: "right", margin: "auto" }}>
+          {/* <Col lg="6" style={{ textAlign: "right", margin: "auto" }}>
             <p className="liveAuction-text">Explore More</p>
-          </Col>
+          </Col> */}
         </Row>
         <br />
         <Row>
@@ -125,8 +125,11 @@ function LiveAuctoion() {
                           ? item.owner.address.substring(0, 12) + "..."
                           : item.owner.address
                       }
+                      ownerAddress = {item.owner.address}
                       image={item.image_url}
                       price={prices[index]}
+                      tokenId= {item.token_id} 
+                      contract = {item.asset_contract.address}
                     />
                   </Col>
                 )

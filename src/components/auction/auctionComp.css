@@ -11,3 +11,15 @@
     font-weight: bold;
     color: white;
 }
+
+.auctionComp-layout .auctionComp-loading{
+    text-align: center;
+    margin: auto;
+    width: fit-content
+}
+
+/* .auctionComp-layout .auctionComp-loading .createAuction-loading-title{
+    font-size: 28px;
+    line-height: 36px;
+    color: white;
+} */

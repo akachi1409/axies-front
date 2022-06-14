@@ -4,9 +4,27 @@ import { Row, Col } from "react-bootstrap";
 // import HeartImg from "../../assets/explore/heart.png";
 import UserImg from "../../assets/explore/user.png";
 
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function AuctionItem(props) {
+
+  const notify = (msg) => toast(msg);
+  let navigate = useNavigate();
+  const onNavigate = () =>{
+      if (blockchain.account === props.ownerAddress) {
+        notify("You are the owner of this NFT, can not bid on this item");
+        return;
+      }
+      navigate("/auction_item/"+props.contract + "/" + props.tokenId)
+  }
+
+  const blockchain = useSelector((state) => state.blockchain);
+
   return (
-    <div className="auctionItem-layout">
+    <div className="auctionItem-layout" onClick = {() => onNavigate()}>
       <Row>
         <div className="auctionItem-box">
           <img src={props.image} alt="" className="aucitonItem-img"></img>
@@ -39,6 +57,7 @@ function AuctionItem(props) {
           <p className="auctionItem-owner">{props.price}</p>
         </Col>
       </Row>
+      <ToastContainer />
     </div>
   );
 }
