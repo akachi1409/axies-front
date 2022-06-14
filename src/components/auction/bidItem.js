@@ -60,31 +60,34 @@ function BidItem(props) {
   //     });
   // };
   useEffect(() => {
-    if (firstLoad) {
-      // console.log(props);
-      if (blockchain.account === null) {
-        navigate("/");
+    async function getData(){
+      if (firstLoad) {
+        // console.log(props);
+        if (blockchain.account === null) {
+          navigate("/");
+        }
+        const url =
+          "https://testnets-api.opensea.io/api/v1/assets?token_ids=" +
+          props.id +
+          "&asset_contract_address=" +
+          props.contract +
+          "&offset=0&limit=200";
+        axios.get(url).then((res) => {
+          console.log(res);
+          setData(res.data.assets[0]);
+          if (res.data.assets[0].owner.address.length > 15)
+            setOwner(res.data.assets[0].owner.address.substring(0, 12) + "...");
+          else setOwner(res.data.assets[0].owner.address);
+        });
+        const price =await blockchain.smartContract.methods
+          .nftContractAuctions(props.contract, props.id)
+          .call();
+        console.log(price);
+        setBuyNow(blockchain.web3.utils.fromWei(price.buyNowPrice, "ether"));
+        setFirstLoad(false);
       }
-      const url =
-        "https://testnets-api.opensea.io/api/v1/assets?token_ids=" +
-        props.id +
-        "&asset_contract_address=" +
-        props.contract +
-        "&offset=0&limit=200";
-      axios.get(url).then((res) => {
-        console.log(res);
-        setData(res.data.assets[0]);
-        if (res.data.assets[0].owner.address.length > 15)
-          setOwner(res.data.assets[0].owner.address.substring(0, 12) + "...");
-        else setOwner(res.data.assets[0].owner.address);
-      });
-      const price = blockchain.smartContract.methods
-        .nftContractAuctions(props.contract, props.id)
-        .call();
-      console.log(price);
-      setBuyNow(blockchain.web3.utils.fromWei(price.buyNowPrice, "ether"));
-      setFirstLoad(false);
     }
+    getData();
     //eslint-disable-next-line
   }, [firstLoad]);// eslint-disable-next-line
 
