@@ -60,7 +60,6 @@ function BidItem(props) {
   //     });
   // };
   useEffect(() => {
-    async function getData(){
       if (firstLoad) {
         // console.log(props);
         if (blockchain.account === null) {
@@ -79,15 +78,15 @@ function BidItem(props) {
             setOwner(res.data.assets[0].owner.address.substring(0, 12) + "...");
           else setOwner(res.data.assets[0].owner.address);
         });
-        const price =await blockchain.smartContract.methods
+        blockchain.smartContract.methods
           .nftContractAuctions(props.contract, props.id)
-          .call();
-        console.log(price);
-        setBuyNow(blockchain.web3.utils.fromWei(price.buyNowPrice, "ether"));
+          .call()
+          .then((res)=>{
+            console.log("price:", res)
+            setBuyNow(blockchain.web3.utils.fromWei(res.buyNowPrice, "ether"));
+          });
         setFirstLoad(false);
       }
-    }
-    getData();
     //eslint-disable-next-line
   }, [firstLoad]);// eslint-disable-next-line
 
