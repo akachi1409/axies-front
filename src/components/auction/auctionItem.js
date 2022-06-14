@@ -18,7 +18,7 @@ function AuctionItem(props) {
         notify("You are the owner of this NFT, can not bid on this item");
         return;
       }
-      navigate("/auction_item/"+props.contract + "/" + props.tokenId)
+      navigate("/bid_item/"+props.contract + "/" + props.tokenId)
   }
 
   const blockchain = useSelector((state) => state.blockchain);

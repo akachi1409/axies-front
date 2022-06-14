@@ -11,6 +11,7 @@ function Explore1Item(props) {
 
   let navigate = useNavigate();
   const onNavigate = () =>{
+    if (props.navable)
       navigate("/explore_item/"+props.contract + "/" + props.tokenId)
   }
   return (

@@ -52,14 +52,15 @@ function AuctionComp() {
       }
       setFirstLoad(false);
     }
-  }, [firstLoad, blockchain, navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [firstLoad]);
 
   const sleep = (ms) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
   };
 
   const getSleep = () => {
-    return sleep(4000);
+    return sleep(2000);
   };
   useEffect(() => {
     getData();
@@ -84,16 +85,17 @@ function AuctionComp() {
         tempPrices.push(
           blockchain.web3.utils.fromWei(price.buyNowPrice, "ether")
         );
-        console.log(nft);
+        // console.log(nft);
         tempItems.push(nft.data.assets[0]);
       }
       setPrices(tempPrices);
       setItems(tempItems);
       setFlag(!flag);
+      setLoading(false);
     } catch (err) {
       setError(true);
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const onReload = () =>{
@@ -124,6 +126,9 @@ function AuctionComp() {
                   }
                   image={item.image_url}
                   price={prices[index]}
+                  ownerAddress = {item.owner.address}
+                  tokenId= {item.token_id} 
+                  contract = {item.asset_contract.address}
                 />
               </Col>
             )

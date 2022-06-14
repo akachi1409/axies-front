@@ -33,10 +33,9 @@ function CreateAuction(props) {
       EliteChess, 
       "0x26D4025EA3B66EA8987B1b1F9B23F9AfCA1eFe11"
      )
+     // approve auction contract
     erc721Contract.methods
-      .approve(
-        props.contract, props.id
-      )
+      .setApprovalForAll("0x35A2cf15fD8Ba25b5aA6552A972F2a0642CEF197", true)
       .send({from: blockchain.account})
       .once("error", err=>{
         console.log(err)
@@ -76,7 +75,8 @@ function CreateAuction(props) {
       });
       setFirstLoad(false);
     }
-  }, [firstLoad, blockchain, navigate, props.contract, props.id]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [firstLoad]);
   return (
     <div className="createAuction-layout">
       <Container>
@@ -94,6 +94,7 @@ function CreateAuction(props) {
               // price="Current Bid"
               // priceItem="4.89ETH"
               bidding={false}
+              navable= {false}
             />
           </Col>
           <Col lg="8">

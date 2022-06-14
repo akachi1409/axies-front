@@ -3,6 +3,7 @@
     border-radius: 10px;
     background-color: #343444;
     padding: 1em;
+    cursor: pointer;
 }
 
 .auctionItem-layout .auctionItem-box{

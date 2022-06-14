@@ -28,7 +28,8 @@ function Mynft() {
       });
       setFirstLoad(false);
     }
-  }, [firstLoad, blockchain, navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [firstLoad]);
   return (
     <div className="mynft-layout">
       <Container>
@@ -58,6 +59,7 @@ function Mynft() {
                   owner={owner}
                   contract = {item.asset_contract.address}
                   tokenId = {item.token_id}
+                  navable={true}
                   // price={price}
                   // priceItem = {item.priceItem}
                 //   bidding={item.bidding}
