@@ -25,12 +25,12 @@ const connectFailed = (payload) => {
   };
 };
 
-const updateAccountRequest = (payload) => {
-  return {
-    type: "UPDATE_ACCOUNT",
-    payload: payload,
-  };
-};
+// const updateAccountRequest = (payload) => {
+//   return {
+//     type: "UPDATE_ACCOUNT",
+//     payload: payload,
+//   };
+// };
 
 export const connect = () => {
   return async (dispatch) => {
@@ -83,7 +83,7 @@ export const connect = () => {
 
 export const updateAccount = (account) => {
   return async (dispatch) => {
-    dispatch(updateAccountRequest({ account: account }));
+    //dispatch(updateAccountRequest({ account: account }));
     dispatch(fetchData(account));
   };
 };

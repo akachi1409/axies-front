@@ -116,3 +116,9 @@
     background-color: #5142FC;
     color: white;
 }
+
+.createAuction-layout .auctionComp-loading{
+    text-align: center;
+    margin: auto;
+    width: fit-content
+}

@@ -10,6 +10,7 @@ import TagImg from "../../assets/item/tag.png";
 // import PeopleImg from "../../assets/item/people.png";
 
 import axios from "axios";
+// import ReactLoading from "react-loading";
 import { useSelector, useDispatch } from "react-redux";
 import { updateAccount } from "../../redux/blockchain/blockchainActions";
 import { useNavigate } from "react-router-dom";
@@ -21,14 +22,17 @@ function CreateAuction(props) {
   const [owner, setOwner ] = useState("")
   const [buyNow, setBuyNow] = useState(0);
   const [minPrice, setMinPrice ] = useState(0);
+  // const [loading, setLoading] = useState(false);
+  const [firstLoad, setFirstLoad] = useState(true);
 
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
-  const [firstLoad, setFirstLoad] = useState(true);
+  
 
   const onCreateAuction = () => {
-    console.log(minPrice, buyNow)
+    // console.log(minPrice, buyNow)
+    // setLoading(true);
     const erc721Contract = new Web3EthContract ( 
       EliteChess, 
       "0x26D4025EA3B66EA8987B1b1F9B23F9AfCA1eFe11"
@@ -54,6 +58,7 @@ function CreateAuction(props) {
         console.log("success");
         navigate("/auction")
       })
+    // setLoading(false);
   }
   useEffect(() => {
     if (firstLoad) {
@@ -158,6 +163,17 @@ function CreateAuction(props) {
             </div>
           </Col>
         </Row>
+        {/* <Modal show={loading} backdrop="static" keyboard={false}>
+          <Modal.Header closeButton>
+            <Modal.Title>Wait a min!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Row>We are creating the auction, please wait.</Row>
+            <div className="auctionComp-loading">
+              <ReactLoading type="bars" color="#fff" />
+            </div>
+          </Modal.Body>
+        </Modal> */}
       </Container>
     </div>
   );
