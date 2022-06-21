@@ -2,6 +2,7 @@
 import Web3EthContract from "web3-eth-contract";
 import Web3 from "web3";
 import SmartContract from "../../contracts/Auction.json";
+import AkachiNFT from "../../contracts/AkachiNFT.json"
 // log
 import { fetchData } from "../data/dataActions";
 
@@ -54,10 +55,15 @@ export const connect = () => {
             SmartContract,
             "0x35A2cf15fD8Ba25b5aA6552A972F2a0642CEF197" // **IMPORTANT** PASTE CONTRACT ADDRESS HERE
           );
+          const AkachiNFTObj = new Web3EthContract(
+            AkachiNFT,
+            "0xF670640c4A07e2741f53725Fb303fCcddb2755Db"
+          )
           dispatch(
             connectSuccess({
               account: accounts[0],
               smartContract: SmartContractObj,
+              akachiNFT: AkachiNFTObj,
               web3: web3,
             })
           );

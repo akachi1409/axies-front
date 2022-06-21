@@ -34,7 +34,7 @@ export const fetchData = (account) => {
       for (let index = 0 ; index<length ; index++) {
         let add = await getAddress(index);
         let id = await getId(index);
-        console.log("id", id);
+        // console.log("id", id);
         auctionAddress.push(add);
         auctionId.push(id)
       }
