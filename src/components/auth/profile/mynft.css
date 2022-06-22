@@ -22,3 +22,9 @@
     line-height: 32px;
     color: red;
 }
+
+.mynft-layout .mynft-loading{
+    text-align: center;
+    margin: auto;
+    width: fit-content
+}

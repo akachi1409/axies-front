@@ -18,13 +18,17 @@ function Explore1Item(props) {
 
   useEffect(() =>{
     async function getData() {
+      // console.log("props", props)
+      if (props.image === undefined || props.image === null){
+        return;
+      }
       var temp = await axios.get(props.image);
-      console.log(temp.data);
       setImage(temp.data);
       setFirstLoad(false)
     }
     if (firstLoad)
       getData();
+    /* eslint-disable */
   }, [firstLoad])
   return (
     <div className="explore1Item-layout" onClick={()=>onNavigate()}>

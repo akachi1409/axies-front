@@ -7,9 +7,13 @@ import axios from "axios";
 import "./mynft.css";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import ReactLoading from "react-loading";
+
+import PlaceholderImg from "../../../assets/activity2/placeholder.png"
 function Mynft() {
   const [firstLoad, setFirstLoad] = useState(true);
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const blockchain = useSelector((state) => state.blockchain);
   let navigate = useNavigate();
 
@@ -36,6 +40,7 @@ function Mynft() {
   useEffect(() => {
     async function fetchData() {
       // console.log(blockchain);
+      setLoading(true);
       if (blockchain.account === null) {
         navigate("/");
       }
@@ -73,7 +78,7 @@ function Mynft() {
         .balanceOfAccount(blockchain.account)
         .call();
       for ( var i = 0 ; i< indexes.length; i++){
-        if (indexes[i] ==1){
+        if (indexes[i] ===1){
           const url = await getURL(i+1)
           console.log("url:", url);
           const result = await getNFTs(url.split("https://gateway.pinata.cloud/ipfs/")[1])
@@ -81,19 +86,44 @@ function Mynft() {
           var data = result.data;
           // var data = JSON.parse(result.data)
           console.log(data)
-          temp.push({ 
-            "image": data.image,
-            "title": data.name,
-            "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
-            "contract": "0xf670640c4a07e2741f53725fb303fccddb2755db",
-            "tokenId": i+1,
-            "akachiNFT": true
-          })
+          var nowTime = new Date();
+          var createTime ;
+          if (data.createTime === undefined){
+            createTime = 0;
+          }else{
+            createTime = new Date(data.createTime).getTime()
+          } 
+          console.log("createTime", createTime)
+          var diff = (nowTime.getTime() -createTime)/1000;
+          console.log(diff);
+          var secondDiff = diff - data.time * 3600
+          if (data.time === 0 || secondDiff>0){
+            temp.push({ 
+              "image": data.image,
+              "title": data.name,
+              "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
+              "contract": "0xf670640c4a07e2741f53725fb303fccddb2755db",
+              "tokenId": i+1,
+              "akachiNFT": true
+            })
+          }
+          else{
+            temp.push({ 
+              "image": {PlaceholderImg},
+              "title": "TBD",
+              "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
+              "contract": "0xf670640c4a07e2741f53725fb303fccddb2755db",
+              "tokenId": "TBD",
+              "akachiNFT": true
+            })
+
+          }
         }
       }
       // console.log("indexes:", indexes);
       setData(temp);
       setFirstLoad(false);
+      setLoading(false);
       console.log(temp);
     }
     if (firstLoad) {
@@ -110,8 +140,14 @@ function Mynft() {
           <p className="mynft-text">You can view your NFTs here.</p>
         </Row>
         <Row>
-          {data.length === 0 && (
+          {data.length === 0 &&  !loading &&(
             <p className="mynft-empty">You have NO NFT at all.</p>
+          )}
+          {loading && (
+            <div className="mynft-loading">
+              <ReactLoading type="bars" color="#fff" />
+            </div>
+            
           )}
           {data.map((item, index) => {
             // console.log("item: ", item);
