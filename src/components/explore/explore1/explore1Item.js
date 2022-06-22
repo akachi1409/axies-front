@@ -1,24 +1,45 @@
 import "./explore1Item.css";
 import { Row, Col } from "react-bootstrap";
-import React from "react"
+import React, {useState, useEffect} from "react"
 // import HeartImg from "../../../assets/explore/heart.png";
 import UserImg from "../../../assets/explore/user.png";
 import BagImg from "../../../assets/explore/bag.png";
 import ReloadImg from "../../../assets/explore/reload.png";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 function Explore1Item(props) {
-
+  const [firstLoad, setFirstLoad] = useState(true);
+  const [image, setImage] = useState(null);
   let navigate = useNavigate();
   const onNavigate = () =>{
     if (props.navable)
       navigate("/explore_item/"+props.contract + "/" + props.tokenId)
   }
+
+  useEffect(() =>{
+    async function getData() {
+      var temp = await axios.get(props.image);
+      console.log(temp.data);
+      setImage(temp.data);
+      setFirstLoad(false)
+    }
+    if (firstLoad)
+      getData();
+  }, [firstLoad])
   return (
     <div className="explore1Item-layout" onClick={()=>onNavigate()}>
       <Row>
         <div className="explore1Item-img-layout">
-          <img src={props.image} alt="" className="explore1Item-img"></img>
+          {
+            props.akachiNFT === true &&(
+                <img src={image} alt="" className="explore1Item-img"></img>
+              )
+          }
+          {
+            props.akachiNFT === false && (
+              <img src={props.image} alt="" className="explore1Item-img"></img>
+            )
+          }
         </div>
       </Row>
 

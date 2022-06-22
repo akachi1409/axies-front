@@ -89,6 +89,7 @@
     width: 100%;
     margin: 1em;
     caret-color: white;
+    color: white;
 }
 
 .createItemComp-layout .explore1Comp-select{
@@ -115,4 +116,10 @@
     border-radius: 100px;
     background-color: #5142FC;
     color: white;
+}
+
+.createItemComp-layout .createItemComp-image{
+    border-radius: 10px;
+    width: 260px;
+    height: 260px;
 }

@@ -1,114 +1,143 @@
 import "./createItemComp.css";
 
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Explore1Item from "../../explore/explore1/explore1Item";
+import { create as ipfsHttpClient } from 'ipfs-http-client'
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Input1 from "../../../basic/button/input1";
-import ClockImg from "../../../assets/item/clock.png";
-import TagImg from "../../../assets/item/tag.png";
-import PeopleImg from "../../../assets/item/people.png";
-class CreateItemComp extends Component {
+const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')
 
-  render() {
-    return (
-      <div className="createItemComp-layout">
-        <Container>
-          <Row>
-            <Col lg="4">
-              <h2 className="createItemComp-title">Preview item</h2>
-              <Explore1Item
-                title='"Cyber Doberman #766"'
-                net="BSC"
-                owner="Freddie Carpenter"
-                price="Current Bid"
-                priceItem="4.89ETH"
-                bidding={true}
-              />
-            </Col>
-            <Col lg="8">
-              <h2 className="createItemComp-title">Upload file</h2>
-              <div className="createItemComp-file-layout">
-                <input className="createItemComp-file-input" type="file" />
-                <div className="createItemComp-file-div">
-                  <button className="createItemComp-file-btn" type="button">
-                    <svg
-                      stroke="currentColor"
-                      fill="currentColor"
-                      strokeWidth="0"
-                      viewBox="0 0 16 16"
-                      height="22"
-                      width="22"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clip-rule="evenodd"
-                        d="M9.5 1.1l3.4 3.5.1.4v2h-1V6H8V2H3v11h4v1H2.5l-.5-.5v-12l.5-.5h6.7l.3.1zM9 2v3h2.9L9 2zm4 14h-1v-3H9v-1h3V9h1v3h3v1h-3v3z"
-                      ></path>
-                    </svg>
-                    <div style={{ marginLeft: "1rem" }}>Add Files</div>
-                  </button>
-                </div>
-              </div>
-              <h2 className="createItemComp-title">Select method</h2>
-              <Row>
-                <Col lg="4">
-                  <button className="createItemComp-method selected">
-                    <img src={TagImg} alt="" className="button-img" />
-                    Fixed Price
-                  </button>
-                </Col>
-                <Col lg="4">
-                  <button className="createItemComp-method">
-                    <img src={ClockImg} alt="" className="button-img" />
-                    Fixed Price
-                  </button>
-                </Col>
-                <Col lg="4">
-                  <button className="createItemComp-method">
-                    <img src={PeopleImg} alt="" className="button-img" />
-                    Fixed Price
-                  </button>
-                </Col>
-              </Row>
-              <h2 className="createItemComp-title">Price</h2>
-              <Input1 margin="1em" text="Enter price for one item (ETH)" />
-              <h2 className="createItemComp-title">Title</h2>
-              <Input1 margin="1em" text="Item Name" />
-              <h2 className="createItemComp-title">Description</h2>
-              <textarea
-                className="blogDetails-input1"
-                type="text"
-                placeholder='e.g "This is very limited item"'
-              />
-              <Row>
-                <Col lg="8">
-                  <h2 className="createItemComp-title">External Link</h2>
-                  <input placeholder="https://yoursite.com" className="createItemComp-input"/>
-                </Col>
-                
-                <Col lg="4">
-                  <h2 className="createItemComp-title">Collection</h2>
-                  <select className="explore1Comp-select">
-                    <option>All Artworks</option>
-                    <option>Music</option>
-                    <option>Domain Names</option>
-                    <option>Virtual World</option>
-                    <option>Trading Cards</option>
-                    <option>Sports</option>
-                    <option>Utility</option>
-                  </select>
-                </Col>
-              </Row>
-              <div style={{display:"flex", flexDirection:"row-reverse"}}>
-                <button className="createItemComp-create-btn">Create Item</button>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    );
+function CreateItemComp() {
+  const [image, setImage] = useState(null);
+  const [name, setName ] = useState("");
+  const [description, setDescription] = useState("");
+  const [flag, setFlag] = useState(true);
+
+  const blockchain = useSelector((state) => state.blockchain);
+  let navigate = useNavigate();
+  
+  const notify = (msg) => toast(msg);
+
+  const handleFile = (e) => {
+    console.log("e", e);
+    if (e.target.files.length == 0) return;
+    var file = e.target.files[0];
+    var reader = new FileReader();
+
+    var url = reader.readAsDataURL(file);
+    /* eslint-disable */
+    reader.onloadend = function () {
+      setImage(reader.result);
+      setFlag(!flag)
+    };
+  };
+
+  const handleChangeName = (e) => {
+    setName(e.target.value);
+  }  
+
+  const onCreate = async () => {
+    console.log(name, description)
+    if (name === "" || description === "" ){
+      notify("You should input the name and descrition to create new NFT!")
+      return;
+    }
+    
+    try {
+      notify("Uploading to IPFS is started")
+      const added = await client.add(
+        image,
+        {
+          progress: (prog) => console.log(`received: ${prog}`)
+        }
+      )
+      const url = `https://ipfs.infura.io/ipfs/${added.path}`
+      /* first, upload to IPFS */
+      console.log("image Url", url)
+      notify("Image is uploaded successfully to IPFS.")
+      const data = JSON.stringify({
+        name, description, image: url
+      })
+
+      const added1 = await client.add(data);
+      const url1 = `https://ipfs.infura.io/ipfs/${added1.path}`
+      notify("Metadata is uploaded successfully to IPFS.")
+      blockchain.akachiNFT.methods
+        .mintNewToken(1, url1)
+        .send({from: blockchain.account})
+        .once("error", err=>{
+          console.log(err)
+        })
+        .then(() =>{
+          navigate("/")
+        })
+      console.log(url1);
+    }catch(err){
+      console.log("error in uploading file: ", err);
+    }
   }
+  return (
+    <div className="createItemComp-layout">
+      <Container>
+        <Row>
+          <Col lg="4">
+            <h2 className="createItemComp-title">Preview item</h2>
+            {image !== null && 
+            <img 
+            src={image} 
+            alt="Preview Image"
+            className="createItemComp-image" />}
+          </Col>
+          <Col lg="8">
+            <h2 className="createItemComp-title">Upload file</h2>
+            <div className="createItemComp-file-layout">
+              <input
+                className="createItemComp-file-input"
+                type="file"
+                onChange={(e) => handleFile(e)}
+              />
+              <div className="createItemComp-file-div">
+                <button className="createItemComp-file-btn" type="button">
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    strokeWidth="0"
+                    viewBox="0 0 16 16"
+                    height="22"
+                    width="22"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M9.5 1.1l3.4 3.5.1.4v2h-1V6H8V2H3v11h4v1H2.5l-.5-.5v-12l.5-.5h6.7l.3.1zM9 2v3h2.9L9 2zm4 14h-1v-3H9v-1h3V9h1v3h3v1h-3v3z"
+                    ></path>
+                  </svg>
+                  <div style={{ marginLeft: "1rem" }}>Add Files</div>
+                </button>
+              </div>
+            </div>
+            <h2 className="createItemComp-title">Name</h2>
+            <Input1 margin="1em" text="Item Name" onChange = {(e) => handleChangeName(e) }/>
+            <h2 className="createItemComp-title">Description</h2>
+            <textarea
+              className="blogDetails-input1"
+              type="text"
+              placeholder='e.g "This is very limited item"'
+              onChange = {(e) => setDescription(e.target.value)}
+            />
+            <div style={{ display: "flex", flexDirection: "row-reverse" }}>
+              <button className="createItemComp-create-btn" onClick = {()=> onCreate()}>Create Item</button>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+      <ToastContainer />
+    </div>
+  );
 }
 export default CreateItemComp;

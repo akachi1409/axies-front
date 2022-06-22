@@ -56,13 +56,13 @@ function Mynft() {
             console.log(item);
             // continue;
           } else {
-            console.log(item);
             temp.push({
               "image": item.image_url,
               "title": item.name,
               "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
               "contract": item.asset_contract.address,
-              "tokenId": item.token_id
+              "tokenId": item.token_id,
+              "akachiNFT": false
             });
           }
           return <></>;
@@ -78,14 +78,17 @@ function Mynft() {
           console.log("url:", url);
           const result = await getNFTs(url.split("https://gateway.pinata.cloud/ipfs/")[1])
           console.log("result:", result.data, );
-          // console.log(" typeof JSON.parse(result.data )",  JSON.parse(result.data ))
-          // temp.push({ 
-          //   "image": result.data.image,
-          //   "title": result.data.name,
-          //   "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
-          //   "contract": "0xf670640c4a07e2741f53725fb303fccddb2755db",
-          //   "tokenId": i+1
-          // })
+          var data = result.data;
+          // var data = JSON.parse(result.data)
+          console.log(data)
+          temp.push({ 
+            "image": data.image,
+            "title": data.name,
+            "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
+            "contract": "0xf670640c4a07e2741f53725fb303fccddb2755db",
+            "tokenId": i+1,
+            "akachiNFT": true
+          })
         }
       }
       // console.log("indexes:", indexes);
@@ -127,6 +130,7 @@ function Mynft() {
                   contract={item.contract}
                   tokenId={item.tokenId}
                   navable={true}
+                  akachiNFT = {item.akachiNFT}
                   // price={price}
                   // priceItem = {item.priceItem}
                   //   bidding={item.bidding}

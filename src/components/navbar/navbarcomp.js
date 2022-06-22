@@ -38,6 +38,7 @@ function NavbarComp() {
                 Create Item
               </NavDropdown.Item>
             </NavDropdown> */}
+            <Nav.Link onClick = {()=> onNav("/create_item")}>Create Item</Nav.Link>
             <Nav.Link onClick = {()=> onNav("/auction")}>Auctions</Nav.Link>
             <Nav.Link href="/blog">Blog</Nav.Link>
             <Nav.Link href="/help">Help</Nav.Link>
