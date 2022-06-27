@@ -21,9 +21,9 @@ function NavbarComp() {
             <img src={NavImg} alt="" /> Axies
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link onClick = {()=> onNav("/")}>Home</Nav.Link>
+            {/* <Nav.Link onClick = {()=> onNav("/")}>Home</Nav.Link> */}
             <NavDropdown title="Explore">
-              <NavDropdown.Item href="/explore">
+              <NavDropdown.Item onClick = {()=> onNav("/explore")}>
                 Explore Collection
               </NavDropdown.Item>
               {/* <NavDropdown.Item href="/explore1">Explore1</NavDropdown.Item> */}
@@ -40,7 +40,7 @@ function NavbarComp() {
             </NavDropdown> */}
             <Nav.Link onClick = {()=> onNav("/create_item")}>Create Item</Nav.Link>
             <Nav.Link onClick = {()=> onNav("/auction")}>Auctions</Nav.Link>
-            <Nav.Link href="/blog">Blog</Nav.Link>
+            {/* <Nav.Link href="/blog">Blog</Nav.Link> */}
             <Nav.Link href="/help">Help</Nav.Link>
             
           </Nav>
