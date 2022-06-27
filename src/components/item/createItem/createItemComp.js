@@ -91,7 +91,7 @@ function CreateItemComp() {
           console.log(err);
         })
         .then(() => {
-          navigate("/");
+          navigate("/mynft");
         });
       console.log(url1);
     } catch (err) {
