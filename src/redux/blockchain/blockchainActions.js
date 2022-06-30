@@ -5,7 +5,7 @@ import SmartContract from "../../contracts/Auction.json";
 import AkachiNFT from "../../contracts/AkachiNFT.json"
 // log
 import { fetchData } from "../data/dataActions";
-
+require('dotenv').config()
 const connectRequest = () => {
   return {
     type: "CONNECTION_REQUEST",
@@ -55,10 +55,12 @@ export const connect = () => {
             SmartContract,
             "0x35A2cf15fD8Ba25b5aA6552A972F2a0642CEF197" // **IMPORTANT** PASTE CONTRACT ADDRESS HERE
           );
+          console.log("Akachi", process.env)
           const AkachiNFTObj = new Web3EthContract(
             AkachiNFT,
             process.env.AKACHI_NFT_CONTRACT
           )
+          console.log("Akach", AkachiNFTObj, process.env.AKACHI_NFT_CONTRACT)
           dispatch(
             connectSuccess({
               account: accounts[0],
