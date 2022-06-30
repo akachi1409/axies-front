@@ -20,6 +20,7 @@ function CreateItemComp() {
   const [flag, setFlag] = useState(true);
   const [mintMethod, setMintMethod] = useState(0);
   const [dayTo, setDayTo] = useState(0);
+  const [royalty, setRoyalty] = useState(0);
 
   const blockchain = useSelector((state) => state.blockchain);
   let navigate = useNavigate();
@@ -45,13 +46,21 @@ function CreateItemComp() {
   };
 
   const onCreate = async () => {
-    console.log(name, description);
+    notify(name + description + royalty);
     if (name === "" || description === "") {
       notify("You should input the name and descrition to create new NFT!");
       return;
     }
     if (mintMethod ===1  && dayTo === 0 ){
       notify("You should input the days to reveal in Hidden Mint Mode.");
+      return;
+    }
+    if (royalty > 100 || royalty <0) {
+      notify("Royalty should be between 0 and 100.");
+      return;
+    }
+    if ( !Number.isInteger(royalty)){
+      notify("Royalty should be integer.");
       return;
     }
     try {
@@ -85,7 +94,7 @@ function CreateItemComp() {
       const url1 = `https://ipfs.infura.io/ipfs/${added1.path}`;
       notify("Metadata is uploaded successfully to IPFS.");
       blockchain.akachiNFT.methods
-        .mintNewToken(1, url1)
+        .mintNewToken(1, url1, royalty*10)
         .send({ from: blockchain.account })
         .once("error", (err) => {
           console.log(err);
@@ -201,6 +210,13 @@ function CreateItemComp() {
               type="text"
               placeholder='e.g "This is very limited item"'
               onChange={(e) => setDescription(e.target.value)}
+            />
+            <h2 className="createItemComp-title">Royalty</h2>
+            <Input1
+              margin="1em"
+              text="Royalty: default 0%"
+              // placeholder='e.g "This is very limited item"'
+              onChange={(e) => setRoyalty(e.target.value)}
             />
             <div style={{ display: "flex", flexDirection: "row-reverse" }}>
               <button

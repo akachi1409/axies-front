@@ -55,8 +55,7 @@ function Mynft() {
         res.data.assets.map((item, index) => {
           // console.log(item, index);
           if (
-            item.asset_contract.address ===
-            "0xf670640c4a07e2741f53725fb303fccddb2755db"
+            item.asset_contract.address === process.env.AKACHI_NFT_CONTRACT
           ) {
             console.log(item);
             // continue;
@@ -102,7 +101,7 @@ function Mynft() {
               "image": data.image,
               "title": data.name,
               "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
-              "contract": "0xf670640c4a07e2741f53725fb303fccddb2755db",
+              "contract": process.env.AKACHI_NFT_CONTRACT,
               "tokenId": i+1,
               "akachiNFT": true
             })
@@ -112,7 +111,7 @@ function Mynft() {
               "image": {PlaceholderImg},
               "title": "TBD",
               "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
-              "contract": "0xf670640c4a07e2741f53725fb303fccddb2755db",
+              "contract": process.env.AKACHI_NFT_CONTRACT,
               "tokenId": "TBD",
               "akachiNFT": true
             })

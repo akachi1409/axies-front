@@ -57,7 +57,7 @@ export const connect = () => {
           );
           const AkachiNFTObj = new Web3EthContract(
             AkachiNFT,
-            "0xF670640c4A07e2741f53725Fb303fCcddb2755Db"
+            process.env.AKACHI_NFT_CONTRACT
           )
           dispatch(
             connectSuccess({

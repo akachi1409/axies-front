@@ -388,6 +388,25 @@
     {
         "inputs": [
             {
+                "internalType": "uint256",
+                "name": "tokenId_",
+                "type": "uint256"
+            }
+        ],
+        "name": "getTokenRoyal",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
                 "internalType": "address",
                 "name": "account",
                 "type": "address"
@@ -420,6 +439,11 @@
                 "internalType": "string",
                 "name": "hash",
                 "type": "string"
+            },
+            {
+                "internalType": "uint32",
+                "name": "royalty",
+                "type": "uint32"
             }
         ],
         "name": "mintNewToken",
