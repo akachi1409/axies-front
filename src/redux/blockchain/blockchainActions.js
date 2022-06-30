@@ -55,12 +55,12 @@ export const connect = () => {
             SmartContract,
             "0x35A2cf15fD8Ba25b5aA6552A972F2a0642CEF197" // **IMPORTANT** PASTE CONTRACT ADDRESS HERE
           );
-          console.log("Akachi", process.env)
+          console.log("Akachi", process.env.REACT_APP_AKACHI_NFT_CONTRACT)
           const AkachiNFTObj = new Web3EthContract(
             AkachiNFT,
-            process.env.AKACHI_NFT_CONTRACT
+            process.env.REACT_APP_AKACHI_NFT_CONTRACT
           )
-          console.log("Akach", AkachiNFTObj, process.env.AKACHI_NFT_CONTRACT)
+          console.log("Akach", AkachiNFTObj)
           dispatch(
             connectSuccess({
               account: accounts[0],
