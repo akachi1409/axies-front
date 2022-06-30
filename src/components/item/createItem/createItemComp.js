@@ -47,7 +47,7 @@ function CreateItemComp() {
 
   const onCreate = async () => {
     notify(name + description + royalty);
-    const royalty = parseInt(royalty)
+    const royaltyT = parseInt(royalty)
     if (name === "" || description === "") {
       notify("You should input the name and descrition to create new NFT!");
       return;
@@ -56,11 +56,11 @@ function CreateItemComp() {
       notify("You should input the days to reveal in Hidden Mint Mode.");
       return;
     }
-    if (royalty > 100 || royalty <0) {
+    if (royaltyT > 100 || royaltyT <0) {
       notify("Royalty should be between 0 and 100.");
       return;
     }
-    if ( !Number.isInteger(royalty)){
+    if ( !Number.isInteger(royaltyT)){
       notify("Royalty should be integer.");
       return;
     }
