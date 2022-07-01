@@ -30,7 +30,7 @@ function CreateAuction(props) {
   const blockchain = useSelector((state) => state.blockchain);
   
 
-  const onCreateAuction = () => {
+  const onCreateAuction = async () => {
     // console.log(minPrice, buyNow)
     // setLoading(true);
     const erc721Contract = new Web3EthContract ( 
@@ -47,8 +47,23 @@ function CreateAuction(props) {
       .then(() =>{
         console.log("success");
       })
+    var nftUrl = "https://testnets-api.opensea.io/api/v1/asset/"+ props.contract + "/" + props.id;
+    var nftData = await axios.get(nftUrl)
+
+    var creator= nftData.creator.address;
+    var royalty = 0;
+    if (props.contract === props.env.REACT_APP_AKACHI_NFT_CONTRACT){
+       royalty = await blockchain.akachiNFT.methods.getTokenRoyal(props.id-1).call();
+    }
+    console.log("---", creator, royalty)
     blockchain.smartContract.methods
-      .createDefaultNftAuction(props.contract, props.id, blockchain.web3.utils.toWei(minPrice, "ether")  , blockchain.web3.utils.toWei(buyNow, "ether") )
+      .createDefaultNftAuction(
+        props.contract, 
+        props.id, 
+        blockchain.web3.utils.toWei(minPrice, "ether") , 
+        blockchain.web3.utils.toWei(buyNow, "ether"),
+        creator, 
+        royalty )
       .send({from: blockchain.account})
       .once("error", err=>{
         console.log(err)
