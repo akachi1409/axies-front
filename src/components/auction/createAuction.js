@@ -2,8 +2,7 @@ import "./createAuction.css";
 
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Explore1Item from "../explore/explore1/explore1Item";
-
+import PreviewAuction from "./previewAuction"
 import Input1 from "../../basic/button/input1";
 // import ClockImg from "../../assets/item/clock.png";
 import TagImg from "../../assets/item/tag.png";
@@ -103,14 +102,11 @@ console.log("nftData", nftData);
         <Row>
           <Col lg="4">
             <h2 className="createAuction-title">Preview item</h2>
-            <Explore1Item
+            <PreviewAuction
               title={data.name}
               image = {data.image_url}
               net="BSC"
               owner={owner}
-              // .length > 12 ? 
-              //   data.creator.address.substring(0, 10) + "..." :
-              //    data.creator.address}
               // price="Current Bid"
               // priceItem="4.89ETH"
               bidding={false}
@@ -143,36 +139,7 @@ console.log("nftData", nftData);
             <Input1 margin="1em" text="Enter minimum price for one item (AkachiToken)" value = {minPrice} onChange = {(e)=>setMinPrice(e.target.value)}/>
             <h2 className="createAuction-title">Buy Now</h2>
             <Input1 margin="1em" text="Enter buy now price for one item (AkachiToken)" value = {buyNow} onChange = {(e)=>setBuyNow(e.target.value)}/>
-            {/* <h2 className="createAuction-title">Title</h2>
-            <Input1 margin="1em" text="Item Name" />
-            <h2 className="createAuction-title">Description</h2>
-            <textarea
-              className="blogDetails-input1"
-              type="text"
-              placeholder='e.g "This is very limited item"'
-            />
-            <Row>
-              <Col lg="8">
-                <h2 className="createAuction-title">External Link</h2>
-                <input
-                  placeholder="https://yoursite.com"
-                  className="createAuction-input"
-                />
-              </Col>
-
-              <Col lg="4">
-                <h2 className="createAuction-title">Collection</h2>
-                <select className="explore1Comp-select">
-                  <option>All Artworks</option>
-                  <option>Music</option>
-                  <option>Domain Names</option>
-                  <option>Virtual World</option>
-                  <option>Trading Cards</option>
-                  <option>Sports</option>
-                  <option>Utility</option>
-                </select>
-              </Col>
-            </Row> */}
+            
             <div style={{ display: "flex", flexDirection: "row-reverse" }}>
               <button className="createAuction-create-btn" onClick={() => onCreateAuction()}>Start Auction</button>
             </div>

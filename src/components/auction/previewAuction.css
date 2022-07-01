@@ -1,0 +1,83 @@
+.previewAuction-layout{
+    margin: 1em;
+    border-radius: 10px;
+    background-color: #343444;
+    padding: 1em;
+    cursor: pointer;
+
+    width: fit-content;
+}
+
+/* .previewAuction-layout .previewAuction-box{
+    background-color: #7A798A;
+    border-radius: 10px;
+    height: 300px;
+} */
+
+.previewAuction-layout .previewAuction-img-layout{
+    width: 260px;
+    height: 260px;
+}
+.previewAuction-layout .previewAuction-img-layout .previewAuction-img{
+    height: 100%;
+    width: 100%;
+}
+
+.previewAuction-layout .previewAuction-box .previewAuction-like{
+    position: relative;
+    left: 70%;
+    top: 30px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5em;
+    width: fit-content;
+}
+
+.previewAuction-layout .previewAuction-title{
+    font-size: 15px;
+    line-height: 24px;
+    color: white;
+}
+
+.previewAuction-layout .previewAuction-net{
+    border-radius: 10px;
+    color: white;
+    background-color: #5142FC;
+}
+
+.previewAuction-layout .previewAuction-owner-title{
+    color: #8A8AA0;
+    font-size: 13px;
+    line-height: 20px;
+    margin-bottom: 0px;
+}
+
+.previewAuction-layout .previewAuction-owner{
+    color: #EBEBEB;
+    font-size: 15px;
+    line-height: 22px;
+    margin-bottom: 0px;
+}
+
+.previewAuction-layout .previewAuction-bid{
+    border-radius:100px;
+    border: solid 1px #5142FC;
+    padding: 0.5em;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    width: fit-content;
+}
+
+.previewAuction-layout .previewAuction-refresh{
+    padding-top: 0.5em;
+    cursor: pointer;
+    color: #8A8AA0;
+    font-size: 16px;
+    line-height: 26px;
+    display: flex;
+    width: fit-content;
+}

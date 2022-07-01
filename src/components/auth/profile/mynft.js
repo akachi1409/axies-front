@@ -66,7 +66,7 @@ function Mynft() {
               "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
               "contract": item.asset_contract.address,
               "tokenId": item.token_id,
-              "akachiNFT": false
+              "akachiNFT": "false"
             });
           }
           return <></>;
@@ -103,7 +103,7 @@ function Mynft() {
               "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
               "contract": process.env.REACT_APP_AKACHI_NFT_CONTRACT,
               "tokenId": i+1,
-              "akachiNFT": true
+              "akachiNFT": "true"
             })
           }
           else{
@@ -113,7 +113,7 @@ function Mynft() {
               "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
               "contract": process.env.REACT_APP_AKACHI_NFT_CONTRACT,
               "tokenId": "TBD",
-              "akachiNFT": true
+              "akachiNFT": "true"
             })
 
           }
