@@ -1,6 +1,6 @@
 import "./previewAuction.css";
 import { Row, Col } from "react-bootstrap";
-import React, {useState, useEffect} from "react"
+import React from "react"
 // import HeartImg from "../../../assets/explore/heart.png";
 import UserImg from "../../assets/explore/user.png";
 import BagImg from "../../assets/explore/bag.png";
