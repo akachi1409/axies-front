@@ -39,39 +39,34 @@ function Mynft() {
   }
   useEffect(() => {
     async function fetchData() {
-      // console.log(blockchain);
       setLoading(true);
       if (blockchain.account === null) {
         navigate("/");
       }
       const temp = [];
-      const url =
-        "https://testnets-api.opensea.io/api/v1/assets?owner=" +
-        blockchain.account +
-        "&offset=0&limit=200";
-      axios.get(url).then((res) => {
-        // console.log(res);
-        // setData(res.data.assets)
-        res.data.assets.map((item, index) => {
-          // console.log(item, index);
-          if (
-            item.asset_contract.address === process.env.REACT_APP_AKACHI_NFT_CONTRACT
-          ) {
-            console.log(item);
-            // continue;
-          } else {
-            temp.push({
-              "image": item.image_url,
-              "title": item.name,
-              "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
-              "contract": item.asset_contract.address,
-              "tokenId": item.token_id,
-              "akachiNFT": "false"
-            });
-          }
-          return <></>;
-        });
-      });
+      // const url =
+      //   "https://testnets-api.opensea.io/api/v1/assets?owner=" +
+      //   blockchain.account +
+      //   "&offset=0&limit=200";
+      // axios.get(url).then((res) => {
+      //   res.data.assets.map((item, index) => {
+      //     if (
+      //       item.asset_contract.address === process.env.REACT_APP_AKACHI_NFT_CONTRACT
+      //     ) {
+      //       console.log(item);
+      //     } else {
+      //       temp.push({
+      //         "image": item.image_url,
+      //         "title": item.name,
+      //         "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
+      //         "contract": item.asset_contract.address,
+      //         "tokenId": item.token_id,
+      //         "akachiNFT": "false"
+      //       });
+      //     }
+      //     return <></>;
+      //   });
+      // });
 
       const indexes = await blockchain.akachiNFT.methods
         .balanceOfAccount(blockchain.account)
@@ -79,7 +74,6 @@ function Mynft() {
       for ( var i = 0 ; i< indexes.length; i++){
         if (indexes[i] === "1"){
           const url = await getURL(i+1)
-          console.log("url:", url);
           const result = await getNFTs(url.split("https://gateway.pinata.cloud/ipfs/")[1])
           console.log("result:", result.data, );
           var data = result.data;
@@ -119,7 +113,6 @@ function Mynft() {
           }
         }
       }
-      // console.log("indexes:", indexes);
       setData(temp);
       setFirstLoad(false);
       setLoading(false);
@@ -149,12 +142,6 @@ function Mynft() {
             
           )}
           {data.map((item, index) => {
-            // console.log("item: ", item);
-            // var price = item.token.floorAskPrice == null ? "TBD" : item.token.floorAskPrice;
-            // var owner =
-            //   blockchain.account.length > 12
-            //     ? blockchain.account.substring(0, 12) + "..."
-            //     : blockchain.account;
             return (
               <Col lg="3" key={index}>
                 <Explore1Item
