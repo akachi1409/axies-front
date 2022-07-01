@@ -39,7 +39,7 @@ function CreateAuction(props) {
      )
      // approve auction contract
     erc721Contract.methods
-      .setApprovalForAll("0x35A2cf15fD8Ba25b5aA6552A972F2a0642CEF197", true)
+      .setApprovalForAll(process.env.REACT_APP_AUCTION_NFT_CONTRACT, true)
       .send({from: blockchain.account})
       .once("error", err=>{
         console.log(err)

@@ -96,7 +96,7 @@ function BidItem(props) {
       "0x8119841E9c4e2658B36817Cfe58dfDFDca043930"
     );
     akachiTokenContract.methods
-      .approve("0x35A2cf15fD8Ba25b5aA6552A972F2a0642CEF197", blockchain.web3.utils.toWei(buyNow, "ether") )
+      .approve(process.env.REACT_APP_AUCTION_NFT_CONTRACT, blockchain.web3.utils.toWei(buyNow, "ether") )
       .send({ from: blockchain.account })
       .once("error", (err) => {
         console.log(err);
@@ -104,6 +104,7 @@ function BidItem(props) {
       .then(() => {
         console.log("success");
       });
+      console.log(props.contract, props.id)
     blockchain.smartContract.methods
       .makeBid(props.contract, props.id, blockchain.web3.utils.toWei(buyNow, "ether"))
       .send({ from: blockchain.account })

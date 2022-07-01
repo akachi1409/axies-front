@@ -53,7 +53,7 @@ export const connect = () => {
         if (networkId === "4") { // IMPORTANT. ONCE YOUR CONTRACT IS ON THE MAIN NET, SWITCH THIS NUMBER TO 1.
           const SmartContractObj = new Web3EthContract(
             SmartContract,
-            "0x35A2cf15fD8Ba25b5aA6552A972F2a0642CEF197" // **IMPORTANT** PASTE CONTRACT ADDRESS HERE
+            process.env.REACT_APP_AUCTION_NFT_CONTRACT // **IMPORTANT** PASTE CONTRACT ADDRESS HERE
           );
           console.log("Akachi", process.env.REACT_APP_AKACHI_NFT_CONTRACT)
           const AkachiNFTObj = new Web3EthContract(
