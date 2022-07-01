@@ -49,10 +49,10 @@ function CreateAuction(props) {
       })
     var nftUrl = "https://testnets-api.opensea.io/api/v1/asset/"+ props.contract + "/" + props.id;
     var nftData = await axios.get(nftUrl)
-
-    var creator= nftData.creator.address;
+console.log("nftData", nftData);
+    var creator= nftData.data.creator.address;
     var royalty = 0;
-    if (props.contract === props.env.REACT_APP_AKACHI_NFT_CONTRACT){
+    if (props.contract === process.env.REACT_APP_AKACHI_NFT_CONTRACT){
        royalty = await blockchain.akachiNFT.methods.getTokenRoyal(props.id-1).call();
     }
     console.log("---", creator, royalty)
