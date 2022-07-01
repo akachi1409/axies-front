@@ -6,30 +6,30 @@ import UserImg from "../../assets/explore/user.png";
 import BagImg from "../../assets/explore/bag.png";
 import ReloadImg from "../../assets/explore/reload.png";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 function PreviewAuction(props) {
-  const [firstLoad, setFirstLoad] = useState(true);
-  const [image, setImage] = useState(null);
+//   const [firstLoad, setFirstLoad] = useState(true);
+//   const [image, setImage] = useState(null);
   let navigate = useNavigate();
   const onNavigate = () =>{
     if (props.navable)
       navigate("/explore_item/"+props.contract + "/" + props.tokenId)
   }
 
-  useEffect(() =>{
-    async function getData() {
-      console.log("props", props)
-      if (props.image === undefined || props.image === null){
-        return;
-      }
-      var temp = await axios.get(props.image);
-      setImage(temp.data);
-      setFirstLoad(false)
-    }
-    if (firstLoad)
-      getData();
-    /* eslint-disable */
-  }, [firstLoad])
+//   useEffect(() =>{
+//     async function getData() {
+//       console.log("props", props)
+//       if (props.image === undefined || props.image === null){
+//         return;
+//       }
+//       var temp = await axios.get(props.image);
+//       setImage(temp.data);
+//       setFirstLoad(false)
+//     }
+//     if (firstLoad)
+//       getData();
+//     /* eslint-disable */
+//   }, [firstLoad])
   return (
     <div className="previewAuction-layout" onClick={()=>onNavigate()}>
       <Row>
