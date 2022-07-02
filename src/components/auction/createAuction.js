@@ -154,7 +154,9 @@ console.log("nftData", nftData);
         <Row>
           <Col lg="4">
             <h2 className="createAuction-title">Preview item</h2>
-            <PreviewAuction
+            {
+              data.title !=="" && (
+                <PreviewAuction
               title={data.title}
               image = {data.image}
               // net="BSC"
@@ -164,6 +166,9 @@ console.log("nftData", nftData);
               bidding={false}
               navable= {false}
             />
+              )
+            }
+            
           </Col>
           <Col lg="8">
             <h2 className="createAuction-title">Select method</h2>

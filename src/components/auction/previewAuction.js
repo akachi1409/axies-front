@@ -16,7 +16,7 @@ function PreviewAuction(props) {
 
   useEffect(() =>{
     async function getData() {
-      // console.log("props", props)
+      console.log("props", props)
       var temp = await axios.get(props.image);
       console.log('temp', temp)
       setImage(temp.data);
