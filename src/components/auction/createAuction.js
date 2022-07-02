@@ -21,7 +21,7 @@ function CreateAuction(props) {
   const [buyNow, setBuyNow] = useState(0);
   const [minPrice, setMinPrice ] = useState(0);
   // const [loading, setLoading] = useState(false);
-  const [firstLoad, setFirstLoad] = useState(true);
+  // let firstLoad = true;
 
   let navigate = useNavigate();
   const dispatch = useDispatch();
@@ -133,15 +133,15 @@ console.log("nftData", nftData);
           "akachiNFT": "true"
         })
       }
-      setFirstLoad(false);
+      // firstLoad= false;
     }
 
-    if (firstLoad) {
+    // if (firstLoad) {
       // console.log(props);
       fetchData();
-    }
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [firstLoad]);
+  });
   return (
     <div className="createAuction-layout">
       <Container>
