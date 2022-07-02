@@ -17,7 +17,13 @@ import Web3EthContract from "web3-eth-contract";
 // import AkachiToken from "../../contracts/AkachiToken.json";
 import EliteChess from "../../contracts/EliteChess.json"
 function CreateAuction(props) {
-  const [data, setData] = useState();
+  const [data, setData] = useState({
+    image: null,
+    title: "",
+    owner: "",
+    contract:"",
+    tokenId:""
+  });
   const [buyNow, setBuyNow] = useState(0);
   const [minPrice, setMinPrice ] = useState(0);
   // const [loading, setLoading] = useState(false);
