@@ -16,26 +16,26 @@ function PreviewAuction(props) {
       navigate("/explore_item/"+props.contract + "/" + props.tokenId)
   }
 
-//   useEffect(() =>{
-//     async function getData() {
-//       console.log("props", props)
-//       if (props.image === undefined || props.image === null){
-//         return;
-//       }
-//       var temp = await axios.get(props.image);
-//       setImage(temp.data);
-//       setFirstLoad(false)
-//     }
-//     if (firstLoad)
-//       getData();
-//     /* eslint-disable */
-//   }, [firstLoad])
+  useEffect(() =>{
+    async function getData() {
+      console.log("props", props)
+      if (props.image === undefined || props.image === null){
+        return;
+      }
+      var temp = await axios.get(props.image);
+      setImage(temp.data);
+      setFirstLoad(false)
+    }
+    if (firstLoad)
+      getData();
+    /* eslint-disable */
+  }, [firstLoad])
   return (
     <div className="previewAuction-layout" onClick={()=>onNavigate()}>
       <Row>
         <div className="previewAuction-img-layout">
           
-              <img src={props.image} alt="" className="previewAuction-img"></img>
+              <img src={image} alt="" className="previewAuction-img"></img>
         </div>
       </Row>
 
