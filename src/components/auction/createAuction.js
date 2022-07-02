@@ -99,7 +99,7 @@ console.log("nftData", nftData);
       if (blockchain.account === null) {
         navigate("/");
       }
-      const url = await getURL(props.id +1)
+      const url = await getURL(props.id)
       const result = await getNFTs(url.split("https://gateway.pinata.cloud/ipfs/")[1])
       console.log("result:", result.data, );
       var data = result.data;
@@ -119,7 +119,7 @@ console.log("nftData", nftData);
           "title": data.name,
           "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
           "contract": process.env.REACT_APP_AKACHI_NFT_CONTRACT,
-          "tokenId": props.id+1,
+          "tokenId": props.id,
           "akachiNFT": "true"
         })
       }
