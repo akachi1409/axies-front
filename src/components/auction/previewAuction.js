@@ -16,11 +16,9 @@ function PreviewAuction(props) {
 
   useEffect(() =>{
     async function getData() {
-      console.log("props", props)
-      if (props.image === undefined || props.image === null){
-        return;
-      }
+      // console.log("props", props)
       var temp = await axios.get(props.image);
+      console.log('temp', temp)
       setImage(temp.data);
       setFirstLoad(false)
     }
