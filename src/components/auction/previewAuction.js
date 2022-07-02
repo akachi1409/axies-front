@@ -1,15 +1,15 @@
 import "./previewAuction.css";
 import { Row, Col } from "react-bootstrap";
-import React from "react"
+import React, { useEffect, useState} from "react"
 // import HeartImg from "../../../assets/explore/heart.png";
 import UserImg from "../../assets/explore/user.png";
 import BagImg from "../../assets/explore/bag.png";
 import ReloadImg from "../../assets/explore/reload.png";
 import { useNavigate } from "react-router-dom";
-// import axios from "axios";
+import axios from "axios";
 function PreviewAuction(props) {
-//   const [firstLoad, setFirstLoad] = useState(true);
-//   const [image, setImage] = useState(null);
+  const [firstLoad, setFirstLoad] = useState(true);
+  const [image, setImage] = useState(null);
   let navigate = useNavigate();
   const onNavigate = () =>{
     if (props.navable)
