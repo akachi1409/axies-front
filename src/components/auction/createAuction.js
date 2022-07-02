@@ -103,9 +103,9 @@ console.log("nftData", nftData);
           <Col lg="4">
             <h2 className="createAuction-title">Preview item</h2>
             <PreviewAuction
-              title={data.name}
-              image = {data.image_url}
-              net="BSC"
+              title={data.title}
+              image = {data.image}
+              // net="BSC"
               owner={owner}
               // price="Current Bid"
               // priceItem="4.89ETH"

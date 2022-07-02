@@ -67,10 +67,15 @@ function Mynft() {
       //     return <></>;
       //   });
       // });
-
-      const indexes = await blockchain.akachiNFT.methods
-        .balanceOfAccount(blockchain.account)
-        .call();
+      var indexes;
+      try{
+        indexes = await blockchain.akachiNFT.methods
+          .balanceOfAccount(blockchain.account)
+          .call();
+      }catch(err){
+        console.log(err)
+        return;
+      }
       for ( var i = 0 ; i< indexes.length; i++){
         if (indexes[i] === "1"){
           const url = await getURL(i+1)
