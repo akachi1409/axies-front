@@ -6,7 +6,7 @@ import PreviewAuction from "./previewAuction"
 import Input1 from "../../basic/button/input1";
 // import ClockImg from "../../assets/item/clock.png";
 import TagImg from "../../assets/item/tag.png";
-// import PeopleImg from "../../assets/item/people.png";
+import PlaceholderImg from "../../assets/activity2/placeholder.png"
 
 import axios from "axios";
 // import ReactLoading from "react-loading";
@@ -18,7 +18,6 @@ import Web3EthContract from "web3-eth-contract";
 import EliteChess from "../../contracts/EliteChess.json"
 function CreateAuction(props) {
   const [data, setData] = useState([]);
-  const [owner, setOwner ] = useState("")
   const [buyNow, setBuyNow] = useState(0);
   const [minPrice, setMinPrice ] = useState(0);
   // const [loading, setLoading] = useState(false);
@@ -28,6 +27,27 @@ function CreateAuction(props) {
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
   
+  const getURL = (i) =>{
+    return getURLPromise(i);
+  }
+
+  const getURLPromise = (i) =>{
+    return new Promise ((resolve) =>{
+      return resolve(blockchain.akachiNFT.methods._tokenURI(i).call())
+    })
+  }
+
+  const getNFTs = (url) =>{
+    return getNFTPromise(url)
+  }
+
+  const getNFTPromise = (url) =>{
+    return new Promise ((resolve) => {
+      return resolve(
+        axios.get(url)
+      )
+    })
+  }
 
   const onCreateAuction = async () => {
     // console.log(minPrice, buyNow)
@@ -75,24 +95,50 @@ console.log("nftData", nftData);
     // setLoading(false);
   }
   useEffect(() => {
-    if (firstLoad) {
-      // console.log(props);
+    async function fetchData() {
       if (blockchain.account === null) {
         navigate("/");
       }
-      const url =
-        "https://testnets-api.opensea.io/api/v1/assets?token_ids="+props.id + "&asset_contract_address=" +
-        props.contract +
-        "&offset=0&limit=200";
-      axios.get(url).then((res) => {
-        console.log(res);
-        setData(res.data.assets[0])  
-        if (res.data.assets[0].owner.address.length> 15)
-          setOwner(res.data.assets[0].owner.address.substring(0, 12) + "...")
-        else
-         setOwner(res.data.assets[0].owner.address)
-      });
+      const url = await getURL(props.id +1)
+      const result = await getNFTs(url.split("https://gateway.pinata.cloud/ipfs/")[1])
+      console.log("result:", result.data, );
+      var data = result.data;
+
+      var nowTime = new Date();
+      var createTime ;
+      if (data.createTime === undefined){
+        createTime = 0;
+      }else{
+        createTime = new Date(data.createTime).getTime()
+      } 
+      var diff = (nowTime.getTime() -createTime)/1000;
+      var secondDiff = diff - data.time * 3600
+      if (data.time === 0 || secondDiff>0){
+        setData({ 
+          "image": data.image,
+          "title": data.name,
+          "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
+          "contract": process.env.REACT_APP_AKACHI_NFT_CONTRACT,
+          "tokenId": props.id+1,
+          "akachiNFT": "true"
+        })
+      }
+      else{
+        setData({
+          "image": {PlaceholderImg},
+          "title": "TBD",
+          "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
+          "contract": process.env.REACT_APP_AKACHI_NFT_CONTRACT,
+          "tokenId": "TBD",
+          "akachiNFT": "true"
+        })
+      }
       setFirstLoad(false);
+    }
+
+    if (firstLoad) {
+      // console.log(props);
+      fetchData();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firstLoad]);
@@ -106,7 +152,7 @@ console.log("nftData", nftData);
               title={data.title}
               image = {data.image}
               // net="BSC"
-              owner={owner}
+              owner={data.owner}
               // price="Current Bid"
               // priceItem="4.89ETH"
               bidding={false}

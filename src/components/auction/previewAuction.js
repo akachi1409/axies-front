@@ -5,16 +5,14 @@ import React, { useEffect, useState} from "react"
 import UserImg from "../../assets/explore/user.png";
 import BagImg from "../../assets/explore/bag.png";
 import ReloadImg from "../../assets/explore/reload.png";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import axios from "axios";
 function PreviewAuction(props) {
   const [firstLoad, setFirstLoad] = useState(true);
   const [image, setImage] = useState(null);
-  let navigate = useNavigate();
-  const onNavigate = () =>{
-    if (props.navable)
-      navigate("/explore_item/"+props.contract + "/" + props.tokenId)
-  }
+  // let navigate = useNavigate();
+  
+  
 
   useEffect(() =>{
     async function getData() {
@@ -31,7 +29,7 @@ function PreviewAuction(props) {
     /* eslint-disable */
   }, [firstLoad])
   return (
-    <div className="previewAuction-layout" onClick={()=>onNavigate()}>
+    <div className="previewAuction-layout">
       <Row>
         <div className="previewAuction-img-layout">
           

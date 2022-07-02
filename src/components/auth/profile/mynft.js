@@ -91,9 +91,7 @@ function Mynft() {
           }else{
             createTime = new Date(data.createTime).getTime()
           } 
-          console.log("createTime", createTime)
           var diff = (nowTime.getTime() -createTime)/1000;
-          console.log(diff);
           var secondDiff = diff - data.time * 3600
           if (data.time === 0 || secondDiff>0){
             temp.push({ 
