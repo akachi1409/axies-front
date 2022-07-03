@@ -1,6 +1,6 @@
 import "./auctionItem.css";
 import { Row, Col } from "react-bootstrap";
-
+import React, { useEffect, useState} from "react"
 // import HeartImg from "../../assets/explore/heart.png";
 import UserImg from "../../assets/explore/user.png";
 
@@ -8,9 +8,11 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
 
 function AuctionItem(props) {
-
+  const [firstLoad, setFirstLoad] = useState(true);
+  const [image, setImage] = useState(null);
   const notify = (msg) => toast(msg);
   let navigate = useNavigate();
   const onNavigate = () =>{
@@ -23,11 +25,25 @@ function AuctionItem(props) {
 
   const blockchain = useSelector((state) => state.blockchain);
 
+  useEffect(() =>{
+    async function getData() {
+      console.log("props", props)
+      
+      var temp = await axios.get(props.image);
+      console.log('temp', temp)
+      setImage(temp.data);
+      setFirstLoad(false)
+    }
+    if (firstLoad)
+      getData();
+    /* eslint-disable */
+  }, [firstLoad])
+
   return (
     <div className="auctionItem-layout" onClick = {() => onNavigate()}>
       <Row>
         <div className="auctionItem-box">
-          <img src={props.image} alt="" className="aucitonItem-img"></img>
+          <img src={image} alt="" className="aucitonItem-img"></img>
           {/* <div className="auctionItem-like">
             <img src={HeartImg} alt="" />
             &nbsp; 100

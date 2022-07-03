@@ -25,15 +25,37 @@ function AuctionComp() {
 
   let navigate = useNavigate();
 
-  const getAssetByAddressAndId = (url) => {
-    return new Promise((resolve) => {
-      return resolve(axios.get(url));
-    });
-  };
+  // const getAssetByAddressAndId = (url) => {
+  //   return new Promise((resolve) => {
+  //     return resolve(axios.get(url));
+  //   });
+  // };
 
-  const getAsset = (url) => {
-    return getAssetByAddressAndId(url);
-  };
+  // const getAsset = (url) => {
+  //   return getAssetByAddressAndId(url);
+  // };
+
+  const getURL = (i) =>{
+    return getURLPromise(i);
+  }
+
+  const getURLPromise = (i) =>{
+    return new Promise ((resolve) =>{
+      return resolve(blockchain.akachiNFT.methods._tokenURI(i).call())
+    })
+  }
+  const getNFTs = (url) =>{
+    return getNFTPromise(url)
+  }
+
+  const getNFTPromise = (url) =>{
+    return new Promise ((resolve) => {
+      return resolve(
+        axios.get(url)
+      )
+    })
+  }
+
 
   const getPriceResolve = (address, id) => {
     return new Promise((resolve) => {
@@ -55,13 +77,10 @@ function AuctionComp() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firstLoad]);
 
-  const sleep = (ms) => {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  };
+  // const sleep = (ms) => {
+  //   return new Promise((resolve) => setTimeout(resolve, ms));
+  // };
 
-  const getSleep = () => {
-    return sleep(2000);
-  };
   useEffect(() => {
     getData();
   }, [data.auctionAddress]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -73,26 +92,38 @@ function AuctionComp() {
       let tempItems = [];
       let tempPrices = [];
       for (let i = 0; i < length; i++) {
-        const url =
-          "https://testnets-api.opensea.io/api/v1/assets?asset_contract_address=" +
-          data.auctionAddress[i] +
-          "&token_ids=" +
-          data.auctionId[i] +
-          "&offset=0&limit=200";
-        let nft = await getAsset(url);
-        await getSleep();
+        console.log("--", data.auctionId[i])
+        // const url =
+        //   "https://testnets-api.opensea.io/api/v1/assets?asset_contract_address=" +
+        //   data.auctionAddress[i] +
+        //   "&token_ids=" +
+        //   data.auctionId[i] +
+        //   "&offset=0&limit=200";
+        // let nft = await getAsset(url);
+        // await getSleep();
+        const url = await getURL(data.auctionId[i])
+        const result = await getNFTs(url.split("https://gateway.pinata.cloud/ipfs/")[1])
         let price = await getPrice(data.auctionAddress[i], data.auctionId[i]);
         tempPrices.push(
           blockchain.web3.utils.fromWei(price.buyNowPrice, "ether")
         );
         // console.log(nft);
-        tempItems.push(nft.data.assets[0]);
+        tempItems.push({ 
+          "image": result.data.image,
+          "title": result.data.name,
+          "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
+          "contract": process.env.REACT_APP_AKACHI_NFT_CONTRACT,
+          "tokenId": data.auctionId[i],
+          "akachiNFT": "true"
+        });
+        console.log("---", tempItems);
       }
       setPrices(tempPrices);
       setItems(tempItems);
       setFlag(!flag);
       setLoading(false);
     } catch (err) {
+      console.log(err)
       setError(true);
       setLoading(false);
     }
@@ -117,18 +148,14 @@ function AuctionComp() {
             (item, index) => (
               <Col lg="3" key={index}>
                 <AuctionItem
-                  title={item.name}
+                  title={item.title}
                   net={item.net}
-                  owner={
-                    item.owner.address.length > 18
-                      ? item.owner.address.substring(0, 12) + "..."
-                      : item.owner.address
-                  }
-                  image={item.image_url}
+                  owner={item.owner}
+                  image={item.image}
                   price={prices[index]}
-                  ownerAddress = {item.owner.address}
-                  tokenId= {item.token_id} 
-                  contract = {item.asset_contract.address}
+                  // ownerAddress = {item.owner.address}
+                  tokenId= {item.tokenId} 
+                  contract = {item.contract}
                 />
               </Col>
             )
