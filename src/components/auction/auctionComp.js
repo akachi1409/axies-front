@@ -24,17 +24,6 @@ function AuctionComp() {
   const [error, setError] = useState(false)
 
   let navigate = useNavigate();
-
-  // const getAssetByAddressAndId = (url) => {
-  //   return new Promise((resolve) => {
-  //     return resolve(axios.get(url));
-  //   });
-  // };
-
-  // const getAsset = (url) => {
-  //   return getAssetByAddressAndId(url);
-  // };
-
   const getURL = (i) =>{
     return getURLPromise(i);
   }
@@ -55,8 +44,6 @@ function AuctionComp() {
       )
     })
   }
-
-
   const getPriceResolve = (address, id) => {
     return new Promise((resolve) => {
       return resolve(
@@ -76,10 +63,6 @@ function AuctionComp() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firstLoad]);
-
-  // const sleep = (ms) => {
-  //   return new Promise((resolve) => setTimeout(resolve, ms));
-  // };
 
   useEffect(() => {
     getData();
@@ -102,8 +85,11 @@ function AuctionComp() {
         // let nft = await getAsset(url);
         // await getSleep();
         const url = await getURL(data.auctionId[i])
+        console.log("--", url)
         const result = await getNFTs(url.split("https://gateway.pinata.cloud/ipfs/")[1])
+        console.log("result", result)
         let price = await getPrice(data.auctionAddress[i], data.auctionId[i]);
+        console.log("price", price)
         tempPrices.push(
           blockchain.web3.utils.fromWei(price.buyNowPrice, "ether")
         );
