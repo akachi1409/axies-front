@@ -71,7 +71,7 @@ function CreateAuction(props) {
       .then(() => {
         console.log("success");
       });
-
+      console.log('blockchain', blockchain);
     const creator = await blockchain.akachiNFT.methods
       .getTokenCreator(props.id -1)
       .call();
@@ -104,6 +104,7 @@ function CreateAuction(props) {
       if (blockchain.account === null) {
         navigate("/");
       }
+      console.log(props.id);
       const url = await getURL(props.id)
       const result = await getNFTs(url.split("https://gateway.pinata.cloud/ipfs/")[1])
       console.log("result:", result.data, );
