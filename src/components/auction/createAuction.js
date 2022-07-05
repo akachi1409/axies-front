@@ -13,9 +13,9 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { updateAccount } from "../../redux/blockchain/blockchainActions";
 import { useNavigate } from "react-router-dom";
-import Web3EthContract from "web3-eth-contract";
+// import Web3EthContract from "web3-eth-contract";
 // import AkachiToken from "../../contracts/AkachiToken.json";
-import EliteChess from "../../contracts/EliteChess.json"
+// import EliteChess from "../../contracts/EliteChess.json"
 function CreateAuction(props) {
   const [data, setData] = useState({
     image: null,
@@ -58,20 +58,29 @@ function CreateAuction(props) {
   const onCreateAuction = async () => {
     // console.log(minPrice, buyNow)
     // setLoading(true);
-    const erc721Contract = new Web3EthContract ( 
-      EliteChess, 
-      "0x26D4025EA3B66EA8987B1b1F9B23F9AfCA1eFe11"
-     )
-     // approve auction contract
-    erc721Contract.methods
+    // const akachiTokenContract = new Web3EthContract(
+    //   AkachiToken,
+    //   "0x8119841E9c4e2658B36817Cfe58dfDFDca043930"
+    // );
+    blockchain.akachiNFT.methods
       .setApprovalForAll(process.env.REACT_APP_AUCTION_NFT_CONTRACT, true)
-      .send({from: blockchain.account})
-      .once("error", err=>{
-        console.log(err)
+      .send({ from: blockchain.account })
+      .once("error", (err) => {
+        console.log(err);
       })
-      .then(() =>{
+      .then(() => {
         console.log("success");
-      })
+      });
+     // approve auction contract
+    // erc721Contract.methods
+    //   .setApprovalForAll(process.env.REACT_APP_AUCTION_NFT_CONTRACT, true)
+    //   .send({from: blockchain.account})
+    //   .once("error", err=>{
+    //     console.log(err)
+    //   })
+    //   .then(() =>{
+    //     console.log("success");
+    //   })
     var nftUrl = "https://testnets-api.opensea.io/api/v1/asset/"+ props.contract + "/" + props.id;
     var nftData = await axios.get(nftUrl)
 console.log("nftData", nftData);

@@ -104,7 +104,15 @@ function BidItem(props) {
       .then(() => {
         console.log("success");
       });
-      console.log(props.contract, props.id)
+    blockchain.akachiNFT.methods
+      .setApprovalForAll(process.env.REACT_APP_AUCTION_NFT_CONTRACT, true)
+      .send({ from: blockchain.account })
+      .once("error", (err) => {
+        console.log(err);
+      })
+      .then(() => {
+        console.log("success");
+      });
     blockchain.smartContract.methods
       .makeBid(props.contract, props.id, blockchain.web3.utils.toWei(buyNow, "ether"))
       .send({ from: blockchain.account })
