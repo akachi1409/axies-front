@@ -74,6 +74,7 @@ function Mynft() {
           .call();
       }catch(err){
         console.log(err)
+        setLoading(false);
         return;
       }
       for ( var i = 0 ; i< indexes.length; i++){

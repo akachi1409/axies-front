@@ -71,20 +71,10 @@ function CreateAuction(props) {
       .then(() => {
         console.log("success");
       });
-     // approve auction contract
-    // erc721Contract.methods
-    //   .setApprovalForAll(process.env.REACT_APP_AUCTION_NFT_CONTRACT, true)
-    //   .send({from: blockchain.account})
-    //   .once("error", err=>{
-    //     console.log(err)
-    //   })
-    //   .then(() =>{
-    //     console.log("success");
-    //   })
-    var nftUrl = "https://testnets-api.opensea.io/api/v1/asset/"+ props.contract + "/" + props.id;
-    var nftData = await axios.get(nftUrl)
-console.log("nftData", nftData);
-    var creator= nftData.data.creator.address;
+
+    const creator = await blockchain.akachiNFT.methods
+      .getTokenCreator(props.id -1)
+      .call();
     var royalty = 0;
     if (props.contract === process.env.REACT_APP_AKACHI_NFT_CONTRACT){
        royalty = await blockchain.akachiNFT.methods.getTokenRoyal(props.id-1).call();
