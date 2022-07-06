@@ -18,7 +18,7 @@ import AkachiToken from "../../contracts/AkachiToken.json";
 // import EliteChess from "../../contracts/EliteChess.json";
 function BidItem(props) {
   const [data, setData] = useState([]);
-  const [owner, setOwner] = useState("");
+  // const [owner, setOwner] = useState("");
   const [buyNow, setBuyNow] = useState(0);
   const [minPrice, setMinPrice] = useState(0);
 
@@ -27,57 +27,47 @@ function BidItem(props) {
   const blockchain = useSelector((state) => state.blockchain);
   const [firstLoad, setFirstLoad] = useState(true);
 
-  // const onCreateAuction = () => {
-  //   console.log(minPrice, buyNow);
-  //   const erc721Contract = new Web3EthContract(
-  //     EliteChess,
-  //     "0x26D4025EA3B66EA8987B1b1F9B23F9AfCA1eFe11"
-  //   );
-  //   erc721Contract.methods
-  //     .setApprovalForAll("0x5b65c1cC14A47584A1894F9AC9873776ba4cc65f", true)
-  //     .send({ from: blockchain.account })
-  //     .once("error", (err) => {
-  //       console.log(err);
-  //     })
-  //     .then(() => {
-  //       console.log("success");
-  //     });
-  //   blockchain.smartContract.methods
-  //     .createDefaultNftAuction(
-  //       props.contract,
-  //       props.id,
-  //       blockchain.web3.utils.toWei(minPrice, "ether"),
-  //       blockchain.web3.utils.toWei(buyNow, "ether")
-  //     )
-  //     .send({ from: blockchain.account })
-  //     .once("error", (err) => {
-  //       console.log(err);
-  //     })
-  //     .then(() => {
-  //       dispatch(updateAccount());
-  //       console.log("success");
-  //       navigate("/auction");
-  //     });
-  // };
+  const getURL = (i) =>{
+    return getURLPromise(i);
+  }
+
+  const getURLPromise = (i) =>{
+    return new Promise ((resolve) =>{
+      return resolve(blockchain.akachiNFT.methods._tokenURI(i).call())
+    })
+  }
+
+  const getNFTs = (url) =>{
+    return getNFTPromise(url)
+  }
+
+  const getNFTPromise = (url) =>{
+    return new Promise ((resolve) => {
+      return resolve(
+        axios.get(url)
+      )
+    })
+  }
+  
   useEffect(() => {
+    async function getData(){
       if (firstLoad) {
         // console.log(props);
         if (blockchain.account === null) {
           navigate("/");
         }
-        const url =
-          "https://testnets-api.opensea.io/api/v1/assets?token_ids=" +
-          props.id +
-          "&asset_contract_address=" +
-          props.contract +
-          "&offset=0&limit=200";
-        axios.get(url).then((res) => {
-          console.log(res);
-          setData(res.data.assets[0]);
-          if (res.data.assets[0].owner.address.length > 15)
-            setOwner(res.data.assets[0].owner.address.substring(0, 12) + "...");
-          else setOwner(res.data.assets[0].owner.address);
-        });
+        const url = await getURL(props.id)
+        const result = await getNFTs(url.split("https://gateway.pinata.cloud/ipfs/")[1])
+        console.log("result:", result.data, );
+        var data = result.data;
+        setData({ 
+          "image": data.image,
+          "title": data.name,
+          // "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
+          "contract": process.env.REACT_APP_AKACHI_NFT_CONTRACT,
+          "tokenId": props.id,
+          "akachiNFT": "true"
+        })
         blockchain.smartContract.methods
           .nftContractAuctions(props.contract, props.id)
           .call()
@@ -87,6 +77,8 @@ function BidItem(props) {
           });
         setFirstLoad(false);
       }
+    }
+    getData();
     //eslint-disable-next-line
   }, [firstLoad]);// eslint-disable-next-line
 
@@ -131,12 +123,9 @@ function BidItem(props) {
             <h2 className="bidItem-title">Preview item</h2>
             <Explore1Item
               title={data.name}
-              image={data.image_url}
+              image={data.image}
               net="BSC"
-              owner={owner}
-              // .length > 12 ?
-              //   data.creator.address.substring(0, 10) + "..." :
-              //    data.creator.address}
+              // owner={owner}
               // price="Current Bid"
               // priceItem="4.89ETH"
               bidding={false}

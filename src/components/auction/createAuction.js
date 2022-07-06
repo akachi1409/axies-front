@@ -56,12 +56,6 @@ function CreateAuction(props) {
   }
 
   const onCreateAuction = async () => {
-    // console.log(minPrice, buyNow)
-    // setLoading(true);
-    // const akachiTokenContract = new Web3EthContract(
-    //   AkachiToken,
-    //   "0x8119841E9c4e2658B36817Cfe58dfDFDca043930"
-    // );
     blockchain.akachiNFT.methods
       .setApprovalForAll(process.env.REACT_APP_AUCTION_NFT_CONTRACT, true)
       .send({ from: blockchain.account })

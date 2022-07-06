@@ -3,6 +3,7 @@
     border-color: #212529;
     float: right;
     padding : 0.8em;
-    background-color: black;
-    color: white;
+    background: linear-gradient(180deg, #79C652 0%, #325F50 100%);
+    color: white!important;
+    border-radius: 25.5px
 }

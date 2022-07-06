@@ -3,7 +3,8 @@ import { Nav, Navbar, NavDropdown, Container } from "react-bootstrap";
 
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import NavImg from "../../assets/navbar/navbar.png";
+import NavImg from "../../assets/navbar/navbar-1.png";
+import CatinaImg from "../../assets/navbar/catina.png"
 import "./navbarcomp.css";
 
 function NavbarComp() {
@@ -15,19 +16,19 @@ function NavbarComp() {
   }
   return (
     <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="transparent" variant="white" className="navbar-layout">
         <Container>
           <Navbar.Brand onClick = {()=> onNav("/")}>
-            <img src={NavImg} alt="" /> Axies
+            <img src={NavImg} alt="" />
+            <img src={CatinaImg} alt=""/>
           </Navbar.Brand>
-          <Nav className="me-auto">
+            
+          <Nav>
             {/* <Nav.Link onClick = {()=> onNav("/")}>Home</Nav.Link> */}
             <NavDropdown title="Explore">
               <NavDropdown.Item onClick = {()=> onNav("/explore")}>
                 Explore Collection
               </NavDropdown.Item>
-              {/* <NavDropdown.Item href="/explore1">Explore1</NavDropdown.Item> */}
-              {/* <NavDropdown.Item href="/explore2">Explore2</NavDropdown.Item> */}
             </NavDropdown>
             {/* <NavDropdown title="Activity">
               <NavDropdown.Item href="/activity1">Activity1</NavDropdown.Item>

@@ -13,12 +13,11 @@
     text-align: left;
 }
 
-.liveAuction-layout .liveAuction-layout-header .button1-layout{
-    border-radius: 30px;
-    border-color: #5142FC;
-    background-color: #14141F;
-    margin-top: 1em;
-    margin-right: 1em;
+.liveAuction-layout .liveAuction-layout-header .liveAuction-button1-layout{
+    background: linear-gradient(180deg, #79C652 0%, #325F50 100%);
+    border-radius: 25.5px;
+    width: fit-content;
+    padding-left: 1em;
 }
 .liveAuction-layout .liveAuction-layout-header .button2-layout{
     border-radius: 30px;
@@ -35,33 +34,49 @@
 .liveAuction-layout .liveAuction-layout-header .button2-layout .button2-title .button2-img{
     margin: 1em;
 }
-.liveAuction-layout .liveAuction-layout-header .button1-layout .button1-title{
+.liveAuction-layout .liveAuction-layout-header .liveAuction-button1-layout .button1-title{
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
     color: #FFFFFF;
-    padding: 0.5em 1em;
 }
 
-.liveAuction-layout .liveAuction-layout-header .button1-layout .button1-title .button1-img{
+.liveAuction-layout .liveAuction-layout-header .liveAuction-button1-layout .button1-title .button1-img{
     margin: 1em;
 }
 
 .liveAuction-layout .liveAuction-layout-header .liveAuction-layout-title-white{
-    font-weight: bold;
-    font-size: 56px;
-    line-height: 68px;
-    color: white;
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 65px;
+    line-height: 81px;
+
+    color: #FFFFFF;
 }
 
 .liveAuction-layout .liveAuction-layout-header .liveAuction-layout-title-violet{
-    font-weight: bold;
-    font-size: 56px;
-    line-height: 68px;
-    color: #E250E5;
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 65px;
+    line-height: 81px;
+
+    background: linear-gradient(174.93deg, #6BC663 49.43%, #0A382E 95.93%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
 }
 
 .liveAuction-layout .liveAuction-layout-header .liveAuction-layout-text{
-    font-size: 20px;
-    line-height: 30px;
-    color: #EBEBEB;
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
 }
 .liveAuction-layout .liveAuction-title{
     font-size: 36px;

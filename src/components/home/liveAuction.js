@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 // import BgImg from "../../assets/header/bg.png"
-import RocketImg from "../../assets/header/rocket.png";
+import RocketImg from "../../assets/header/arrow1.png";
 function LiveAuctoion() {
   const navigate = useNavigate();
 
@@ -80,16 +80,16 @@ function LiveAuctoion() {
         <Container style={{ marginTop: "300px" }}>
           <h1 className="liveAuction-layout-title-white">Discorver, find,</h1>
           <h1 className="liveAuction-layout-title-violet">
-            Sell extraordinary
+          Future Forward Financial Fathers
           </h1>
           <h1 className="liveAuction-layout-title-white">Monster NFTs</h1>
           <p className="liveAuction-layout-text">
-            Marketplace for monster character cllections non fungible token NFTs
+            This blockchain is your legacy.
           </p>
-          <button className="button1-layout" onClick={() => onExplore()}>
+          <button className="liveAuction-button1-layout" onClick={() => onExplore()}>
             <span className="button1-title">
-              <img alt="" src={RocketImg} className="button1-img" />
               Explore
+              <img alt="" src={RocketImg} className="button1-img" />
             </span>
           </button>
           {/* <button className="button2-layout">
