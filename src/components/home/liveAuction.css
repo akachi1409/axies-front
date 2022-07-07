@@ -1,15 +1,15 @@
 .liveAuction-layout{
-    background-color: #14141F;
+    background-color: transparent;
     text-align: center;
     padding-top: 2em;
     padding-bottom: 2em;
 }
 
 .liveAuction-layout .liveAuction-layout-header{
-    background-image: url("../../assets/header/bg.png");
+    /* background-image: url("../../assets/bg.png");
     background-repeat: no-repeat;
-    background-size: cover;
-    height: 700px;
+    background-size: cover;*/
+    height: 700px; 
     text-align: left;
 }
 

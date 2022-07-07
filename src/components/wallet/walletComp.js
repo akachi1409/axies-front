@@ -18,11 +18,11 @@ function WalletComp() {
       wallet: "MetaMask",
       text: "MetaMask is a software cryptocurrency wallet used to interact with the Ethereum blockchain. It allows users to access their Ethereum wallet through a browser extension to interact with Dapps.",
     },
-    {
-      img: CoinImg,
-      wallet: "Coinbase Wallet",
-      text: "Coinbase Wallet is a self-custody crypto wallet, putting you in control of your crypto, keys, and data. Now you can safely store your crypto and rare NFTs in your Coinbase wallet.",
-    },
+    // {
+    //   img: CoinImg,
+    //   wallet: "Coinbase Wallet",
+    //   text: "Coinbase Wallet is a self-custody crypto wallet, putting you in control of your crypto, keys, and data. Now you can safely store your crypto and rare NFTs in your Coinbase wallet.",
+    // },
   ];
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
@@ -43,17 +43,20 @@ function WalletComp() {
       <Container>
         {blockchain.account === null ? (
           <div>
-            <Row>
+            <div className="walletComp-title-layout">
               <h2 className="walletComp-title">Connect Wallet</h2>
-            </Row>
-            <Row>
+              <div className="bottomBar"></div>
               <p className="walletComp-text">
-                Connect your Metamask wallet or Coinbase wallet!
+                Connect your Metamask wallet!
               </p>
+            </div>
+            
+            <Row>
+              
             </Row>
             <Row>
               {dataWallet.map((item, index) => (
-                <Col lg="6" key={index}>
+                <Col lg="12" key={index}>
                   <WalletItem
                     img={item.img}
                     wallet={item.wallet}

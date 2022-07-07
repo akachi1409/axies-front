@@ -9,7 +9,7 @@ function CreateItem(){
     return(
         <div>
             <NavbarComp/>
-            <Header title="Create Item" text = "Home / Pages / Create Item"/>
+            <Header title="Create NFT" text = "Home / Pages / NFT"/>
             <CreateItemComp/>
             <Footer/>
         </div>
