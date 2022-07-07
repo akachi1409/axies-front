@@ -72,13 +72,14 @@ function Explore4Comp(){
   return (
     <div className="explore4Comp-layout">
       <Container>
-        <Row>
-          <h2 className="explore4Comp-title">Last 15 collections</h2>
-        </Row>
+        <div className="explore4Comp-title-layout">
+          <h2 className="explore4Comp-title">Last 15 Legacies</h2>
+          <div className="bottomBar"></div>
+        </div>
         <Row>
           {nfts.map((item, index) => {
             return (
-              <Col lg="4" key={index} style={{padding: "1em"}}>
+              <Col lg="3" sm="4" key={index} style={{padding: "1em"}}>
                 <Explore1Item
                   title={item.title}
                   image={item.image}

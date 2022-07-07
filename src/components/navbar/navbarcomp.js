@@ -16,7 +16,7 @@ function NavbarComp() {
   }
   return (
     <>
-      <Navbar bg="transparent" variant="white" className="navbar-layout">
+      <Navbar bg="transparent" variant="light" className="navbar-layout">
         <Container>
           <Navbar.Brand onClick = {()=> onNav("/")}>
             <img src={NavImg} alt="" />
@@ -25,19 +25,10 @@ function NavbarComp() {
             
           <Nav>
             {/* <Nav.Link onClick = {()=> onNav("/")}>Home</Nav.Link> */}
-            <NavDropdown title="Explore">
-              <NavDropdown.Item onClick = {()=> onNav("/explore")}>
-                Explore Collection
-              </NavDropdown.Item>
-            </NavDropdown>
+            <Nav.Link onClick = {()=> onNav("/explore")}>Explore Collection</Nav.Link>
             {/* <NavDropdown title="Activity">
               <NavDropdown.Item href="/activity1">Activity1</NavDropdown.Item>
               <NavDropdown.Item href="/activity2">Activity2</NavDropdown.Item>
-            </NavDropdown> */}
-            {/* <NavDropdown title="Item">
-              <NavDropdown.Item href="/create_item">
-                Create Item
-              </NavDropdown.Item>
             </NavDropdown> */}
             <Nav.Link onClick = {()=> onNav("/create_item")}>Create Item</Nav.Link>
             <Nav.Link onClick = {()=> onNav("/auction")}>Auctions</Nav.Link>

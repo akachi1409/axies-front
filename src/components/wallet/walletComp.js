@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import WalletItem from "./walletItem";
 import "./walletComp.css";
 import MetaImg from "../../assets/wallet/metamask.png";
-import CoinImg from "../../assets/wallet/coinbase.png";
+// import CoinImg from "../../assets/wallet/coinbase.png";
 import { fetchData } from "../../redux/data/dataActions";
 
 import { useSelector } from "react-redux";

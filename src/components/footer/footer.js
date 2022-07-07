@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import "./footer.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 // import Mono_Logo from "../../assets/footer/Logo.png";
 import Facebook from "../../assets/footer/facebook.png";
 import Twitter from "../../assets/footer/twitter.png";

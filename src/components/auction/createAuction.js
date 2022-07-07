@@ -25,7 +25,7 @@ function CreateAuction(props) {
     tokenId:""
   });
   const [buyNow, setBuyNow] = useState(0);
-  const [minPrice, setMinPrice ] = useState(0);
+  // const [minPrice, setMinPrice ] = useState(0);
   // const [loading, setLoading] = useState(false);
   const [firstLoad, setFirstLoad] = useState(true);
 
@@ -78,7 +78,7 @@ function CreateAuction(props) {
       .createDefaultNftAuction(
         props.contract, 
         props.id, 
-        blockchain.web3.utils.toWei(minPrice, "ether") , 
+        blockchain.web3.utils.toWei(buyNow/2, "ether") , 
         blockchain.web3.utils.toWei(buyNow, "ether"),
         creator, 
         royalty )
@@ -117,7 +117,7 @@ function CreateAuction(props) {
         setData({ 
           "image": data.image,
           "title": data.name,
-          "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
+          "owner": blockchain.account.length > 18 ? blockchain.account.substring(0, 18) + "..." : blockchain.account, 
           "contract": process.env.REACT_APP_AKACHI_NFT_CONTRACT,
           "tokenId": props.id,
           "akachiNFT": "true"
@@ -127,7 +127,7 @@ function CreateAuction(props) {
         setData({
           "image": {PlaceholderImg},
           "title": "TBD",
-          "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
+          "owner": blockchain.account.length > 18 ? blockchain.account.substring(0, 18) + "..." : blockchain.account, 
           "contract": process.env.REACT_APP_AKACHI_NFT_CONTRACT,
           "tokenId": "TBD",
           "akachiNFT": "true"
@@ -135,9 +135,7 @@ function CreateAuction(props) {
       }
       setFirstLoad(false);
     }
-
     if (firstLoad) {
-      // console.log(props);
       fetchData();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -152,18 +150,13 @@ function CreateAuction(props) {
             {
               data.title !=="" && (
                 <PreviewAuction
-              title={data.title}
-              image = {data.image}
-              // net="BSC"
-              owner={data.owner}
-              // price="Current Bid"
-              // priceItem="4.89ETH"
-              bidding={false}
-              navable= {false}
-            />
+                  title={data.title}
+                  image = {data.image}
+                  owner={data.owner}
+                  navable= {false}
+                />
               )
             }
-            
           </Col>
           <Col lg="8">
             <h2 className="createAuction-title">Select method</h2>
@@ -187,8 +180,8 @@ function CreateAuction(props) {
                 </button>
               </Col> */}
             </Row>
-            <h2 className="createAuction-title">Min Price</h2>
-            <Input1 margin="1em" text="Enter minimum price for one item (AkachiToken)" value = {minPrice} onChange = {(e)=>setMinPrice(e.target.value)}/>
+            {/* <h2 className="createAuction-title">Min Price</h2>
+            <Input1 margin="1em" text="Enter minimum price for one item (AkachiToken)" value = {minPrice} onChange = {(e)=>setMinPrice(e.target.value)}/> */}
             <h2 className="createAuction-title">Buy Now</h2>
             <Input1 margin="1em" text="Enter buy now price for one item (AkachiToken)" value = {buyNow} onChange = {(e)=>setBuyNow(e.target.value)}/>
             

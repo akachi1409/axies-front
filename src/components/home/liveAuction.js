@@ -12,6 +12,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 // import BgImg from "../../assets/header/bg.png"
 import RocketImg from "../../assets/header/arrow1.png";
+import ItemImg from "../../assets/item.png";
+
 function LiveAuctoion() {
   const navigate = useNavigate();
 
@@ -77,24 +79,29 @@ function LiveAuctoion() {
   return (
     <div className="liveAuction-layout">
       <div className="liveAuction-layout-header">
-        <Container style={{ marginTop: "300px" }}>
-          <h1 className="liveAuction-layout-title-white">Discorver, find,</h1>
-          <h1 className="liveAuction-layout-title-violet">
-          Future Forward Financial Fathers
-          </h1>
-          <h1 className="liveAuction-layout-title-white">Monster NFTs</h1>
-          <p className="liveAuction-layout-text">
-            This blockchain is your legacy.
-          </p>
-          <button className="liveAuction-button1-layout" onClick={() => onExplore()}>
-            <span className="button1-title">
-              Explore
-              <img alt="" src={RocketImg} className="button1-img" />
-            </span>
-          </button>
-          {/* <button className="button2-layout">
-              <span className="button2-title"><img alt="" src={RocketImg} className="button2-img"/>Google</span>
-            </button> */}
+        <Container style={{ marginTop: "50px" }}>
+          <Row>
+            <Col lg="8">
+              <h1 className="liveAuction-layout-title-white">Discorver, find,</h1>
+              <h1 className="liveAuction-layout-title-violet">
+              Future Forward Financial Fathers
+              </h1>
+              <h1 className="liveAuction-layout-title-white">Monster NFTs</h1>
+              <p className="liveAuction-layout-text">
+                This blockchain is your legacy.
+              </p>
+              <button className="liveAuction-button1-layout" onClick={() => onExplore()}>
+                <span className="button1-title">
+                  Explore
+                  <img alt="" src={RocketImg} className="button1-img" />
+                </span>
+              </button>
+            </Col>
+            <Col lg="4">
+              <img src={ItemImg} alt=""/>
+            </Col>
+          </Row>
+          
         </Container>
       </div>
       <Container>

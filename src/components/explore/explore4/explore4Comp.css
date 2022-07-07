@@ -1,10 +1,13 @@
 .explore4Comp-layout{
-    background-color: #14141F;
+    background-color: transparent;
     text-align: center;
     padding-top: 2em;
     padding-bottom: 2em;
 }
-
+.explore4Comp-layout .explore4Comp-title-layout{
+    display: flex;
+    flex-direction: column;
+}
 .explore4Comp-layout .explore4Comp-title{
     font-family: 'Lexend Deca';
     font-style: normal;

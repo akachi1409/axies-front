@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-
-import Explore1Item from "../../explore/explore1/explore1Item";
 import axios from "axios";
-
-import "./mynft.css";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ReactLoading from "react-loading";
 
+import "./mynft.css";
+import MyNFTItem from "./mynftItem.js"
 import PlaceholderImg from "../../../assets/activity2/placeholder.png"
 function Mynft() {
   const [firstLoad, setFirstLoad] = useState(true);
@@ -101,7 +99,7 @@ function Mynft() {
               "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
               "contract": process.env.REACT_APP_AKACHI_NFT_CONTRACT,
               "tokenId": i+1,
-              "akachiNFT": "true"
+              "akachiNFT": true
             })
           }
           else{
@@ -111,7 +109,7 @@ function Mynft() {
               "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
               "contract": process.env.REACT_APP_AKACHI_NFT_CONTRACT,
               "tokenId": "TBD",
-              "akachiNFT": "true"
+              "akachiNFT": true
             })
 
           }
@@ -131,10 +129,11 @@ function Mynft() {
   return (
     <div className="mynft-layout">
       <Container>
-        <Row>
-          <h2 className="mynft-title">My NFT</h2>
-          <p className="mynft-text">You can view your NFTs here.</p>
-        </Row>
+        <div className="mynft-title-layout">
+          <h2 className="mynft-title">My Address</h2>
+          <div className="bottomBar"></div>
+          <p className="mynft-text">{blockchain.account}</p>
+        </div>
         <Row>
           {data.length === 0 &&  !loading &&(
             <p className="mynft-empty">You have NO NFT at all.</p>
@@ -147,8 +146,8 @@ function Mynft() {
           )}
           {data.map((item, index) => {
             return (
-              <Col lg="3" key={index}>
-                <Explore1Item
+              <Col xl="3" lg="4" sm="6" key={index}>
+                <MyNFTItem
                   image={item.image}
                   title={item.title}
                   // net={item.net}

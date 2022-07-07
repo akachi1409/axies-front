@@ -1,0 +1,85 @@
+.mynftItem-layout{
+    margin: 1em;
+    padding: 1em;
+    cursor: pointer;
+
+    width: fit-content;
+    background: rgba(255, 255, 255, 0.07);
+    border: 0.2px solid rgba(255, 255, 255, 0.41);
+    box-shadow: 0px 21px 20px rgba(0, 0, 0, 0.23);
+    border-radius: 10px;
+}
+
+/* .mynftItem-layout .mynftItem-box{
+    background-color: #7A798A;
+    border-radius: 10px;
+    height: 300px;
+} */
+
+.mynftItem-layout .mynftItem-img-layout{
+    width: 260px;
+    height: 260px;
+}
+.mynftItem-layout .mynftItem-img-layout .mynftItem-img{
+    height: 100%;
+    width: 100%;
+}
+
+.mynftItem-layout .mynftItem-box .mynftItem-like{
+    position: relative;
+    left: 70%;
+    top: 30px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5em;
+    width: fit-content;
+}
+
+.mynftItem-layout .mynftItem-title{
+    font-size: 15px;
+    line-height: 24px;
+    color: white;
+}
+
+.mynftItem-layout .mynftItem-net{
+    border-radius: 10px;
+    color: white;
+    background-color: #5142FC;
+}
+
+.mynftItem-layout .mynftItem-owner-title{
+    color: #8A8AA0;
+    font-size: 13px;
+    line-height: 20px;
+    margin-bottom: 0px;
+}
+
+.mynftItem-layout .mynftItem-owner{
+    color: #EBEBEB;
+    font-size: 15px;
+    line-height: 22px;
+    margin-bottom: 0px;
+}
+
+.mynftItem-layout .mynftItem-bid{
+    border-radius:100px;
+    border: solid 1px #5142FC;
+    padding: 0.5em;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    width: fit-content;
+}
+
+.mynftItem-layout .mynftItem-refresh{
+    padding-top: 0.5em;
+    cursor: pointer;
+    color: #8A8AA0;
+    font-size: 16px;
+    line-height: 26px;
+    display: flex;
+    width: fit-content;
+}

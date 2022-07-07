@@ -7,3 +7,11 @@
     color: white!important;
     border-radius: 25.5px
 }
+
+.navbar-light .navbar-nav .nav-link{
+    color: white!important;
+}
+
+.navbar-light .navbar-nav .nav-link:hover{
+    color: blue!important;
+}
