@@ -1,6 +1,6 @@
 .itemHeader-contanier{
     background-color: #343444;
-    height: 300px;
+    /* height: 300px; */
     position: relative;
 }
 
@@ -8,18 +8,30 @@
     justify-content: center;
     align-items: center;
     margin: auto;
-    text-align: center;
+    text-align: left;
     height: 100%;
     padding-top: 50px;
+    padding-bottom: 50px;
 }
 .itemHeader-contanier .itemHeader-layout .itemHeader-title{
-    color: white;
-    font-family: "Urbanist", Sans-serif;
-    font-size: 48px;
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 44px;
+    /* identical to box height */
+
+
+    color: #FFFFFF;
 }
 .itemHeader-contanier .itemHeader-layout .itemHeader-text{
-    font-family: "Urbanist", Sans-serif;
-    font-size: 18px;
-    line-height: 28px;
-    color: white;
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    /* identical to box height */
+
+
+    color: #6BC562;
 }

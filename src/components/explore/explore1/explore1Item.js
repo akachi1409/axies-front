@@ -2,7 +2,7 @@ import "./explore1Item.css";
 import { Row, Col } from "react-bootstrap";
 import React, {useState, useEffect} from "react"
 // import HeartImg from "../../../assets/explore/heart.png";
-import UserImg from "../../../assets/explore/user.png";
+// import UserImg from "../../../assets/explore/user.png";
 import BagImg from "../../../assets/explore/bag.png";
 import ReloadImg from "../../../assets/explore/reload.png";
 import { useNavigate } from "react-router-dom";
@@ -35,7 +35,7 @@ function Explore1Item(props) {
       <Row>
         <div className="explore1Item-img-layout">
           {
-            props.akachiNFT === "true" &&(
+            props.akachiNFT === true &&(
                 <img src={image} alt="" className="explore1Item-img"></img>
               )
           }
@@ -56,7 +56,7 @@ function Explore1Item(props) {
         </Col> */}
       </Row>
 
-      <Row style={{ marginTop: "1em", alignItems: "center" }}>
+      {/* <Row style={{ marginTop: "1em", alignItems: "center" }}>
         <Col lg="2">
           <img src={UserImg} alt="" />
         </Col>
@@ -68,7 +68,7 @@ function Explore1Item(props) {
           <h4 className="explore1Item-owner-title">Floor Price</h4>
           <p className="explore1Item-owner">{props.price}</p>
         </Col>
-      </Row>
+      </Row> */}
       {props.bidding && (
         <Row style={{ marginTop: "1em" }}>
           <Col lg="6">

@@ -11,8 +11,7 @@ function Header(props) {
     return (
       <>
         <div className="itemHeader-contanier">
-            <Container className="itemHeader-layout"
-            >
+            <Container className="itemHeader-layout">
                 <h2 className="itemHeader-title">{props.title}</h2>
                 <h2 className="itemHeader-text">{props.text}</h2>
             </Container>

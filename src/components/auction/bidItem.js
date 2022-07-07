@@ -11,7 +11,6 @@ import TagImg from "../../assets/item/tag.png";
 
 import axios from "axios";
 import { useSelector } from "react-redux";
-// import { updateAccount } from "../../redux/blockchain/blockchainActions";
 import { useNavigate } from "react-router-dom";
 import Web3EthContract from "web3-eth-contract";
 import AkachiToken from "../../contracts/AkachiToken.json";
@@ -63,7 +62,6 @@ function BidItem(props) {
         setData({ 
           "image": data.image,
           "title": data.name,
-          // "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
           "contract": process.env.REACT_APP_AKACHI_NFT_CONTRACT,
           "tokenId": props.id,
           "akachiNFT": "true"

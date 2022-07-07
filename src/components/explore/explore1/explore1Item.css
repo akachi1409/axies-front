@@ -1,11 +1,13 @@
 .explore1Item-layout{
     margin: 1em;
-    border-radius: 10px;
-    background-color: #343444;
     padding: 1em;
     cursor: pointer;
 
     width: fit-content;
+    background: rgba(255, 255, 255, 0.07);
+    border: 0.2px solid rgba(255, 255, 255, 0.41);
+    box-shadow: 0px 21px 20px rgba(0, 0, 0, 0.23);
+    border-radius: 10px;
 }
 
 /* .explore1Item-layout .explore1Item-box{

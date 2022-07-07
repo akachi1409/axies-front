@@ -79,10 +79,15 @@
     line-height: 22px;
 }
 .liveAuction-layout .liveAuction-title{
-    font-size: 36px;
-    line-height: 44px;
-    font-weight: bold;
-    color: white;
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 38px;
+    /* identical to box height */
+
+    text-align: left;
+    color: #FFFFFF;
 }
 
 .liveAuction-layout .liveAuction-text{

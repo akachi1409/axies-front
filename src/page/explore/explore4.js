@@ -9,7 +9,7 @@ function Explore4(){
     return(
         <div>
             <NavbarComp/>
-            <Header title="Explore Collections" text = "Home / Explore / Explore Collections"/>
+            <Header title="Explore Legacies" text = "Home / Explore / Explore Collections"/>
             <Explore4Comp />
             <Footer/>
         </div>
