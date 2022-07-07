@@ -76,14 +76,6 @@ function AuctionComp() {
       let tempPrices = [];
       for (let i = 0; i < length; i++) {
         console.log("--", data.auctionId[i])
-        // const url =
-        //   "https://testnets-api.opensea.io/api/v1/assets?asset_contract_address=" +
-        //   data.auctionAddress[i] +
-        //   "&token_ids=" +
-        //   data.auctionId[i] +
-        //   "&offset=0&limit=200";
-        // let nft = await getAsset(url);
-        // await getSleep();
         const url = await getURL(data.auctionId[i])
         console.log("--", url)
         const result = await getNFTs(url.split("https://gateway.pinata.cloud/ipfs/")[1])

@@ -2,7 +2,7 @@ import "./auctionItem.css";
 import { Row, Col } from "react-bootstrap";
 import React, { useEffect, useState} from "react"
 // import HeartImg from "../../assets/explore/heart.png";
-import UserImg from "../../assets/explore/user.png";
+// import UserImg from "../../assets/explore/user.png";
 
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -61,10 +61,7 @@ function AuctionItem(props) {
       </Row>
 
       <Row style={{ marginTop: "1em", alignItems: "center" }}>
-        <Col lg="2">
-          <img src={UserImg} alt="" />
-        </Col>
-        <Col lg="7" style={{ paddingLeft: "10px", textAlign: "left" }}>
+        <Col lg="9" style={{ paddingLeft: "10px", textAlign: "left" }}>
           <h4 className="auctionItem-owner-title">Owned By</h4>
           <p className="auctionItem-owner">{props.owner}</p>
         </Col>
