@@ -1,21 +1,33 @@
 .helpItem-layout{
-    background-color: #343444;
-    border-radius:10px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 0.2px solid rgba(255, 255, 255, 0.41);
+    box-shadow: 0px 21px 20px rgba(0, 0, 0, 0.23);
+    border-radius: 10px;
     font-align: center;
     padding: 1em;
     margin: 1em
 }
 
 .helpItem-layout .helpItem-title{
-    font-size: 14px;
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
     line-height: 22px;
-    color: white;
+    /* identical to box height */
+
+
+    color: rgba(255, 255, 255, 0.69);
     margin-top: 1em;
 }
 
 .helpItem-layout .helpItem-text{
     margin-top: 1em;
-    font-size: 13px;
-    line-height: 20px;
-    color: #EBEBEB;
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 19px;
+
+    color: rgba(255, 255, 255, 0.52);
 }

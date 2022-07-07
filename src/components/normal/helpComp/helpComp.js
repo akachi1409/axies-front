@@ -16,32 +16,32 @@ class HelpComp extends React.Component {
       data: [
         {
           title: "Getting Started",
-          text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+          text: "Learn how to create an account, set up your wallet, and what you can do on CATENA",
           img: TeleImg,
         },
         {
           title: "Creating",
-          text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+          text: "Learn how to create your first NFT and how to create NFT collections",
           img: FolderImg,
         },
         {
             title: "Buying",
-            text: "Lorem ipsum dolor sit amet, consectur adipiscing elit, sed do eiusmod tempor incididunt",
+            text: "Learn how to purchase your first NFT, understand gas fees, and see the gas fee on CATENA",
             img: BuyImg
         },
         {
             title: "Selling",
-            text: "Lorem ipsum dolor sit amet, consectur adipiscing elit, sed do eiusmod tempor incididunt",
+            text: "Learn how list your NFTs for sale and understand the different ways to list your NFTs",
             img: SellImg
         },
         {
             title: "Partners",
-            text: "Lorem ipsum dolor sit amet, consectur adipiscing elit, sed do eiusmod tempor incididunt",
+            text: "Learn how you can partner with us to showcase your NFT drops",
             img: PartnerImg
         },
         {
             title: "Developers",
-            text: "Lorem ipsum dolor sit amet, consectur adipiscing elit, sed do eiusmod tempor incididunt",
+            text: "Learn how you can develop with OpenSea",
             img: DeveloperImg
         }
       ],
@@ -52,17 +52,18 @@ class HelpComp extends React.Component {
     return (
       <div className="help-layout">
         <Container>
-          <Row>
+          <div className="help-title-layout">
             <h2 className="help-title">How can We Help You?</h2>
-          </Row>
-          <Row>
+            <div className="bottomBar"></div>
+          </div>
+          {/* <Row>
             <p className="help-text">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum
               obcaecati
               <br /> dignissimos quae quo ad iste ipsum officiis deleniti
               asperiores sit.
             </p>
-          </Row>
+          </Row> */}
           <Row>
             <input
               className="help-search-input"
@@ -79,7 +80,7 @@ class HelpComp extends React.Component {
           <br />
           <Row style={{justifyContent:"center"}}>
             {data.map((item, index) => (
-              <Col lg="3" key={index}>
+              <Col lg="4" key={index}>
                 <HelpItem Img={item.img} title={item.title} text={item.text} />
               </Col>
             ))}

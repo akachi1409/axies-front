@@ -4,23 +4,38 @@
     padding-top: 2em;
     padding-bottom: 2em;
 }
-
+.help-layout .help-title-layout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2em;
+}
 .help-layout .help-title{
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 34px;
+    /* identical to box height */
+
+
     color: #FFFFFF;
-    font-family: Urbanist, Sans-serif;
-    font-size: 30px;
-    line-height: 42px;
 }
 
 .help-layout .help-text{
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
     font-size: 18px;
-    line-height: 28px;
-    text-align: center;
-    color : #EBEBEB
+    line-height: 22px;
+    /* identical to box height */
+
+
+    color: rgba(255, 255, 255, 0.52);
 }
 
 .help-layout  .help-search-input{
-    background-color:black;
+    background-color:transparent;
     border-radius: 5px 0% 0% 5px;
     border-color: #A1A9BA;
     padding:10px;
