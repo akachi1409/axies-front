@@ -34,7 +34,8 @@
     height:40px;
     width: 40px;
     margin-right: 2em;
-    border-radius: 10%
+    border-radius: 10%;
+    cursor: pointer;
 }
 .footer-container .footer-section1  .footer-sectiion-icon .footer-sectiion-icon-round{
     height: 30px;
