@@ -1,9 +1,11 @@
 .auctionItem-layout{
     margin: 1em;
-    border-radius: 10px;
-    background-color: #343444;
     padding: 1em;
     cursor: pointer;
+    background: rgba(255, 255, 255, 0.07);
+    border: 0.2px solid rgba(255, 255, 255, 0.41);
+    box-shadow: 0px 21px 20px rgba(0, 0, 0, 0.23);
+    border-radius: 10px;
 }
 
 .auctionItem-layout .auctionItem-box{

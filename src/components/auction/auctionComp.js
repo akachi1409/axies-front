@@ -75,13 +75,13 @@ function AuctionComp() {
       let tempItems = [];
       let tempPrices = [];
       for (let i = 0; i < length; i++) {
-        console.log("--", data.auctionId[i])
+        // console.log("--", data.auctionId[i])
         const url = await getURL(data.auctionId[i])
-        console.log("--", url)
+        // console.log("--", url)
         const result = await getNFTs(url.split("https://gateway.pinata.cloud/ipfs/")[1])
-        console.log("result", result)
+        // console.log("result", result)
         let price = await getPrice(data.auctionAddress[i], data.auctionId[i]);
-        console.log("price", price)
+        // console.log("price", price)
         tempPrices.push(
           blockchain.web3.utils.fromWei(price.buyNowPrice, "ether")
         );
@@ -89,7 +89,6 @@ function AuctionComp() {
         tempItems.push({ 
           "image": result.data.image,
           "title": result.data.name,
-          "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
           "contract": process.env.REACT_APP_AKACHI_NFT_CONTRACT,
           "tokenId": data.auctionId[i],
           "akachiNFT": "true"
@@ -128,7 +127,7 @@ function AuctionComp() {
                 <AuctionItem
                   title={item.title}
                   net={item.net}
-                  owner={item.owner}
+                  // owner={item.owner}
                   image={item.image}
                   price={prices[index]}
                   // ownerAddress = {item.owner.address}
