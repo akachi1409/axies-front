@@ -120,7 +120,7 @@ function BidItem(props) {
           <Col lg="4">
             <h2 className="bidItem-title">Preview item</h2>
             <Explore1Item
-              title={data.name}
+              title={data.title}
               image={data.image}
               net="BSC"
               // owner={owner}
@@ -128,6 +128,7 @@ function BidItem(props) {
               // priceItem="4.89ETH"
               bidding={false}
               navable={false}
+              akachiNFT = {true}
             />
           </Col>
           <Col lg="8">

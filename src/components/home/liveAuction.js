@@ -110,7 +110,7 @@ function LiveAuctoion() {
   const onReload = () =>{
     document.location.reload(true);
   }
-  
+
   return (
     <div className="liveAuction-layout">
       <div className="liveAuction-layout-header">
@@ -144,11 +144,10 @@ function LiveAuctoion() {
         </Container>
       </div>
       <Container className="liveAuction-title-container">
-        <Row>
-          <Col lg="6" style={{ textAlign: "left" }}>
+        <div className="liveAuction-bar-layout">
             <h2 className="liveAuction-title">Live Auction</h2>
-          </Col>
-        </Row>
+            <div className="bottomBar"></div>
+        </div>
         <br />
         <Row>
           {blockchain.account === null ? (

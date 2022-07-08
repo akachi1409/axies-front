@@ -114,3 +114,8 @@
     line-height:20px;
     color: white;
 }
+
+.liveAuction-layout .liveAuction-title-container .liveAuction-bar-layout{
+    display: flex;
+    flex-direction: column;
+}

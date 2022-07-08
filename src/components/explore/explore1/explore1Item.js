@@ -29,21 +29,17 @@ function Explore1Item(props) {
     if (firstLoad)
       getData();
     /* eslint-disable */
-  }, [firstLoad])
+  }, [props.image])
   return (
     <div className="explore1Item-layout" onClick={()=>onNavigate()}>
       <Row>
         <div className="explore1Item-img-layout">
-          {
-            props.akachiNFT === true &&(
-                <img src={image} alt="" className="explore1Item-img"></img>
-              )
-          }
-          {
+            <img src={image} alt="" className="explore1Item-img"></img>
+          {/* {
             props.akachiNFT === "false" && (
               <img src={props.image} alt="" className="explore1Item-img"></img>
             )
-          }
+          } */}
         </div>
       </Row>
 

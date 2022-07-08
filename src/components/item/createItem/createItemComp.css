@@ -5,13 +5,22 @@
     padding-bottom: 2em;
 }
 
+.createItemComp-layout .createItemComp-title-layout{
+    display: flex;
+    flex-direction: column;
+    flex: 4;
+    align-items: flex-start;
+    padding-left: 3em;
+    padding-top: 1em;
+}
+
 .createItemComp-layout .createItemComp-title{
     font-weight: bold;
     font-size: 1.5em;
     line-height: 26px;
     color: white;
     text-align: left;
-    margin: 1em;
+    
 }
 
 .createItemComp-layout  .createItemComp-file-layout{

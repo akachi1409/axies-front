@@ -112,8 +112,9 @@ function CreateItemComp() {
     <div className="createItemComp-layout">
       <Container>
         <Row>
-          <Col lg="4">
-            <h2 className="createItemComp-title">Preview item</h2>
+          <div className="createItemComp-title-layout">
+            <h2 className="createItemComp-title">Preview NFT</h2>
+            <div className="bottomBar"></div>
             {image !== null && (
               <img
                 src={image}
@@ -121,7 +122,7 @@ function CreateItemComp() {
                 className="createItemComp-image"
               />
             )}
-          </Col>
+          </div>
           <Col lg="8">
             {mintMethod === 0 && (
               <Row className="createItemComp-border-layout">
