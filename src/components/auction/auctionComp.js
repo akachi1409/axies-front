@@ -117,7 +117,6 @@ function AuctionComp() {
         {loading && (
           <div className="auctionComp-loading">
             <ReactLoading type="bars" color="#fff" />
-            {/* <h2 className="createAuction-loading-title">Loading Live Auctions</h2> */}
           </div>
         )}
         <Row>
@@ -145,7 +144,7 @@ function AuctionComp() {
             <Modal.Title>Error!</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            API is not working well at the moment, please refresh the page and reconnect your wallet.
+            Something is not working well, please refresh the page and reconnect your wallet.
           </Modal.Body>
           <Modal.Footer>
           <Button variant="primary" onClick = {() => onReload()}>Understood</Button>

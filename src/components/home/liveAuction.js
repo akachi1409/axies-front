@@ -10,7 +10,8 @@ import "./liveAuction.css";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// import BgImg from "../../assets/header/bg.png"
+import ReactLoading from "react-loading";
+import { Modal, Button } from "react-bootstrap"
 import RocketImg from "../../assets/header/arrow1.png";
 import ItemImg from "../../assets/item.png";
 
@@ -28,15 +29,29 @@ function LiveAuctoion() {
   const [flag, setFlag] = useState(true);
   const [items, setItems] = useState([]);
   const [prices, setPrices] = useState([]);
+  const [firstLoad, setFirstLoad] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false)
+  const getURL = (i) =>{
+    return getURLPromise(i);
+  }
 
-  const getAssetByAddressAndId = (url) => {
-    return new Promise((resolve) => {
-      return resolve(axios.get(url));
-    });
-  };
-  const getAsset = (url) => {
-    return getAssetByAddressAndId(url);
-  };
+  const getURLPromise = (i) =>{
+    return new Promise ((resolve) =>{
+      return resolve(blockchain.akachiNFT.methods._tokenURI(i).call())
+    })
+  }
+  const getNFTs = (url) =>{
+    return getNFTPromise(url)
+  }
+
+  const getNFTPromise = (url) =>{
+    return new Promise ((resolve) => {
+      return resolve(
+        axios.get(url)
+      )
+    })
+  }
 
   const getPriceResolve = (address, id) => {
     return new Promise((resolve) => {
@@ -50,47 +65,72 @@ function LiveAuctoion() {
   };
 
   const getData = async () => {
-    const length = data.auctionAddress.length;
-    let tempItems = items;
-    let tempPrices = prices;
-    for (let i = 0; i < length; i++) {
-      const url =
-        "https://testnets-api.opensea.io/api/v1/assets?asset_contract_address=" +
-        data.auctionAddress[i] +
-        "&token_ids=" +
-        data.auctionId[i] +
-        "&offset=0&limit=200";
-      let nft = await getAsset(url);
-      let price = await getPrice(data.auctionAddress[i], data.auctionId[i]);
-      tempPrices.push(
-        blockchain.web3.utils.fromWei(price.buyNowPrice, "ether")
-      );
-      console.log(nft);
-      tempItems.push(nft.data.assets[0]);
+    setLoading(true);
+    try {
+      const length = data.auctionAddress.length;
+      let tempItems = [];
+      let tempPrices = [];
+      for (let i = 0; i < length; i++) {
+        const url = await getURL(data.auctionId[i])
+        const result = await getNFTs(url.split("https://gateway.pinata.cloud/ipfs/")[1])
+        let price = await getPrice(data.auctionAddress[i], data.auctionId[i]);
+        tempPrices.push(
+          blockchain.web3.utils.fromWei(price.buyNowPrice, "ether")
+        );
+        tempItems.push({ 
+          "image": result.data.image,
+          "title": result.data.name,
+          "contract": process.env.REACT_APP_AKACHI_NFT_CONTRACT,
+          "tokenId": data.auctionId[i],
+          "akachiNFT": "true"
+        });
+        console.log("---", tempItems);
+      }
+      setPrices(tempPrices);
+      setItems(tempItems);
+      setFlag(!flag);
+      setLoading(false);
+    } catch (err) {
+      console.log(err)
+      setError(true);
+      setLoading(false);
     }
-    setPrices(tempPrices);
-    setItems(tempItems);
-    setFlag(!flag);
   };
 
   useEffect(() => {
-    getData();
-  }, [data.auctionAddress]);// eslint-disable-line react-hooks/exhaustive-deps
+    if (firstLoad) {
+      if (blockchain.account !== null) {
+        getData()
+      }
+      setFirstLoad(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [firstLoad]);
+  
+  const onReload = () =>{
+    document.location.reload(true);
+  }
+  
   return (
     <div className="liveAuction-layout">
       <div className="liveAuction-layout-header">
-        <Container style={{ marginTop: "50px" }}>
+        <Container className="liveAuction-layout-container">
           <Row>
             <Col lg="8">
-              <h1 className="liveAuction-layout-title-white">Discorver, find,</h1>
+              <h1 className="liveAuction-layout-title-white">
+                Discorver, find,
+              </h1>
               <h1 className="liveAuction-layout-title-violet">
-              Future Forward Financial Fathers
+                Future Forward Financial Fathers
               </h1>
               <h1 className="liveAuction-layout-title-white">Monster NFTs</h1>
               <p className="liveAuction-layout-text">
                 This blockchain is your legacy.
               </p>
-              <button className="liveAuction-button1-layout" onClick={() => onExplore()}>
+              <button
+                className="liveAuction-button1-layout"
+                onClick={() => onExplore()}
+              >
                 <span className="button1-title">
                   Explore
                   <img alt="" src={RocketImg} className="button1-img" />
@@ -98,20 +138,16 @@ function LiveAuctoion() {
               </button>
             </Col>
             <Col lg="4">
-              <img src={ItemImg} alt=""/>
+              <img src={ItemImg} alt="" className="liveAuction-item-image" />
             </Col>
           </Row>
-          
         </Container>
       </div>
-      <Container>
+      <Container className="liveAuction-title-container">
         <Row>
           <Col lg="6" style={{ textAlign: "left" }}>
             <h2 className="liveAuction-title">Live Auction</h2>
           </Col>
-          {/* <Col lg="6" style={{ textAlign: "right", margin: "auto" }}>
-            <p className="liveAuction-text">Explore More</p>
-          </Col> */}
         </Row>
         <br />
         <Row>
@@ -119,60 +155,50 @@ function LiveAuctoion() {
             <h2 className="liveAuction-title">
               You have to connect your wallet to check live auction.
             </h2>
+          ) : loading ? (
+            <div className="auctionComp-loading">
+              <ReactLoading type="bars" color="#fff" />
+            </div>
           ) : (
-            <Row>
+            <div>
+              <h2 className="liveAuction-description">
+                All auctions offer a fair opportunity to all would-be bids. Collectors can know that their investment will be protected if the reserve price fulfills.
+              </h2>
+              <Row>
               {items.map(
                 (item, index) => (
                   <Col lg="3" key={index}>
                     <AuctionItem
-                      title={item.name}
+                      title={item.title}
                       net={item.net}
-                      owner={
-                        item.owner.address.length > 18
-                          ? item.owner.address.substring(0, 12) + "..."
-                          : item.owner.address
-                      }
-                      ownerAddress = {item.owner.address}
-                      image={item.image_url}
+                      // owner={item.owner}
+                      image={item.image}
                       price={prices[index]}
-                      tokenId= {item.token_id} 
-                      contract = {item.asset_contract.address}
+                      // ownerAddress = {item.owner.address}
+                      tokenId={item.tokenId}
+                      contract={item.contract}
                     />
                   </Col>
                 )
                 // }
               )}
             </Row>
+            </div>
+            
           )}
         </Row>
       </Container>
-      {/* <Explore3Comp /> */}
-      {/* <Container>
-        <Row>
-          <Col lg="6" style={{ textAlign: "left" }}>
-            <h2 className="liveAuction-title">Today's Picks</h2>
-          </Col>
-          <Col lg="6" style={{ textAlign: "right", margin: "auto" }}>
-            <p className="liveAuction-text">Explore More</p>
-          </Col>
-        </Row>
-        
-        <Row>
-            {this.state.data.map((item, index) => (
-              <Col lg="3" key={index}>
-                <Explore1Item
-                  title={item.title}
-                  net={item.net}
-                  owner={item.owner}
-                  price={item.price}
-                  priceItem={item.priceItem}
-                  bidding={item.bidding}
-                />
-              </Col>
-            ))}
-          </Row>
-        <Button2 title="Load More" />
-      </Container> */}
+      <Modal show={error} backdrop="static" keyboard={false}>
+          <Modal.Header closeButton>
+            <Modal.Title>Error!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Something is not working well, please refresh the page and reconnect your wallet.
+          </Modal.Body>
+          <Modal.Footer>
+          <Button variant="primary" onClick = {() => onReload()}>Understood</Button>
+        </Modal.Footer>
+        </Modal>
     </div>
   );
 }

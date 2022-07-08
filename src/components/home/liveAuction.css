@@ -6,13 +6,18 @@
 }
 
 .liveAuction-layout .liveAuction-layout-header{
-    /* background-image: url("../../assets/bg.png");
-    background-repeat: no-repeat;
-    background-size: cover;*/
-    height: 700px; 
+    /* height: 700px;  */
     text-align: left;
 }
+.liveAuction-layout .liveAuction-layout-header .liveAuction-layout-container{
+    margin-top:2em;
+    padding-bottom: 2em;
+    border-bottom: 1px solid #4D7153;
+}
 
+.liveAuction-layout .liveAuction-title-container{
+    margin-top: 2em;
+}
 .liveAuction-layout .liveAuction-layout-header .liveAuction-button1-layout{
     background: linear-gradient(180deg, #79C652 0%, #325F50 100%);
     border-radius: 25.5px;
@@ -79,6 +84,10 @@
     line-height: 22px;
     color: #4D7153;
 }
+
+.liveAuction-layout .liveAuction-layout-header .liveAuction-item-image{
+    width: 100%
+}
 .liveAuction-layout .liveAuction-title{
     font-family: 'Lexend Deca';
     font-style: normal;
@@ -91,6 +100,15 @@
     color: #FFFFFF;
 }
 
+.liveAuction-layout .liveAuction-description{
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: left;
+    color: #FFFFFF;
+}
 .liveAuction-layout .liveAuction-text{
     font-size: 14px;
     line-height:20px;
