@@ -23,3 +23,8 @@
     /* other formats include: 'woff2', 'truetype, 'opentype',
                               'embedded-opentype', and 'svg' */
   }
+
+  @font-face {
+    font-family:"Lexend Deca";
+    src : url(./assets/font/Lexend_Deca/LexendDeca-VariableFont_wght.ttf)
+  }

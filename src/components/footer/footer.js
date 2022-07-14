@@ -45,7 +45,7 @@ function Footer () {
           </div>
           <Row>
             <p className="footer-sectiion1-text">
-              <span className="footer-sectiion1-span">CATENA</span> is a connection from the past to the present to the future
+              <span className="footer-sectiion1-span">CATENA</span> is a connection from the past to the present to the future.
             </p>
           </Row>
         </section>

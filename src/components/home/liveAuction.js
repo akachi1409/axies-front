@@ -12,8 +12,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ReactLoading from "react-loading";
 import { Modal, Button } from "react-bootstrap"
-import RocketImg from "../../assets/header/arrow1.png";
-import ItemImg from "../../assets/item.png";
+// import RocketImg from "../../assets/header/arrow1.png";
+// import ItemImg from "../../assets/item.png";
+import CatenImg from "../../assets/caten.png";
+import FatherSonImg from "../../assets/fatherson.png"
+// import AuctionBorderImg from "../../assets/auctionBorder.png"
 
 function LiveAuctoion() {
   const navigate = useNavigate();
@@ -121,24 +124,25 @@ function LiveAuctoion() {
                 Discorver, find,
               </h1> */}
               <h1 className="liveAuction-layout-text">
-                Future Forward Financial Fathers
+              Your Legacy on the Blockchain
+              <img src={CatenImg} alt= "" className="liveAuction-layout-caten"/>
               </h1>
               {/* <h1 className="liveAuction-layout-title-white">Monster NFTs</h1> */}
               <p className="liveAuction-layout-title-violet">
-                This blockchain is your legacy.
+              Future Forward <br/> Financial Fathers
               </p>
               <button
                 className="liveAuction-button1-layout"
                 onClick={() => onExplore()}
               >
                 <span className="button1-title">
-                  Explore
-                  <img alt="" src={RocketImg} className="button1-img" />
+                  Explore Now
+                  {/* <img alt="" src={RocketImg} className="button1-img" /> */}
                 </span>
               </button>
             </Col>
             <Col lg="4">
-              <img src={ItemImg} alt="" className="liveAuction-item-image" />
+              <img src={FatherSonImg} alt="" className="liveAuction-item-image" />
             </Col>
           </Row>
         </Container>
@@ -146,7 +150,8 @@ function LiveAuctoion() {
       <Container className="liveAuction-title-container">
         <div className="liveAuction-bar-layout">
             <h2 className="liveAuction-title">Live Auction</h2>
-            <div className="bottomBar"></div>
+            <p className="liveAuction-title-text">All auctions offer a fair opportunity to all would-be bids. Collectors can <br/>know that their investment will be protected if the reserve price fulfills.</p>
+            {/* <div className="bottomBar"></div> */}
         </div>
         <br />
         <Row>
