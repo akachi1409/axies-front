@@ -1,4 +1,4 @@
-.App {
+/* .App {
   max-width: 1280px;
   margin: auto;
   background-color: transparent;
@@ -16,7 +16,6 @@
 }
 
 .App-header {
-  /* background-color: #282c34; */
   background-color: transparent;
   min-height: 100vh;
   display: flex;
@@ -29,7 +28,7 @@
 
 .App-link {
   color: #61dafb;
-}
+} */
 
 .row{
   --bs-gutter-x: none!important;

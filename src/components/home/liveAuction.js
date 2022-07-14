@@ -117,14 +117,14 @@ function LiveAuctoion() {
         <Container className="liveAuction-layout-container">
           <Row>
             <Col lg="8">
-              <h1 className="liveAuction-layout-title-white">
+              {/* <h1 className="liveAuction-layout-title-white">
                 Discorver, find,
-              </h1>
-              <h1 className="liveAuction-layout-title-violet">
+              </h1> */}
+              <h1 className="liveAuction-layout-text">
                 Future Forward Financial Fathers
               </h1>
-              <h1 className="liveAuction-layout-title-white">Monster NFTs</h1>
-              <p className="liveAuction-layout-text">
+              {/* <h1 className="liveAuction-layout-title-white">Monster NFTs</h1> */}
+              <p className="liveAuction-layout-title-violet">
                 This blockchain is your legacy.
               </p>
               <button

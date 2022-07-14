@@ -63,7 +63,8 @@
 }
 
 .liveAuction-layout .liveAuction-layout-header .liveAuction-layout-title-violet{
-    font-family: 'Lexend Deca';
+    /* font-family: 'Lexend Deca'; */
+    font-family: 'BenchNine';
     font-style: normal;
     font-weight: 600;
     font-size: 65px;
@@ -77,7 +78,7 @@
 }
 
 .liveAuction-layout .liveAuction-layout-header .liveAuction-layout-text{
-    font-family: 'Lexend Deca';
+    font-family: 'BenchNine';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
