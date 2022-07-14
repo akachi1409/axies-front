@@ -62,6 +62,7 @@ function BidItem(props) {
         setData({ 
           "image": data.image,
           "title": data.name,
+          "description":data.description,
           "contract": process.env.REACT_APP_AKACHI_NFT_CONTRACT,
           "tokenId": props.id,
           "akachiNFT": "true"
@@ -123,6 +124,7 @@ function BidItem(props) {
               title={data.title}
               image={data.image}
               net="BSC"
+              description={data.description}
               // owner={owner}
               // price="Current Bid"
               // priceItem="4.89ETH"
@@ -144,13 +146,13 @@ function BidItem(props) {
                 </button>
               </Col>
             </Row>
-            <h2 className="bidItem-title">Min Price</h2>
-            <Input1
+            {/* <h2 className="bidItem-title">Min Price</h2> */}
+            {/* <Input1
               margin="1em"
               text="Enter minimum price for one item (AkachiToken)"
               value={minPrice}
               onChange={(e) => setMinPrice(e.target.value)}
-            />
+            /> */}
             {/* <h2 className="bidItem-title">Buy Now</h2>
             <Input1 margin="1em" text="Enter buy now price for one item (AkachiToken)" value = {buyNow} onChange = {(e)=>setBuyNow(e.target.value)}/> */}
             {/* <div style={{ display: "flex", flexDirection: "row-reverse" }}>

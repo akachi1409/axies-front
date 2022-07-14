@@ -43,7 +43,7 @@ function Explore1Item(props) {
         </div>
       </Row>
 
-      <Row style={{ marginTop: "1em", alignItems: "center" }}>
+      <Row style={{ marginTop: "1em", alignItems: "left" }}>
         {/* <Col lg="9"> */}
         <h1 className="explore1Item-title">{props.title}</h1>
         {/* </Col> */}
@@ -51,7 +51,11 @@ function Explore1Item(props) {
           <div className="explore1Item-net">{props.net}</div>
         </Col> */}
       </Row>
-
+      <Row>
+        <p className="explore1Item-text">
+          {props.description}
+        </p>
+      </Row>
       {/* <Row style={{ marginTop: "1em", alignItems: "center" }}>
         <Col lg="2">
           <img src={UserImg} alt="" />

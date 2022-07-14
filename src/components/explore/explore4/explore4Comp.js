@@ -57,6 +57,7 @@ function Explore4Comp(){
           temp.push({
             "image": data.image,
             "title": data.name,
+            "description": data.description,
             "contract": process.env.REACT_APP_AKACHI_NFT_CONTRACT,
             "tokenId": i,
             "akachiNFT": "true"
@@ -83,6 +84,7 @@ function Explore4Comp(){
                 <Explore1Item
                   title={item.title}
                   image={item.image}
+                  description={item.description}
                   net="BSC"
                   // owner={owner}
                   // price="Current Bid"

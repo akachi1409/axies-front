@@ -41,7 +41,7 @@ class HelpComp extends React.Component {
         },
         {
             title: "Developers",
-            text: "Learn how you can develop with OpenSea",
+            text: "Learn how you can develop with OpenSea Platoform",
             img: DeveloperImg
         }
       ],

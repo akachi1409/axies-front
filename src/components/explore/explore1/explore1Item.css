@@ -43,7 +43,15 @@
     line-height: 24px;
     color: white;
 }
+.explore1Item-layout .explore1Item-text{
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
 
+    color: rgba(255, 255, 255, 0.46);
+}
 .explore1Item-layout .explore1Item-net{
     border-radius: 10px;
     color: white;
