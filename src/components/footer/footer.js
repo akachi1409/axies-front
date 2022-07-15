@@ -11,44 +11,48 @@ function Footer () {
 
   return (
     <div className="footer-container">
-      <Container>
-        <section className="footer-section1">
-          <div className="footer-section1-layout">
-            {/* <div className="footer-sectiion-icon">
-              <img
-                alt=""
-                src={Facebook}
-                className="footer-sectiion-icon-round"
-              />
-            </div> */}
-            <a className="footer-sectiion-icon" href="https://twitter.com/welcomecatena">
-              <img
-                alt=""
-                src={Twitter}
-                className="footer-sectiion-icon-round"
-              />
-            </a>
-            <a className="footer-sectiion-icon" href="https://community.catena.one/">
-              <img
-                alt=""
-                src={Twitch}
-                className="footer-sectiion-icon-round"
-              />
-            </a>
-            <a className="footer-sectiion-icon" href="http://bit.ly/metacommunity">
-              <img
-                alt=""
-                src={Discord}
-                className="footer-sectiion-icon-round"
-              />
-            </a>
-          </div>
-          <Row>
-            <p className="footer-sectiion1-text">
-              <span className="footer-sectiion1-span">CATENA</span> is a connection from the past to the present to the future.
-            </p>
-          </Row>
-        </section>
+      <div className="footer-top">
+        <Container>
+          <section className="footer-section1">
+            <div className="footer-section1-layout">
+              {/* <div className="footer-sectiion-icon">
+                <img
+                  alt=""
+                  src={Facebook}
+                  className="footer-sectiion-icon-round"
+                />
+              </div> */}
+              <a className="footer-sectiion-icon" href="https://twitter.com/welcomecatena">
+                <img
+                  alt=""
+                  src={Twitter}
+                  className="footer-sectiion-icon-round"
+                />
+              </a>
+              <a className="footer-sectiion-icon" href="https://community.catena.one/">
+                <img
+                  alt=""
+                  src={Twitch}
+                  className="footer-sectiion-icon-round"
+                />
+              </a>
+              <a className="footer-sectiion-icon" href="http://bit.ly/metacommunity">
+                <img
+                  alt=""
+                  src={Discord}
+                  className="footer-sectiion-icon-round"
+                />
+              </a>
+            </div>
+            <Row>
+              <p className="footer-sectiion1-text">
+                <span className="footer-sectiion1-span">CATENA</span> is a connection from the past to the present to the future.
+              </p>
+            </Row>
+          </section>
+        </Container>
+      </div>
+      <div className="footer-bottom">
         <section className="footer-copyright">
           <Row>
             <p className="footer-copyright-text">
@@ -56,7 +60,7 @@ function Footer () {
             </p>
           </Row>
         </section>
-      </Container>
+      </div>
     </div>
   );
 }
