@@ -1,19 +1,26 @@
 .footer-container{
-    background-color: black;
     position: relative;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding: 0;
 }
 .footer-container .footer-section1{
     width: 100%;
     display: flex;
     flex-direction: column;
 }
+.footer-top {
+    background: #020502;
+    padding-bottom: 2em;
+}
 
+.footer-bottom {
+    background:black;
+}
 .footer-container .footer-section1 .footer-section1-layout{
     display: flex;
     flex-direction: row;
     margin: auto;
+    padding-top: 2em;
+    padding-bottom: 1em;
 }
 .footer-container .footer-section1 .footer-sectiion1-text{
     font-family: 'Lexend Deca';

@@ -11,17 +11,19 @@
 }
 .liveAuction-layout .liveAuction-layout-header .liveAuction-layout-container{
     margin-top:2em;
-    padding-bottom: 2em;
-    border-bottom: 1px solid #4D7153;
+    padding: 1em 2em 2em 2em;
+    margin-bottom: 4em;
 }
 
 .liveAuction-layout .liveAuction-title-container{
     margin-top: 2em;
+    margin-bottom: 6em;
 }
 .liveAuction-layout .liveAuction-layout-header .liveAuction-button1-layout{
     /* background: linear-gradient(180deg, #79C652 0%, #325F50 100%); */
     /* border-radius: 25.5px; */
     width: fit-content;
+    border: 0;
     padding: 1em 2em;
     background: #59D667;
 }
@@ -68,13 +70,15 @@
 
 .liveAuction-layout .liveAuction-layout-header .liveAuction-layout-title-violet{
     /* font-family: 'Lexend Deca'; */
-    font-family: 'BenchNine';
+    font-family: 'Lexend Deca' sans-serif;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 75px;
     line-height: 94px;
-
     color: #ACFFB5;
+}
+.explore-box {
+    margin-top: 60px;
 }
 
 .liveAuction-layout .liveAuction-layout-header .liveAuction-layout-text{
@@ -97,21 +101,34 @@
     outline-style: solid; */
     box-shadow:
     14px -8px 0 -1px #163419,
-    14px -9px 0 0px #59D667
+    14px -9px 0 0px #59D667;
 }
 .liveAuction-layout .liveAuction-title{
-    font-family: 'Lexend Deca';
+    font-family: sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 30px;
     line-height: 38px;
-    -webkit-text-stroke: 0.1px  #6FF67E;
+    -webkit-text-stroke: initial;
+    -webkit-text-stroke: 1px  #6FF67E;
     text-align: left;
     color: transparent;
     width: fit-content;
-    border-bottom: 4px solid #68AE51;
+    border-bottom: 4px solid #6FF67E;
+    position: relative;
 }
 
+.check-liveAuction {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 38px;
+    text-align: left;
+    color: #6FF67E;
+    width: fit-content;
+    position: relative;
+}
 .liveAuction-layout .liveAuction-title-text{
     font-family: 'Lexend Deca';
     font-style: normal;
@@ -143,8 +160,8 @@
 .liveAuction-layout .liveAuction-title-container .liveAuction-bar-layout{
     display: flex;
     flex-direction: row;
-    border-image: url('../../assets/auctionBorder.png') 27;
-    border-width: 5px;
-    border-style: solid;
-    padding: 2em 1em
+    background-image: url('../../assets/auctionBorder.png');
+    background-size: contain;
+    padding: 2em 5em;
+    margin-bottom: 2em;
 }

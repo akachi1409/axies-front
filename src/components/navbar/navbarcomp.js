@@ -22,7 +22,7 @@ function NavbarComp() {
             <div className="navbar-brand-layout">
               <Navbar.Brand onClick = {()=> onNav("/")}>
                 <img src={NavImg} alt="" />
-                <img src={CatinaImg} alt=""/>
+                <img src={CatinaImg} alt="" className="catena-logo"/>
               </Navbar.Brand>
             </div>
             <div className="navbar-left-container">
@@ -39,9 +39,9 @@ function NavbarComp() {
               <Nav>
               {blockchain.account === null  ? (
                 <Nav.Item className="nav-wallet-layout">
-                  <Nav.Link className="nav-wallet" onClick = {()=>onNav("/connect_wallet")}>
+                  <div className="nav-wallet" onClick = {()=>onNav("/connect_wallet")}>
                     Connect Wallet
-                  </Nav.Link>
+                  </div>
                 </Nav.Item>
               ):(
                 <NavDropdown title="Profile">
