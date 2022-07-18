@@ -10,9 +10,10 @@ import MyNFTItem from "./mynftItem.js"
 import PlaceholderImg from "../../../assets/activity2/placeholder.png"
 function Mynft() {
   const [firstLoad, setFirstLoad] = useState(true);
-  const [data, setData] = useState([]);
+  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const blockchain = useSelector((state) => state.blockchain);
+  const data = useSelector((state) => state.data);
   let navigate = useNavigate();
 
   const getURL = (i) =>{
@@ -42,29 +43,6 @@ function Mynft() {
         navigate("/");
       }
       const temp = [];
-      // const url =
-      //   "https://testnets-api.opensea.io/api/v1/assets?owner=" +
-      //   blockchain.account +
-      //   "&offset=0&limit=200";
-      // axios.get(url).then((res) => {
-      //   res.data.assets.map((item, index) => {
-      //     if (
-      //       item.asset_contract.address === process.env.REACT_APP_AKACHI_NFT_CONTRACT
-      //     ) {
-      //       console.log(item);
-      //     } else {
-      //       temp.push({
-      //         "image": item.image_url,
-      //         "title": item.name,
-      //         "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
-      //         "contract": item.asset_contract.address,
-      //         "tokenId": item.token_id,
-      //         "akachiNFT": "false"
-      //       });
-      //     }
-      //     return <></>;
-      //   });
-      // });
       var indexes;
       try{
         indexes = await blockchain.akachiNFT.methods
@@ -80,26 +58,36 @@ function Mynft() {
           const url = await getURL(i+1)
           const result = await getNFTs(url.split("https://gateway.pinata.cloud/ipfs/")[1])
           console.log("result:", result.data, );
-          var data = result.data;
+          var resultData = result.data;
           // var data = JSON.parse(result.data)
-          console.log(data)
+          console.log(resultData)
           var nowTime = new Date();
           var createTime ;
-          if (data.createTime === undefined){
+          if (resultData.createTime === undefined){
             createTime = 0;
           }else{
-            createTime = new Date(data.createTime).getTime()
+            createTime = new Date(resultData.createTime).getTime()
           } 
           var diff = (nowTime.getTime() -createTime)/1000;
-          var secondDiff = diff - data.time * 3600
-          if (data.time === 0 || secondDiff>0){
+          var secondDiff = diff - resultData.time * 3600
+
+          const length = data.auctionAddress.length;
+          var navable= true;
+          for (let j = 0; j < length; j++) {
+            console.log("00", typeof i,  typeof data.auctionId[j])
+            if (parseInt(data.auctionId[j]) === ( i + 1)){
+              navable = false;
+            }
+          }
+          if (resultData.time === 0 || secondDiff>0){
             temp.push({ 
-              "image": data.image,
-              "title": data.name,
+              "image": resultData.image,
+              "title": resultData.name,
               "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
               "contract": process.env.REACT_APP_AKACHI_NFT_CONTRACT,
               "tokenId": i+1,
-              "akachiNFT": true
+              "akachiNFT": true,
+              "navable": navable,
             })
           }
           else{
@@ -109,13 +97,14 @@ function Mynft() {
               "owner": blockchain.account.length > 12 ? blockchain.account.substring(0, 12) + "..." : blockchain.account, 
               "contract": process.env.REACT_APP_AKACHI_NFT_CONTRACT,
               "tokenId": "TBD",
-              "akachiNFT": true
+              "akachiNFT": true,
+              "navable": navable,
             })
 
           }
         }
       }
-      setData(temp);
+      setItems(temp);
       setFirstLoad(false);
       setLoading(false);
       console.log(temp);
@@ -135,7 +124,7 @@ function Mynft() {
           <p className="mynft-text">{blockchain.account}</p>
         </div>
         <Row>
-          {data.length === 0 &&  !loading &&(
+          {items.length === 0 &&  !loading &&(
             <p className="mynft-empty">You have NO NFT at all.</p>
           )}
           {loading && (
@@ -144,7 +133,7 @@ function Mynft() {
             </div>
             
           )}
-          {data.map((item, index) => {
+          {items.map((item, index) => {
             return (
               <Col xl="3" lg="4" sm="6" key={index}>
                 <MyNFTItem
@@ -154,7 +143,7 @@ function Mynft() {
                   owner={item.owner}
                   contract={item.contract}
                   tokenId={item.tokenId}
-                  navable={true}
+                  navable={item.navable}
                   akachiNFT = {item.akachiNFT}
                   // price={price}
                   // priceItem = {item.priceItem}
