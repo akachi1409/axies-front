@@ -38,14 +38,14 @@
 }
 .footer-container .footer-section1  .footer-sectiion-icon{
     background-color: transparent;
-    height:40px;
-    width: 40px;
+    /* height:60px; */
+    /* width: 60px; */
     margin-right: 2em;
     border-radius: 10%;
     cursor: pointer;
 }
 .footer-container .footer-section1  .footer-sectiion-icon .footer-sectiion-icon-round{
-    height: 30px;
+    height: 60px;
     margin: 5px;
 }
 

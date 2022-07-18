@@ -3,7 +3,8 @@
     background-color: transparent;
     text-align: center;
     padding: 1em;
-    margin: 1em;
+    margin-left: 10em;
+    margin-right: 10em;
     cursor: pointer;
 
     background: rgba(255, 255, 255, 0.07);
@@ -22,7 +23,8 @@
 }
 
 .walletItem-layout .walletItem-text{
-    color: #EBEBEB;
-    font-size: 13px;
+    color: white;
+    font-size: 16px;
     line-height:20px;
+    margin-top: 1em;
 }

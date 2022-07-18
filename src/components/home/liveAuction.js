@@ -14,7 +14,7 @@ import ReactLoading from "react-loading";
 import { Modal, Button } from "react-bootstrap"
 // import RocketImg from "../../assets/header/arrow1.png";
 // import ItemImg from "../../assets/item.png";
-import CatenImg from "../../assets/caten.png";
+import CatenImg from "../../assets/rocket.svg";
 import FatherSonImg from "../../assets/fatherson.png"
 // import AuctionBorderImg from "../../assets/auctionBorder.png"
 
@@ -160,7 +160,7 @@ function LiveAuctoion() {
         <Row> 
           {blockchain.account === null ? (
             <h2 className="check-liveAuction">
-              - You have to connect your wallet to check live auction -
+              ! You have to connect your wallet to check live auction 
             </h2>
           ) : loading ? (
             <div className="auctionComp-loading">
