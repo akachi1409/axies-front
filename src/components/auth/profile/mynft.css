@@ -27,9 +27,10 @@
 }
 
 .mynft-layout .mynft-empty{
-    font-size: 22px;
+    font-size: 25px;
     line-height: 32px;
-    color: red;
+    color: white;
+    margin-bottom: 195px;
 }
 
 .mynft-layout .mynft-loading{
