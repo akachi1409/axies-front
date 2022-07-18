@@ -12,7 +12,7 @@
 .liveAuction-layout .liveAuction-layout-header .liveAuction-layout-container{
     margin-top:2em;
     padding: 1em 2em 2em 2em;
-    margin-bottom: 4em;
+    margin-bottom: 3em;
 }
 
 .liveAuction-layout .liveAuction-title-container{
@@ -25,8 +25,12 @@
     width: fit-content;
     border: 0;
     padding: 1em 2em;
-    background: #59D667;
+    background: #6FF67E;
+    font-weight: 600;
 }
+
+
+
 .liveAuction-layout .liveAuction-layout-header .button2-layout{
     border-radius: 30px;
     border-color: #5142FC;
@@ -75,23 +79,24 @@
     font-weight: 700;
     font-size: 75px;
     line-height: 94px;
-    color: #ACFFB5;
+    color: #6FF67E;
 }
 .explore-box {
     margin-top: 60px;
 }
 
 .liveAuction-layout .liveAuction-layout-header .liveAuction-layout-text{
-    font-family: 'BenchNine';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 25px;
-    color: #CDCDCD;
+    color: white;
+    margin-left: 5px;
 }
 
 .liveAuction-layout .liveAuction-layout-header .liveAuction-layout-text .liveAuction-layout-caten{
     margin-left: 1em;
+    margin-bottom: 2em;
 }
 
 .liveAuction-layout .liveAuction-layout-header .liveAuction-item-image{
@@ -125,7 +130,7 @@
     font-size: 25px;
     line-height: 38px;
     text-align: left;
-    color: #6FF67E;
+    color: white;
     width: fit-content;
     position: relative;
 }

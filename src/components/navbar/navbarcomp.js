@@ -3,8 +3,11 @@ import { Nav, Navbar, NavDropdown, Container } from "react-bootstrap";
 
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import NavImg from "../../assets/navbar/navbar-1.png";
-import CatinaImg from "../../assets/navbar/catina.png"
+// import NavImg from "../../assets/navbar/navbar-1.png";
+import NavImg from "../../assets/navbar/catena.svg"
+// import CatinaImg from "../../assets/navbar/catina.png"
+import CatinaImg from "../../assets/navbar/catena-text.svg"
+
 import "./navbarcomp.css";
 
 function NavbarComp() {

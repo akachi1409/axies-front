@@ -3,11 +3,13 @@
     text-align: center;
     padding-top: 2em;
     padding-bottom: 2em;
+    margin-bottom: 45px;
 }
 .walletComp-layout .walletComp-title-layout{
     display:flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 3em;
 }
 .walletComp-layout .walletComp-title{
     font-size: 36px;

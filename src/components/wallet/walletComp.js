@@ -44,13 +44,8 @@ function WalletComp() {
         {blockchain.account === null ? (
           <div>
             <div className="walletComp-title-layout">
-              <h2 className="walletComp-title">Connect Wallet</h2>
-              <div className="bottomBar"></div>
-              <p className="walletComp-text">
-                Connect your Metamask wallet!
-              </p>
+              <h2 className="walletComp-title">Connect MetaMask</h2>
             </div>
-            
             <Row>
               
             </Row>
