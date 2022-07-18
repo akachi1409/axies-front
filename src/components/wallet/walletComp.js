@@ -66,7 +66,7 @@ function WalletComp() {
             <h2 className="walletComp-title">
               {blockchain.wallet} is connected.
             </h2>
-            <p className="walletComp-text">{blockchain.account}</p>
+            <p className="walletComp-text-next">{blockchain.account}</p>
           </Row>
         )}
         <Modal show={data.loading} backdrop="static" keyboard={false}>

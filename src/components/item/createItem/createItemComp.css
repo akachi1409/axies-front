@@ -15,12 +15,32 @@
 }
 
 .createItemComp-layout .createItemComp-title{
-    font-weight: bold;
     font-size: 1.5em;
     line-height: 26px;
     color: white;
     text-align: left;
+    margin-left: 20px;
+    margin-top: 1em;
     
+}
+
+.preview-image-box {
+    width: 270px;
+    height: 270px;
+    margin-top: 3em;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: white;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+
+}
+.preview-title {
+    font-size: 1.5em;
+    line-height: 26px;
+    color: white;
+    text-align: left;
 }
 
 .createItemComp-layout  .createItemComp-file-layout{
@@ -36,7 +56,6 @@
     right: 0px;
     left: 0px;
     position: absolute;
-    border-radius: .25rem!important;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
     opacity: 0;
     height: 100%;
@@ -51,8 +70,8 @@
     background: transparent;
     border: 0.2px solid rgba(255, 255, 255, 0.41);
     box-shadow: 0px 21px 20px rgba(0, 0, 0, 0.23);
-    border-radius: 10px;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .createItemComp-layout  .createItemComp-file-layout .createItemComp-file-div .createItemComp-svg-div{
@@ -98,10 +117,9 @@
     padding-bottom: 0.5rem!important;
     padding-top: 0.5rem!important;
     margin: auto;
-    background: linear-gradient(180deg, #79C652 0%, #325F50 100%);
-    border-radius: 25.5px;
-    color: white;
-    border-color: white;
+    background: transparent;
+    color: #6FF67E;
+    border-color: #6FF67E;
     border-width: 1px;
     margin-bottom: 1em;
 }
@@ -116,8 +134,8 @@
 }
 
 .createItemComp-layout .selected{
-    background: linear-gradient(180deg, #79C652 0%, #325F50 100%);
-    border-radius: 25.5px;
+    background: transparent !important;
+    /* border-radius: 25.5px; */
 }
 
 .createItemComp-layout .createItemComp-method .button-img{
@@ -126,7 +144,6 @@
 
 .createItemComp-layout .blogDetails-input1{
     background-color: transparent;
-    border-radius: 5px 0% 0% 5px;
     border-color: #A1A9BA;
     padding:10px;
     width: 100%;
@@ -155,36 +172,62 @@
 }
 
 .createItemComp-layout .createItemComp-create-btn{
-    padding: 1em 2m 1em 2em;
-    background: linear-gradient(180deg, #79C652 0%, #325F50 100%);
-    border-radius: 25.5px;
-    color: white;
-    border-color: white;
-    border-width: 1px;
+    padding: 0.5em 2em 0.5em 2em;
+    background: #6FF67E;
+    color: black;
+    font-weight: 500;
+    border: 0;
+    margin-top: 1em;
+
 }
 
 .createItemComp-layout .createItemComp-image{
     border-radius: 10px;
     width: 260px;
     height: 260px;
+    margin-top: 3em;
 }
 
+.preview-image-box .preview-image1 {
+    width: 130px;
+    height: 130px;
+}
 .createItemComp-layout .createAuction-method{
     background-color: transparent;
-    color: #EBEBEB;
+    color: #ebebeb70;
     width: 100%;
     height: 46px;
     margin: 1em;
-    border: 0.5px solid #FFFFFF;
-    border-radius: 25.5px;
+    border: 0;
+    border-width: 0 0 3px 0;
+    border-color: #ebebeb70;
+    border-style: solid;
+    text-align: left;
+    font-size: 22px ;
+    font-weight: 500;
 }
+
+.createAuction-method-selected{
+    background-color: transparent;
+    color: #6FF67E;
+    width: 100%;
+    height: 46px;
+    margin: 1em;
+    border: 0;
+    border-width: 0 0 3px 0;
+    border-color: #6FF67E;
+    border-style: solid;
+    text-align: left;
+    cursor: none;
+    font-size: 22px ;
+    font-weight: 500;
+} 
 
 .createItemComp-layout .createAuction-method .button-img{
     margin-right: 1em;
 }
 
-.createItemComp-layout .selected{
-    color: #5142FC;
-    background-color: white;
-    cursor: none
+
+.createItemComp-border-layout {
+    margin-bottom: 2em;
 }
