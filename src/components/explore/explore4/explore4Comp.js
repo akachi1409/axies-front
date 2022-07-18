@@ -45,6 +45,7 @@ function Explore4Comp(){
       if (firstLoad) {
         if (blockchain.account === null) {
           navigate("/");
+          return;
         }
         const totalCount = await blockchain.akachiNFT.methods.getTokenCount().call();
         console.log("---totalCount: " + totalCount)

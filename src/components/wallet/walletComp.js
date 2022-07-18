@@ -70,7 +70,7 @@ function WalletComp() {
           </Row>
         )}
         <Modal show={data.loading} backdrop="static" keyboard={false}>
-          <Modal.Header closeButton>
+          <Modal.Header>
             <Modal.Title>Wait a min, please!</Modal.Title>
           </Modal.Header>
           <Modal.Body>

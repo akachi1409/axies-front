@@ -35,7 +35,7 @@ function NavbarComp() {
                 <Nav.Link onClick = {()=> onNav("/create_item")}>Create Item</Nav.Link>
                 <Nav.Link onClick = {()=> onNav("/auction")}>Auctions</Nav.Link>
                 {/* <Nav.Link href="/blog">Blog</Nav.Link> */}
-                <Nav.Link href="/help">Help</Nav.Link>
+                <Nav.Link onClick = {()=> onNav("/help")}>Help</Nav.Link>
               </Nav>
             </div>
             <div className="navbar-wallet-container">
@@ -51,7 +51,7 @@ function NavbarComp() {
                   <NavDropdown.Item onClick={()=> onNav("/mynft")}>
                     My NFT
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="/profile">My profile</NavDropdown.Item>
+                  {/* <NavDropdown.Item href="/profile">My profile</NavDropdown.Item> */}
                   {/* <NavDropdown.Item href="/activity2">Activity2</NavDropdown.Item> */}
                 </NavDropdown>
               )

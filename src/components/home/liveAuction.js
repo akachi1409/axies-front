@@ -168,9 +168,9 @@ function LiveAuctoion() {
             </div>
           ) : (
             <div>
-              <h2 className="liveAuction-description">
+              {/* <h2 className="liveAuction-description">
                 All auctions offer a fair opportunity to all would-be bids. Collectors can know that their investment will be protected if the reserve price fulfills.
-              </h2>
+              </h2> */}
               <Row>
               {items.map(
                 (item, index) => (
