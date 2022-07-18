@@ -64,7 +64,7 @@ class HelpComp extends React.Component {
               asperiores sit.
             </p>
           </Row> */}
-          <Row>
+          {/* <Row>
             <input
               className="help-search-input"
               type="text"
@@ -76,7 +76,7 @@ class HelpComp extends React.Component {
             <p className="help-text">
               Or choose a categories to quickly find the help you need
             </p>
-          </Row>
+          </Row> */}
           <br />
           <Row style={{justifyContent:"center"}}>
             {data.map((item, index) => (

@@ -1,6 +1,6 @@
 import "./createItemComp.css";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { create as ipfsHttpClient } from "ipfs-http-client";
 import { useSelector } from "react-redux";
@@ -21,11 +21,20 @@ function CreateItemComp() {
   const [mintMethod, setMintMethod] = useState(0);
   const [dayTo, setDayTo] = useState(0);
   const [royalty, setRoyalty] = useState(0);
+  const [firstLoad, setFirstLoad] = useState(true);
 
   const blockchain = useSelector((state) => state.blockchain);
   let navigate = useNavigate();
 
   const notify = (msg) => toast(msg);
+
+  useEffect(() => {
+    if (blockchain.account === null) {
+      navigate("/");
+    }
+    setFirstLoad(false);
+    /* eslint-disable */
+  }, [firstLoad])
 
   const handleFile = (e) => {
     console.log("e", e);
