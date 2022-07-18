@@ -11,6 +11,8 @@ import "react-toastify/dist/ReactToastify.css";
 // import ClockImg from "../../../assets/item/clock.png";
 
 import Input1 from "../../../basic/button/input1";
+import PreviewImage from "../../../assets/preview.png";
+
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
 function CreateItemComp() {
@@ -122,8 +124,18 @@ function CreateItemComp() {
       <Container>
         <Row>
           <div className="createItemComp-title-layout">
-            <h2 className="createItemComp-title">Preview NFT</h2>
+            <h2 className="preview-title">Preview NFT</h2>
             <div className="bottomBar"></div>
+            {image == null && (
+              <div className="preview-image-box">
+                <img
+                  src={PreviewImage}
+                  alt="Preview Image"
+                  className="preview-image1"
+                />  
+              </div>
+              
+            )}
             {image !== null && (
               <img
                 src={image}
@@ -135,18 +147,16 @@ function CreateItemComp() {
           <Col lg="8">
             {mintMethod === 0 && (
               <Row className="createItemComp-border-layout">
-                <Col lg="6">
-                  <button className="createAuction-method selected">
-                    {/* <img src={TagImg} alt="" className="button-img" /> */}
+                <Col lg="3">
+                  <button className="createAuction-method-selected">
                     Simple Mint
                   </button>
                 </Col>
-                <Col lg="6">
+                <Col lg="3">
                   <button
                     className="createAuction-method"
                     onClick={() => setMintMethod(1)}
                   >
-                    {/* <img src={ClockImg} alt="" className="button-img" /> */}
                     Hidden Mint
                   </button>
                 </Col>
@@ -154,7 +164,7 @@ function CreateItemComp() {
             )}
             {mintMethod === 1 && (
               <Row className="createItemComp-border-layout">
-                <Col lg="6">
+                <Col lg="3">
                   <button
                     className="createAuction-method"
                     onClick={() => setMintMethod(0)}
@@ -163,8 +173,8 @@ function CreateItemComp() {
                     Simple Mint
                   </button>
                 </Col>
-                <Col lg="6">
-                  <button className="createAuction-method selected">
+                <Col lg="3">
+                  <button className="createAuction-method-selected">
                     {/* <img src={ClockImg} alt="" className="button-img" /> */}
                     Hidden Mint
                   </button>
@@ -213,7 +223,7 @@ function CreateItemComp() {
                 </div>
 
                 <button className="createItemComp-file-btn" type="button">
-                  <div style={{ marginLeft: "1rem" }}>Browse Files</div>
+                  <div>Browse Files</div>
                 </button>
               </div>
             </div>
@@ -252,7 +262,7 @@ function CreateItemComp() {
                 className="createItemComp-create-btn"
                 onClick={() => onCreate()}
               >
-                Create Item
+                Create NFT
               </button>
             </div>
           </Col>

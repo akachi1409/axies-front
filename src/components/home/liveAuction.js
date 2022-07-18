@@ -14,7 +14,7 @@ import ReactLoading from "react-loading";
 import { Modal, Button } from "react-bootstrap"
 // import RocketImg from "../../assets/header/arrow1.png";
 // import ItemImg from "../../assets/item.png";
-import CatenImg from "../../assets/caten.png";
+import CatenImg from "../../assets/rocket.svg";
 import FatherSonImg from "../../assets/fatherson.png"
 // import AuctionBorderImg from "../../assets/auctionBorder.png"
 
@@ -131,15 +131,18 @@ function LiveAuctoion() {
               <p className="liveAuction-layout-title-violet">
               Future Forward <br/> Financial Fathers
               </p>
-              <button
-                className="liveAuction-button1-layout"
-                onClick={() => onExplore()}
-              >
-                <span className="button1-title">
-                  Explore Now
-                  {/* <img alt="" src={RocketImg} className="button1-img" /> */}
-                </span>
-              </button>
+              <div className="explore-box">
+                <button
+                  className="liveAuction-button1-layout"
+                  onClick={() => onExplore()}
+                >
+                  <span className="button1-title">
+                    Explore Now
+                    {/* <img alt="" src={RocketImg} className="button1-img" /> */}
+                  </span>
+                </button>
+              </div>
+              
             </Col>
             <Col lg="4">
               <img src={FatherSonImg} alt="" className="liveAuction-item-image" />
@@ -154,10 +157,10 @@ function LiveAuctoion() {
             {/* <div className="bottomBar"></div> */}
         </div>
         <br />
-        <Row>
+        <Row> 
           {blockchain.account === null ? (
-            <h2 className="liveAuction-title">
-              You have to connect your wallet to check live auction.
+            <h2 className="check-liveAuction">
+              ! You have to connect your wallet to check live auction 
             </h2>
           ) : loading ? (
             <div className="auctionComp-loading">

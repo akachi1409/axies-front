@@ -1,16 +1,17 @@
 .input-layout{
     width: 100%;
-    border-radius:10px;
-    border-color: #8A8AA0;
+    border-color: white;
     background-color: transparent;
     padding: 1em!important;
     margin-top: 1em!important;
     caret-color: white;
     color: white;
+    border-width: 1px;
+    
 }
 
 ::placeholder{
-    color: #8A8AA0;
+    color: #ffffff;
     font-size: 14px;
     line-height: 22px;
 }

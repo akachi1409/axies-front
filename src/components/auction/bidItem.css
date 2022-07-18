@@ -3,6 +3,7 @@
     text-align: center;
     padding-top: 2em;
     padding-bottom: 2em;
+    border-color: #6FF67E;
 }
 
 .bidItem-layout .bidItem-title{
@@ -64,17 +65,16 @@
 }
 
 .bidItem-layout .bidItem-method{
-    border-radius: 10px;
-    background-color: #343444;
-    color: #EBEBEB;
+    color: transparent;
     width: 100%;
     height: 46px;
-    margin: 1em;
+    margin: 2em 1em;
 }
 
 .bidItem-layout .selected{
-    color: #5142FC;
-    background-color: white;
+    color: #6FF67E;
+    border-color: #6FF67E;
+    background-color: transparent;
 }
 
 .bidItem-layout .bidItem-method .button-img{
@@ -83,7 +83,6 @@
 
 .bidItem-layout .blogDetails-input1{
     background-color: #14141F;
-    border-radius: 5px 0% 0% 5px;
     border-color: #A1A9BA;
     padding:10px;
     width: 100%;

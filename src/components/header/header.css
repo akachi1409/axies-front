@@ -14,7 +14,7 @@
     padding-bottom: 50px;
 }
 .itemHeader-contanier .itemHeader-layout .itemHeader-title{
-    font-family: 'Lexend Deca';
+    font-family: 'Lexend Deca' sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 35px;
@@ -33,5 +33,5 @@
     /* identical to box height */
 
 
-    color: #6BC562;
+    color: #6FF67E;
 }

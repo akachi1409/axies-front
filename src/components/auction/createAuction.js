@@ -145,7 +145,7 @@ function CreateAuction(props) {
       <Container>
         <Row>
           <Col lg="4">
-            <h2 className="createAuction-title">Preview NFT</h2>
+            <h2 className="preview-title">Preview NFT</h2>
             <div className="bottomBar"></div>
             {
               data.title !=="" && (

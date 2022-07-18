@@ -3,8 +3,11 @@ import { Nav, Navbar, NavDropdown, Container } from "react-bootstrap";
 
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import NavImg from "../../assets/navbar/navbar-1.png";
-import CatinaImg from "../../assets/navbar/catina.png"
+// import NavImg from "../../assets/navbar/navbar-1.png";
+import NavImg from "../../assets/navbar/catena.svg"
+// import CatinaImg from "../../assets/navbar/catina.png"
+import CatinaImg from "../../assets/navbar/catena-text.svg"
+
 import "./navbarcomp.css";
 
 function NavbarComp() {
@@ -22,7 +25,7 @@ function NavbarComp() {
             <div className="navbar-brand-layout">
               <Navbar.Brand onClick = {()=> onNav("/")}>
                 <img src={NavImg} alt="" />
-                <img src={CatinaImg} alt=""/>
+                <img src={CatinaImg} alt="" className="catena-logo"/>
               </Navbar.Brand>
             </div>
             <div className="navbar-left-container">
@@ -39,9 +42,9 @@ function NavbarComp() {
               <Nav>
               {blockchain.account === null  ? (
                 <Nav.Item className="nav-wallet-layout">
-                  <Nav.Link className="nav-wallet" onClick = {()=>onNav("/connect_wallet")}>
+                  <div className="nav-wallet" onClick = {()=>onNav("/connect_wallet")}>
                     Connect Wallet
-                  </Nav.Link>
+                  </div>
                 </Nav.Item>
               ):(
                 <NavDropdown title="Profile">

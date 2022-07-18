@@ -36,9 +36,10 @@
 
 .help-layout  .help-search-input{
     background-color:transparent;
-    border-radius: 5px 0% 0% 5px;
-    border-color: #A1A9BA;
+    border-color: white;
     padding:10px;
     width: 650px;
     margin: auto;
+    caret-color: white;
+    border-width: 1px;
 }

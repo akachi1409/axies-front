@@ -1,9 +1,13 @@
 .navbar-light .navbar-nav .nav-link{
     color: white!important;
+    margin: auto 1rem;
+    font-weight: 600;
 }
-
+.navbar-layout {
+    margin: 2.5rem auto !important;
+}
 .navbar-light .navbar-nav .nav-link:hover{
-    color: blue!important;
+    color: #6FF67E !important;
 }
 .navbar-row{
     display: flex;
@@ -13,6 +17,7 @@
 .navbar-row .navbar-brand-layout{
     flex: 2;
     cursor: pointer;
+    margin-left: 20px;
 }
 .navbar-row .navbar-left-container{
     flex: 8;
@@ -21,14 +26,34 @@
     flex-direction: row-reverse;
     padding-right: 1em;
 }
-.navbar-row .navbar-wallet-container{
-    flex: 2;
-}
+
 .nav-wallet{
-    background: #59D667;
+    background: #6FF67E;
     float: right;
-    padding : 0.8em;
+    padding : 0.4em 1em;
+    margin-top: 5px;
+    color: black;
+    font-weight: 600;
+
     /* background: linear-gradient(180deg, #79C652 0%, #325F50 100%); */
     /* color: white!important; */
     /* border-radius: 25.5px */
+}
+
+.nav-wallet:hover {
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(-90deg, #000000, #146902, #28e23d);
+    transition: all 1s cubic-bezier(0.000, 0.000, 0.230, 1);
+    animation: gradient 2s ease infinite;
+
+
+	/* animation: gradient 5s ease infinite; */
+    
+}
+
+
+
+.catena-logo {
+    margin-left: 1em;
 }
