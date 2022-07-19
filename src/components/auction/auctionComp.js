@@ -2,7 +2,9 @@ import "./auctionComp.css";
 
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import delay from "delay";
 // import Button2 from "../../basic/button/button2";
 import AuctionItem from "./auctionItem";
 
@@ -24,6 +26,7 @@ function AuctionComp() {
   const [error, setError] = useState(false)
 
   let navigate = useNavigate();
+  const notify = (msg) => toast(msg);
   const getURL = (i) =>{
     return getURLPromise(i);
   }
@@ -55,12 +58,17 @@ function AuctionComp() {
     return getPriceResolve(address, id);
   };
   useEffect(() => {
-    if (firstLoad) {
-      if (blockchain.account === null) {
-        navigate("/");
+    async function checkAccount(){
+      if (firstLoad) {
+        if (blockchain.account === null) {
+          notify("You should connect wallet to create item!")
+          await delay(2000);
+          navigate("/");
+        }
+        setFirstLoad(false);
       }
-      setFirstLoad(false);
     }
+    checkAccount();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firstLoad]);
 
@@ -151,6 +159,7 @@ function AuctionComp() {
         </Modal.Footer>
         </Modal>
       </Container>
+      <ToastContainer />
     </div>
   );
 }

@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import delay from "delay";
 // import TagImg from "../../../assets/item/tag.png";
 // import ClockImg from "../../../assets/item/clock.png";
 
@@ -31,10 +32,16 @@ function CreateItemComp() {
   const notify = (msg) => toast(msg);
 
   useEffect(() => {
-    if (blockchain.account === null) {
-      navigate("/");
-    }
-    setFirstLoad(false);
+    async function checkAccount(){
+      if (blockchain.account === null) {
+        notify("You should connect wallet to create item!")
+        await delay(2000);
+        navigate("/");
+      }
+      setFirstLoad(false);
+    } 
+    
+    checkAccount();
     /* eslint-disable */
   }, [firstLoad])
 

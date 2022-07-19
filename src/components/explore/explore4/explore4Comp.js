@@ -2,7 +2,9 @@ import "./explore4Comp.css";
 
 import React, { useState, useEffect }  from "react";
 import { Container, Row, Col } from "react-bootstrap";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import delay from "delay";
 import axios from "axios";
 // import FilterItem2 from "./fliterItem2";
 import { useSelector } from "react-redux";
@@ -18,6 +20,7 @@ function Explore4Comp(){
   const [firstLoad, setFirstLoad] = useState(true);
   const [nfts, setNfts] = useState([])
 
+  const notify = (msg) => toast(msg);
   const getURL = (i) =>{
     return getURLPromise(i);
   }
@@ -44,7 +47,10 @@ function Explore4Comp(){
     async function getData(){
       if (firstLoad) {
         if (blockchain.account === null) {
+          notify("You should connect wallet to create item!")
+          await delay(2000);
           navigate("/");
+          return;
         }
         const totalCount = await blockchain.akachiNFT.methods.getTokenCount().call();
         console.log("---totalCount: " + totalCount)
@@ -98,6 +104,7 @@ function Explore4Comp(){
           })}
         </Row>
       </Container>
+      <ToastContainer />
     </div>
   );
 }

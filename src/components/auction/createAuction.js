@@ -7,7 +7,7 @@ import Input1 from "../../basic/button/input1";
 // import ClockImg from "../../assets/item/clock.png";
 import TagImg from "../../assets/item/tag.png";
 import PlaceholderImg from "../../assets/activity2/placeholder.png"
-
+// import delay from "delay";
 import axios from "axios";
 // import ReactLoading from "react-loading";
 import { useSelector, useDispatch } from "react-redux";
