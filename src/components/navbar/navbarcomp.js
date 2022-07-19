@@ -3,6 +3,8 @@ import { Nav, Navbar, NavDropdown, Container } from "react-bootstrap";
 
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import NavImg from "../../assets/navbar/navbar-1.png";
 import NavImg from "../../assets/navbar/catena.svg"
 // import CatinaImg from "../../assets/navbar/catina.png"
@@ -13,8 +15,17 @@ import "./navbarcomp.css";
 function NavbarComp() {
   const blockchain = useSelector((state) => state.blockchain);
 
+  const notify = (msg) => toast(msg);
   let navigate = useNavigate();
   const onNav = (url) =>{
+    if (blockchain.account === null) {
+      if ( url !== "/" && url !=="/help" && url !=="/connect_wallet"){
+        console.log("url", url)
+        notify("You should connect wallet to create item!")
+        return;
+      }
+      
+    }
     navigate(url)
   }
   return (
@@ -60,6 +71,7 @@ function NavbarComp() {
             </div>
           </div>
         </Container>
+        <ToastContainer />
       </Navbar>
     </>
   );
