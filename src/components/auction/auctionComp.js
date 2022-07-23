@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 // import Button2 from "../../basic/button/button2";
 import AuctionItem from "./auctionItem";
 
@@ -65,8 +64,8 @@ function AuctionComp() {
         notify("You should connect wallet.");
         navigate("/");
       }
-      setFirstLoad(false);
     }
+    checkAccount();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firstLoad]);
 
@@ -158,6 +157,7 @@ function AuctionComp() {
         </Modal>
         <ToastContainer />
       </Container>
+      <ToastContainer />
     </div>
   );
 }
