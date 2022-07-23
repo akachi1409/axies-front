@@ -170,3 +170,32 @@
     padding: 2em 5em;
     margin-bottom: 2em;
 }
+@media( max-width : 630px){
+    .liveAuction-layout .liveAuction-layout-header .liveAuction-layout-title-violet{
+        /* font-family: 'Lexend Deca'; */
+        font-family: 'Lexend Deca' sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 42px;
+        line-height: 52px;
+        color: #6FF67E;
+    }
+    .liveAuction-layout .liveAuction-layout-header .liveAuction-layout-text{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 21px;
+        color: white;
+        margin-left: 0px;
+    }
+    .liveAuction-layout{
+        text-align: center;
+        padding-top: 0em;
+        padding-bottom: 2em;
+    }
+    .liveAuction-layout .liveAuction-layout-header .liveAuction-button1-layout .button1-title{
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+    }
+}

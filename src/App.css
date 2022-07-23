@@ -29,7 +29,9 @@
 .App-link {
   color: #61dafb;
 } */
-
+#root {
+  height: 100vh;
+}
 .row{
   --bs-gutter-x: none!important;
 }
@@ -49,4 +51,15 @@ body{
     background-image: url("./assets/bg.png")!important;
     background-repeat: no-repeat;
     background-size: cover;
+}
+.mobile-version{
+  display: none!important;
+}
+@media( max-width : 630px){
+  .desktop-version{
+    display: none!important;
+  }
+  .mobile-version{
+    display: block!important;
+  }
 }

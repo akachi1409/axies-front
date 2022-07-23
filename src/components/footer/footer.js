@@ -10,7 +10,7 @@ import Discord from "../../assets/footer/discord.png";
 function Footer () {
 
   return (
-    <div className="footer-container">
+    <div className="footer-container desktop-version">
       <div className="footer-top">
         <Container>
           <section className="footer-section1">

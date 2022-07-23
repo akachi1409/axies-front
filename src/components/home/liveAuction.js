@@ -16,6 +16,8 @@ import { Modal, Button } from "react-bootstrap"
 // import ItemImg from "../../assets/item.png";
 import CatenImg from "../../assets/rocket.svg";
 import FatherSonImg from "../../assets/fatherson.png"
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import AuctionBorderImg from "../../assets/auctionBorder.png"
 
 function LiveAuctoion() {
@@ -35,6 +37,8 @@ function LiveAuctoion() {
   const [firstLoad, setFirstLoad] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false)
+
+  const notify = (msg) => toast(msg);
   const getURL = (i) =>{
     return getURLPromise(i);
   }
@@ -125,7 +129,7 @@ function LiveAuctoion() {
               </h1> */}
               <h1 className="liveAuction-layout-text">
               Your Legacy on the Blockchain
-              <img src={CatenImg} alt= "" className="liveAuction-layout-caten"/>
+              <img src={CatenImg} alt= "" className="liveAuction-layout-caten desktop-version"/>
               </h1>
               {/* <h1 className="liveAuction-layout-title-white">Monster NFTs</h1> */}
               <p className="liveAuction-layout-title-violet">
@@ -133,8 +137,17 @@ function LiveAuctoion() {
               </p>
               <div className="explore-box">
                 <button
-                  className="liveAuction-button1-layout"
+                  className="liveAuction-button1-layout desktop-version"
                   onClick={() => onExplore()}
+                >
+                  <span className="button1-title">
+                    Explore Now
+                    {/* <img alt="" src={RocketImg} className="button1-img" /> */}
+                  </span>
+                </button>
+                <button
+                  className="liveAuction-button1-layout mobile-version"
+                  onClick={() => notify("Currently not available on mobile, please use a desktop PC to continue.")}
                 >
                   <span className="button1-title">
                     Explore Now
@@ -145,12 +158,12 @@ function LiveAuctoion() {
               
             </Col>
             <Col lg="4">
-              <img src={FatherSonImg} alt="" className="liveAuction-item-image" />
+              <img src={FatherSonImg} alt="" className="liveAuction-item-image desktop-version" />
             </Col>
           </Row>
         </Container>
       </div>
-      <Container className="liveAuction-title-container">
+      <Container className="liveAuction-title-container desktop-version">
         <div className="liveAuction-bar-layout">
             <h2 className="liveAuction-title">Live Auction</h2>
             <p className="liveAuction-title-text">All auctions offer a fair opportunity to all would-be bids. Collectors can <br/>know that their investment will be protected if the reserve price fulfills.</p>
@@ -168,9 +181,6 @@ function LiveAuctoion() {
             </div>
           ) : (
             <div>
-              {/* <h2 className="liveAuction-description">
-                All auctions offer a fair opportunity to all would-be bids. Collectors can know that their investment will be protected if the reserve price fulfills.
-              </h2> */}
               <Row>
               {items.map(
                 (item, index) => (
@@ -191,10 +201,10 @@ function LiveAuctoion() {
               )}
             </Row>
             </div>
-            
           )}
         </Row>
       </Container>
+      <ToastContainer />
       <Modal show={error} backdrop="static" keyboard={false}>
           <Modal.Header closeButton>
             <Modal.Title>Error!</Modal.Title>

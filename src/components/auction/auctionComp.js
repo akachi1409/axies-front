@@ -2,6 +2,8 @@ import "./auctionComp.css";
 
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // import Button2 from "../../basic/button/button2";
 import AuctionItem from "./auctionItem";
@@ -24,6 +26,9 @@ function AuctionComp() {
   const [error, setError] = useState(false)
 
   let navigate = useNavigate();
+
+  const notify = (msg) => toast(msg);
+
   const getURL = (i) =>{
     return getURLPromise(i);
   }
@@ -57,6 +62,7 @@ function AuctionComp() {
   useEffect(() => {
     if (firstLoad) {
       if (blockchain.account === null) {
+        notify("You should connect wallet.");
         navigate("/");
       }
       setFirstLoad(false);
@@ -150,6 +156,7 @@ function AuctionComp() {
           <Button variant="primary" onClick = {() => onReload()}>Understood</Button>
         </Modal.Footer>
         </Modal>
+        <ToastContainer />
       </Container>
     </div>
   );
