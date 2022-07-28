@@ -48,8 +48,8 @@
 }
 
 body{
-    background-image: url("./assets/bg.png")!important;
-    background-repeat: no-repeat;
+  background-color: rgb(41, 41, 41)!important;
+  background-repeat: no-repeat;
     background-size: cover;
 }
 .mobile-version{

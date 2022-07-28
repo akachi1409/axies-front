@@ -100,11 +100,9 @@
     color: #A1A9BA;
     display:inline-block;
 }
-.footer-container .footer-copyright{
-    /* padding-top:2em;
-    padding-bottom: 2em; */
-}
+
 .footer-container .footer-copyright .footer-copyright-text{
+    margin: 15px auto;
     color: #A1A9BA;
     font-family: "Helvetica", Sans-serif;
     font-size: 0.8rem;
