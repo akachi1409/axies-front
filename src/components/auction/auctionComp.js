@@ -64,8 +64,9 @@ function AuctionComp() {
         notify("You should connect wallet.");
         navigate("/");
       }
+      setFirstLoad(false);
     }
-    checkAccount();
+    // checkAccount();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firstLoad]);
 

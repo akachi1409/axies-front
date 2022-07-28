@@ -9,9 +9,12 @@ import { fetchData } from "../../redux/data/dataActions";
 
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Modal } from "react-bootstrap";
 
 function WalletComp() {
+  let navigate = useNavigate();
+
   const dataWallet = [
     {
       img: MetaImg,
@@ -31,6 +34,7 @@ function WalletComp() {
   const getData = () => {
     if (blockchain.account !== "" && blockchain.smartContract !== null) {
       dispatch(fetchData(blockchain.account));
+      navigate("/mynft")
     }
   };
   useEffect(() => {
