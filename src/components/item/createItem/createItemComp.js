@@ -123,9 +123,10 @@ function CreateItemComp() {
           console.log(err);
         })
         .then(() => {
+          dispatch(createItemS())
           navigate("/mynft");
         });
-        dispatch(createItemS())
+        
       console.log(url1);
     } catch (err) {
       console.log("error in uploading file: ", err);
