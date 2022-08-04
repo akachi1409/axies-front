@@ -78,7 +78,7 @@ export const connect = () => {
           });
           // Add listeners end
         } else {
-          dispatch(connectFailed("Change network to Ethereum."));
+          dispatch(connectFailed("Change network to Rinkeby."));
         }
       } catch (err) {
         dispatch(connectFailed("Something went wrong."));

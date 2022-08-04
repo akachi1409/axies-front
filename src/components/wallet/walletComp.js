@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import WalletItem from "./walletItem";
 import "./walletComp.css";
@@ -14,6 +16,7 @@ import { Modal } from "react-bootstrap";
 
 function WalletComp() {
   let navigate = useNavigate();
+  const notify = (msg) => toast(msg);
 
   const dataWallet = [
     {
@@ -32,6 +35,10 @@ function WalletComp() {
   const data = useSelector((state) => state.data);
 
   const getData = () => {
+    if(blockchain.errorMsg !==""){
+      notify(blockchain.errorMsg);
+      return
+    }
     if (blockchain.account !== "" && blockchain.smartContract !== null) {
       dispatch(fetchData(blockchain.account));
       navigate("/mynft")
@@ -39,7 +46,7 @@ function WalletComp() {
   };
   useEffect(() => {
     getData();
-  }, [blockchain.account]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [blockchain]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // console.log("blockchain", blockchain);
   return (
@@ -82,6 +89,7 @@ function WalletComp() {
           </Modal.Body>
         </Modal>
       </Container>
+      <ToastContainer />
     </div>
   );
 }
