@@ -1,5 +1,6 @@
 const initialState = {
   loading: false,
+  creating: false,
   name: "",
   totalSupply: 0,
   cost: 0,
@@ -34,6 +35,17 @@ const dataReducer = (state = initialState, action) => {
         error: true,
         errorMsg: action.payload,
       };
+    case "CREATE_ITEM_REQUEST":
+      return {
+        ...initialState,
+        creating: true
+      }
+    case "CREATE_ITEM_SUCCESS":
+    case "CREATE_ITEM_FAILED":
+      return {
+        ...state,
+        creating: false
+      }
     default:
       return state;
   }

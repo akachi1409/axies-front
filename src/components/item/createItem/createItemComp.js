@@ -1,16 +1,17 @@
 import "./createItemComp.css";
 
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Modal } from "react-bootstrap";
 import { create as ipfsHttpClient } from "ipfs-http-client";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import delay from "delay";
 // import TagImg from "../../../assets/item/tag.png";
 // import ClockImg from "../../../assets/item/clock.png";
-
+import { createItem, createItemS, createItemF } from "../../../redux/data/dataActions"
 import Input1 from "../../../basic/button/input1";
 import PreviewImage from "../../../assets/preview.png";
 
@@ -26,8 +27,10 @@ function CreateItemComp() {
   const [royalty, setRoyalty] = useState(0);
   const [firstLoad, setFirstLoad] = useState(true);
 
+  const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
   let navigate = useNavigate();
+  const data = useSelector((state) => state.data);
 
   const notify = (msg) => toast(msg);
 
@@ -83,6 +86,7 @@ function CreateItemComp() {
       return;
     }
     try {
+      dispatch(createItem())
       notify("Uploading to IPFS is started");
       const added = await client.add(image, {
         progress: (prog) => console.log(`received: ${prog}`),
@@ -121,9 +125,11 @@ function CreateItemComp() {
         .then(() => {
           navigate("/mynft");
         });
+        dispatch(createItemS())
       console.log(url1);
     } catch (err) {
       console.log("error in uploading file: ", err);
+      dispatch(createItemF())
     }
   };
   return (
@@ -274,6 +280,14 @@ function CreateItemComp() {
             </div>
           </Col>
         </Row>
+        <Modal show={data.creating} backdrop="static" keyboard={false}>
+          <Modal.Header>
+            <Modal.Title>Wait a min, please!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            We are creating NFT.
+          </Modal.Body>
+        </Modal>
       </Container>
       <ToastContainer />
     </div>

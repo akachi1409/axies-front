@@ -21,6 +21,41 @@ const fetchDataFailed = (payload) => {
   };
 };
 
+const createItemRequest = (payload) =>{
+  return {
+    type: "CREATE_ITEM_REQUEST",
+  }
+}
+
+const createItemSuccess = (payload) =>{
+  return {
+    type: "CREATE_ITEM_SUCCESS",
+  }
+}
+
+const createItemFail = (payload) =>{
+  return {
+    type: "CREATE_ITEM_FAIL",
+  }
+}
+
+export const createItem = () => {
+  return async (dispatch) =>{
+    dispatch(createItemRequest())
+  }
+}
+
+export const createItemS = () =>{
+  return async (dispatch) =>{
+    dispatch(createItemSuccess())
+  }
+}
+
+export const createItemF = () =>{
+  return async (dispatch) => {
+    dispatch(createItemFail())
+  }
+}
 export const fetchData = (account) => {
   return async (dispatch) => {
     dispatch(fetchDataRequest());

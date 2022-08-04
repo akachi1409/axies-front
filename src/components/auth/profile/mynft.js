@@ -125,7 +125,7 @@ function Mynft() {
         </div>
         <Row>
           {items.length === 0 &&  !loading &&(
-            <p className="mynft-empty">You have NO NFT at all.</p>
+            <p className="mynft-empty">You have no NFTs! Please upload some for your legacy!</p>
           )}
           {loading && (
             <div className="mynft-loading">
