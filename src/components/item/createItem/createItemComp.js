@@ -1,7 +1,7 @@
 import "./createItemComp.css";
 
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Modal } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { create as ipfsHttpClient } from "ipfs-http-client";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -30,7 +30,7 @@ function CreateItemComp() {
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
   let navigate = useNavigate();
-  const data = useSelector((state) => state.data);
+  // const data = useSelector((state) => state.data);
 
   const notify = (msg) => toast(msg);
 

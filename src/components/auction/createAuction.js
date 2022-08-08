@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import PreviewAuction from "./previewAuction"
 import Input1 from "../../basic/button/input1";
-// import ClockImg from "../../assets/item/clock.png";
+import ClockImg from "../../assets/item/clock.png";
 import TagImg from "../../assets/item/tag.png";
 import PlaceholderImg from "../../assets/activity2/placeholder.png"
 // import delay from "delay";
@@ -24,10 +24,12 @@ function CreateAuction(props) {
     contract:"",
     tokenId:""
   });
-  const [buyNow, setBuyNow] = useState(0);
-  // const [minPrice, setMinPrice ] = useState(0);
+  const [buyNow, setBuyNow] = useState(10);
+  const [minPrice, setMinPrice ] = useState(5);
   // const [loading, setLoading] = useState(false);
   const [firstLoad, setFirstLoad] = useState(true);
+  const [mode, setMode] = useState(0);
+  const [day, setDay] = useState(0);
 
   let navigate = useNavigate();
   const dispatch = useDispatch();
@@ -56,6 +58,7 @@ function CreateAuction(props) {
   }
 
   const onCreateAuction = async () => {
+    console.log("mode", mode, typeof mode);
     blockchain.akachiNFT.methods
       .setApprovalForAll(process.env.REACT_APP_AUCTION_NFT_CONTRACT, true)
       .send({ from: blockchain.account })
@@ -73,12 +76,14 @@ function CreateAuction(props) {
     if (props.contract === process.env.REACT_APP_AKACHI_NFT_CONTRACT){
        royalty = await blockchain.akachiNFT.methods.getTokenRoyal(props.id-1).call();
     }
-    console.log("---", creator, royalty)
-    blockchain.smartContract.methods
+    console.log("---", creator, royalty, mode)
+    if ( mode === 0){
+      console.log("---")
+      blockchain.smartContract.methods
       .createDefaultNftAuction(
         props.contract, 
         props.id, 
-        blockchain.web3.utils.toWei(buyNow/2, "ether") , 
+        blockchain.web3.utils.toWei(minPrice, "ether") , 
         blockchain.web3.utils.toWei(buyNow, "ether"),
         creator, 
         royalty )
@@ -91,6 +96,28 @@ function CreateAuction(props) {
         console.log("success");
         navigate("/auction")
       })
+    }
+    if ( mode === 1) {
+      blockchain.smartContract.methods
+      .createNewNftAuction(
+        props.contract, 
+        props.id, 
+        blockchain.web3.utils.toWei(minPrice, "ether") , 
+        blockchain.web3.utils.toWei(buyNow, "ether"),
+        day*3600*24,
+        creator, 
+        royalty )
+      .send({from: blockchain.account})
+      .once("error", err=>{
+        console.log(err)
+      })
+      .then(() =>{
+        dispatch(updateAccount());
+        console.log("success");
+        navigate("/auction")
+      })
+    }
+    
     // setLoading(false);
   }
   useEffect(() => {
@@ -160,31 +187,65 @@ function CreateAuction(props) {
           </Col>
           <Col lg="8">
             <h2 className="createAuction-title">Select method</h2>
-            <Row>
-              <Col lg="8">
-                <button className="createAuction-method selected">
-                  <img src={TagImg} alt="" className="button-img" />
-                  Fixed Price
-                </button>
-              </Col>
-              {/* <Col lg="4">
-                <button className="createAuction-method">
-                  <img src={ClockImg} alt="" className="button-img" />
-                  Fixed Price
-                </button>
-              </Col>
+            
+              {
+                mode===0 &&
+                (
+                  <Row>
+                    <Col lg="6">
+                      <button className="createAuction-method selected">
+                        <img src={TagImg} alt="" className="button-img" />
+                        Fixed Price
+                      </button>
+                    </Col>
+                    <Col lg="6">
+                      <button className="createAuction-method" onClick={()=> setMode(1)}>
+                        <img src={ClockImg} alt="" className="button-img" />
+                        Time Auction
+                      </button>
+                    </Col>
+                  </Row>
+                )
+              }
+              {
+                mode ===1 && (
+                  <Row>
+                    <Col lg="6">
+                      <button className="createAuction-method" onClick={()=> setMode(0)}>
+                        <img src={TagImg} alt="" className="button-img" />
+                        Fixed Price
+                      </button>
+                    </Col>
+                    <Col lg="6">
+                      <button className="createAuction-method selected">
+                        <img src={ClockImg} alt="" className="button-img" />
+                        Time Auction
+                      </button>
+                    </Col>
+                  </Row>
+                )
+              }
+              
+              {/* 
               <Col lg="4">
                 <button className="createAuction-method">
                   <img src={PeopleImg} alt="" className="button-img" />
                   Fixed Price
                 </button>
               </Col> */}
-            </Row>
-            {/* <h2 className="createAuction-title">Min Price</h2>
-            <Input1 margin="1em" text="Enter minimum price for one item (AkachiToken)" value = {minPrice} onChange = {(e)=>setMinPrice(e.target.value)}/> */}
-            <h2 className="createAuction-title">Buy Now</h2>
-            <Input1 margin="1em" text="Enter buy now price for one item (AkachiToken)" value = {buyNow} onChange = {(e)=>setBuyNow(e.target.value)}/>
             
+            <h2 className="createAuction-title">Min Price</h2>
+            <Input1 margin="1em" value = {minPrice} onChange = {(e)=>setMinPrice(e.target.value)}/>
+            <h2 className="createAuction-title">Buy Now</h2>
+            <Input1 margin="1em" value = {buyNow} onChange = {(e)=>setBuyNow(e.target.value)}/>
+            {
+              mode === 1 && (
+                <div>
+                  <h2 className="createAuction-title">Auction Date</h2>
+                  <Input1 margin="1em" text="Days for Auction" value = {day} onChange = {(e)=>setDay(e.target.value)}/>
+                </div>
+              )
+            }
             <div style={{ display: "flex", flexDirection: "row-reverse" }}>
               <button className="createAuction-create-btn" onClick={() => onCreateAuction()}>Start Auction</button>
             </div>
