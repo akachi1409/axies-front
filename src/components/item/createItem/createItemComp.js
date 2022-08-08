@@ -87,7 +87,6 @@ function CreateItemComp() {
     }
     try {
       dispatch(createItem())
-      notify("Uploading to IPFS is started");
       const added = await client.add(image, {
         progress: (prog) => console.log(`received: ${prog}`),
       });
@@ -115,7 +114,7 @@ function CreateItemComp() {
       }
       const added1 = await client.add(data);
       const url1 = `https://ipfs.infura.io/ipfs/${added1.path}`;
-      notify("Metadata is uploaded successfully to IPFS.");
+      notify("Please wait for a while. The page will be redirected after creating the item.");
       blockchain.akachiNFT.methods
         .mintNewToken(1, url1, royalty * 100)
         .send({ from: blockchain.account })
@@ -281,14 +280,14 @@ function CreateItemComp() {
             </div>
           </Col>
         </Row>
-        <Modal show={data.creating} backdrop="static" keyboard={false}>
+        {/* <Modal show={data.creating} backdrop="static" keyboard={false}>
           <Modal.Header>
             <Modal.Title>Wait a min, please!</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             We are creating NFT.
           </Modal.Body>
-        </Modal>
+        </Modal> */}
       </Container>
       <ToastContainer />
     </div>
