@@ -13,11 +13,13 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { updateAccount } from "../../redux/blockchain/blockchainActions";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import Web3EthContract from "web3-eth-contract";
 // import AkachiToken from "../../contracts/AkachiToken.json";
 // import EliteChess from "../../contracts/EliteChess.json"
 function CreateAuction(props) {
-  const [data, setData] = useState({
+  const [previewData, setPreviewData] = useState({
     image: null,
     title: "",
     owner: "",
@@ -26,15 +28,17 @@ function CreateAuction(props) {
   });
   const [buyNow, setBuyNow] = useState(10);
   const [minPrice, setMinPrice ] = useState(5);
-  // const [loading, setLoading] = useState(false);
   const [firstLoad, setFirstLoad] = useState(true);
   const [mode, setMode] = useState(0);
   const [day, setDay] = useState(0);
 
+  const notify = (msg) => toast(msg);
+
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
-  
+  // const data = useSelector((state) => state.data);
+
   const getURL = (i) =>{
     return getURLPromise(i);
   }
@@ -66,6 +70,7 @@ function CreateAuction(props) {
         console.log(err);
       })
       .then(() => {
+        notify("NFT is approved.");
         console.log("success");
       });
       console.log('blockchain', blockchain);
@@ -77,6 +82,7 @@ function CreateAuction(props) {
        royalty = await blockchain.akachiNFT.methods.getTokenRoyal(props.id-1).call();
     }
     console.log("---", creator, royalty, mode)
+    notify("Please wait for a while. The page will be redirected after creating the Auction.");
     if ( mode === 0){
       console.log("---")
       blockchain.smartContract.methods
@@ -92,6 +98,7 @@ function CreateAuction(props) {
         console.log(err)
       })
       .then(() =>{
+        notify("Please wait for a while. The page will be redirected after creating the Auction.");
         dispatch(updateAccount());
         console.log("success");
         navigate("/auction")
@@ -105,6 +112,7 @@ function CreateAuction(props) {
         blockchain.web3.utils.toWei(minPrice, "ether") , 
         blockchain.web3.utils.toWei(buyNow, "ether"),
         day*3600*24,
+        100,
         creator, 
         royalty )
       .send({from: blockchain.account})
@@ -112,14 +120,35 @@ function CreateAuction(props) {
         console.log(err)
       })
       .then(() =>{
+        notify("Please wait for a while. The page will be redirected after creating the Auction.");
         dispatch(updateAccount());
         console.log("success");
         navigate("/auction")
       })
     }
-    
     // setLoading(false);
   }
+
+  // const checkNFT = () =>{
+  //   const length = data.auctionAddress.length;
+  //   console.log("--------------", length)
+  //   for (let i = 0; i < length; i++) {
+  //     console.log(data.auctionAddress[i], data.auctionId[i])
+  //     if (data.auctionAddress[i]=== props.contract && data.auctionId[i] === props.id){
+  //       setCreated(true);
+  //       blockchain.smartContract.methods
+  //       .nftContractAuctions(props.contract, props.id)
+  //       .call()
+  //       .then((res)=>{
+  //         console.log("price:", res)
+  //         setHighestBid(blockchain.web3.utils.fromWei(res.nftHighestBid, "ether"));
+  //         setHighestBidder(res.nftHighestBidder)
+  //       });
+          
+  //       return;
+  //     }
+  //   }
+  // }
   useEffect(() => {
     async function fetchData() {
       if (blockchain.account === null) {
@@ -129,21 +158,21 @@ function CreateAuction(props) {
       const url = await getURL(props.id)
       const result = await getNFTs(url.split("https://gateway.pinata.cloud/ipfs/")[1])
       console.log("result:", result.data, );
-      var data = result.data;
+      var previewData = result.data;
 
       var nowTime = new Date();
       var createTime ;
-      if (data.createTime === undefined){
+      if (previewData.createTime === undefined){
         createTime = 0;
       }else{
-        createTime = new Date(data.createTime).getTime()
+        createTime = new Date(previewData.createTime).getTime()
       } 
       var diff = (nowTime.getTime() -createTime)/1000;
-      var secondDiff = diff - data.time * 3600
-      if (data.time === 0 || secondDiff>0){
-        setData({ 
-          "image": data.image,
-          "title": data.name,
+      var secondDiff = diff - previewData.time * 3600
+      if (previewData.time === 0 || secondDiff>0){
+        setPreviewData({ 
+          "image": previewData.image,
+          "title": previewData.name,
           "owner": blockchain.account.length > 18 ? blockchain.account.substring(0, 18) + "..." : blockchain.account, 
           "contract": process.env.REACT_APP_AKACHI_NFT_CONTRACT,
           "tokenId": props.id,
@@ -151,7 +180,7 @@ function CreateAuction(props) {
         })
       }
       else{
-        setData({
+        setPreviewData({
           "image": {PlaceholderImg},
           "title": "TBD",
           "owner": blockchain.account.length > 18 ? blockchain.account.substring(0, 18) + "..." : blockchain.account, 
@@ -164,6 +193,7 @@ function CreateAuction(props) {
     }
     if (firstLoad) {
       fetchData();
+      // checkNFT()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firstLoad]);
@@ -175,11 +205,11 @@ function CreateAuction(props) {
             <h2 className="preview-title">Preview NFT</h2>
             <div className="bottomBar"></div>
             {
-              data.title !=="" && (
+              previewData.title !=="" && (
                 <PreviewAuction
-                  title={data.title}
-                  image = {data.image}
-                  owner={data.owner}
+                  title={previewData.title}
+                  image = {previewData.image}
+                  owner={previewData.owner}
                   navable= {false}
                 />
               )
@@ -225,15 +255,6 @@ function CreateAuction(props) {
                   </Row>
                 )
               }
-              
-              {/* 
-              <Col lg="4">
-                <button className="createAuction-method">
-                  <img src={PeopleImg} alt="" className="button-img" />
-                  Fixed Price
-                </button>
-              </Col> */}
-            
             <h2 className="createAuction-title">Min Price</h2>
             <Input1 margin="1em" value = {minPrice} onChange = {(e)=>setMinPrice(e.target.value)}/>
             <h2 className="createAuction-title">Buy Now</h2>
@@ -250,7 +271,9 @@ function CreateAuction(props) {
               <button className="createAuction-create-btn" onClick={() => onCreateAuction()}>Start Auction</button>
             </div>
           </Col>
+          
         </Row>
+        <ToastContainer />
         {/* <Modal show={loading} backdrop="static" keyboard={false}>
           <Modal.Header closeButton>
             <Modal.Title>Wait a min!</Modal.Title>

@@ -3,8 +3,8 @@ import { Row, Col } from "react-bootstrap";
 import React, {useState, useEffect} from "react"
 // import HeartImg from "../../../assets/explore/heart.png";
 // import UserImg from "../../../assets/explore/user.png";
-import BagImg from "../../../assets/explore/bag.png";
-import ReloadImg from "../../../assets/explore/reload.png";
+// import BagImg from "../../../assets/explore/bag.png";
+// import ReloadImg from "../../../assets/explore/reload.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 function Explore1Item(props) {
@@ -56,20 +56,27 @@ function Explore1Item(props) {
           {props.description}
         </p>
       </Row>
-      {/* <Row style={{ marginTop: "1em", alignItems: "center" }}>
-        <Col lg="2">
-          <img src={UserImg} alt="" />
-        </Col>
+      <Row style={{ marginTop: "1em", alignItems: "center" }}>
         <Col lg="7" style={{ paddingLeft: "10px", textAlign: "left" }}>
-          <h4 className="explore1Item-owner-title">Owned By</h4>
-          <p className="explore1Item-owner">{props.owner}</p>
-        </Col>
-        <Col lg="3" style={{ textAlign: "right" }}>
-          <h4 className="explore1Item-owner-title">Floor Price</h4>
+          {/* <h4 className="explore1Item-owner-title">{props.price}</h4> */}
           <p className="explore1Item-owner">{props.price}</p>
         </Col>
-      </Row> */}
-      {props.bidding && (
+        <Col lg="5" style={{ textAlign: "right" }}>
+          {/* <h4 className="explore1Item-owner-title">Floor Price</h4> */}
+          <p className="explore1Item-owner">{props.priceItem}</p>
+        </Col>
+      </Row>
+      <Row style={{ marginTop: "1em", alignItems: "center" }}>
+        <Col lg="7" style={{ paddingLeft: "10px", textAlign: "left" }}>
+          <h4 className="explore1Item-owner-title">Highest Bidder</h4>
+          <p className="explore1Item-owner">{props.highestBidder}</p>
+        </Col>
+        <Col lg="5" style={{ textAlign: "right" }}>
+          <h4 className="explore1Item-owner-title">Highest Bid</h4>
+          <p className="explore1Item-owner">{props.highestBid}</p>
+        </Col>
+      </Row>
+      {/* {props.bidding && (
         <Row style={{ marginTop: "1em" }}>
           <Col lg="6">
             <div className="explore1Item-bid">
@@ -84,7 +91,7 @@ function Explore1Item(props) {
             </div>
           </Col>
         </Row>
-      )}
+      )} */}
     </div>
   );
 }

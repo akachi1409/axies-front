@@ -222,6 +222,54 @@
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nftContractAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint128",
+        "name": "_minPrice",
+        "type": "uint128"
+      },
+      {
+        "internalType": "uint128",
+        "name": "_buyNowPrice",
+        "type": "uint128"
+      },
+      {
+        "internalType": "uint32",
+        "name": "_auctionBidPeriod",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint32",
+        "name": "_bidIncreasePercentage",
+        "type": "uint32"
+      },
+      {
+        "internalType": "address",
+        "name": "_nftCreator",
+        "type": "address"
+      },
+      {
+        "internalType": "uint32",
+        "name": "_royalty",
+        "type": "uint32"
+      }
+    ],
+    "name": "createNewNftAuction",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "defaultAuctionBidPeriod",
     "outputs": [

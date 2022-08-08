@@ -110,8 +110,18 @@
 }
 
 .bidItem-layout .bidItem-create-btn{
-    padding: 1em;
-    border-radius: 100px;
-    background-color: #5142FC;
+    background: #6FF67E;
+    float: right;
+    padding : 0.4em 1em;
+    margin-top: 5px;
+    color: black;
+    font-weight: 600;
+}
+
+.bidItem-layout .bidItem-create-btn:hover{
+    cursor: pointer;
     color: white;
+    background: linear-gradient(-90deg, #000000, #146902, #28e23d);
+    transition: all 1s cubic-bezier(0.000, 0.000, 0.230, 1);
+    animation: gradient 2s ease infinite;
 }

@@ -13,13 +13,20 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Web3EthContract from "web3-eth-contract";
+import Input1 from "../../basic/button/input1";
 import AkachiToken from "../../contracts/AkachiToken.json";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import EliteChess from "../../contracts/EliteChess.json";
 function BidItem(props) {
   const [data, setData] = useState([]);
   // const [owner, setOwner] = useState("");
   const [buyNow, setBuyNow] = useState(0);
-  // const [minPrice, setMinPrice] = useState(0);
+  const [minPrice, setMinPrice] = useState(0);
+  const [bidPrice, setBidPrice] = useState(0);
+
+  const notify = (msg) => toast(msg);
 
   let navigate = useNavigate();
   // const dispatch = useDispatch();
@@ -73,6 +80,8 @@ function BidItem(props) {
           .then((res)=>{
             console.log("price:", res)
             setBuyNow(blockchain.web3.utils.fromWei(res.buyNowPrice, "ether"));
+            setMinPrice(blockchain.web3.utils.fromWei(res.minPrice, "ether"));
+            setBidPrice(blockchain.web3.utils.fromWei(res.minPrice, "ether"))
           });
         setFirstLoad(false);
       }
@@ -114,6 +123,44 @@ function BidItem(props) {
         console.log("success");
       });
   };
+
+  const onBid = () =>{
+    if (bidPrice < minPrice){
+      notify("Bid price should be over than min price.")
+      return;
+    }
+    const akachiTokenContract = new Web3EthContract(
+      AkachiToken,
+      "0x8119841E9c4e2658B36817Cfe58dfDFDca043930"
+    );
+    akachiTokenContract.methods
+      .approve(process.env.REACT_APP_AUCTION_NFT_CONTRACT, blockchain.web3.utils.toWei(buyNow, "ether") )
+      .send({ from: blockchain.account })
+      .once("error", (err) => {
+        console.log(err);
+      })
+      .then(() => {
+        console.log("success");
+      });
+      blockchain.akachiNFT.methods
+      .setApprovalForAll(process.env.REACT_APP_AUCTION_NFT_CONTRACT, true)
+      .send({ from: blockchain.account })
+      .once("error", (err) => {
+        console.log(err);
+      })
+      .then(() => {
+        console.log("success");
+      });
+    blockchain.smartContract.methods
+      .makeBid(props.contract, props.id, blockchain.web3.utils.toWei(bidPrice, "ether"))
+      .send({ from: blockchain.account })
+      .once("error", (err) => {
+        console.log(err);
+      })
+      .then(() => {
+        console.log("success");
+      });
+  } 
   return (
     <div className="bidItem-layout">
       <Container>
@@ -126,8 +173,8 @@ function BidItem(props) {
               net="BSC"
               description={data.description}
               // owner={owner}
-              // price="Current Bid"
-              // priceItem="4.89ETH"
+              price="Floor Price"
+              priceItem={minPrice + "AKM"}
               bidding={false}
               navable={false}
               akachiNFT = {true}
@@ -146,25 +193,25 @@ function BidItem(props) {
                 </button>
               </Col>
             </Row>
-            {/* <h2 className="bidItem-title">Min Price</h2> */}
-            {/* <Input1
+            <h2 className="bidItem-title">Bid Price</h2>
+            <Input1
               margin="1em"
-              text="Enter minimum price for one item (AkachiToken)"
-              value={minPrice}
-              onChange={(e) => setMinPrice(e.target.value)}
-            /> */}
+              value={bidPrice}
+              onChange={(e) => setBidPrice(e.target.value)}
+            />
             {/* <h2 className="bidItem-title">Buy Now</h2>
             <Input1 margin="1em" text="Enter buy now price for one item (AkachiToken)" value = {buyNow} onChange = {(e)=>setBuyNow(e.target.value)}/> */}
-            {/* <div style={{ display: "flex", flexDirection: "row-reverse" }}>
+            <div style={{ display: "flex", flexDirection: "row-reverse" }}>
               <button
                 className="bidItem-create-btn"
-                onClick={() => onCreateAuction()}
+                onClick={() => onBid()}
               >
-                Start Auction
+                Bid Item
               </button>
-            </div> */}
+            </div>
           </Col>
         </Row>
+        <ToastContainer />
       </Container>
     </div>
   );

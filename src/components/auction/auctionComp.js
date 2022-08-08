@@ -21,6 +21,8 @@ function AuctionComp() {
   const [flag, setFlag] = useState(true);
   const [items, setItems] = useState([]);
   const [prices, setPrices] = useState([]);
+  const [highestPrices, setHighestPrices] = useState([])
+  const [highestBidders, setHighestBidder] = useState([])
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false)
 
@@ -80,6 +82,8 @@ function AuctionComp() {
       const length = data.auctionAddress.length;
       let tempItems = [];
       let tempPrices = [];
+      let tempHighestPrices = [];
+      let tempHighestBidders = [];
       for (let i = 0; i < length; i++) {
         // console.log("--", data.auctionId[i])
         const url = await getURL(data.auctionId[i])
@@ -91,6 +95,12 @@ function AuctionComp() {
         tempPrices.push(
           blockchain.web3.utils.fromWei(price.buyNowPrice, "ether")
         );
+        tempHighestPrices.push(
+          blockchain.web3.utils.fromWei(price.nftHighestBid, "ether")
+        )
+        tempHighestBidders.push(
+          price.nftHighestBidder
+        )
         // console.log(nft);
         tempItems.push({ 
           "image": result.data.image,
@@ -101,6 +111,8 @@ function AuctionComp() {
         });
         console.log("---", tempItems);
       }
+      setHighestBidder(tempHighestBidders)
+      setHighestPrices(tempHighestPrices)
       setPrices(tempPrices);
       setItems(tempItems);
       setFlag(!flag);
@@ -135,6 +147,8 @@ function AuctionComp() {
                   // owner={item.owner}
                   image={item.image}
                   price={prices[index]}
+                  highestBid={highestPrices[index]}
+                  highestBidder={highestBidders[index]}
                   // ownerAddress = {item.owner.address}
                   tokenId= {item.tokenId} 
                   contract = {item.contract}

@@ -67,7 +67,7 @@ function CreateItemComp() {
   };
 
   const onCreate = async () => {
-    notify(name + description + royalty);
+    // notify(name + description + royalty);
     const royaltyT = parseInt(royalty);
     if (name === "" || description === "") {
       notify("You should input the name and descrition to create new NFT!");

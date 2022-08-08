@@ -70,6 +70,17 @@ function AuctionItem(props) {
           <p className="auctionItem-owner">{props.price}</p>
         </Col>
       </Row>
+
+      <Row style={{ marginTop: "1em", alignItems: "center" }}>
+        <Col lg="7" style={{ paddingLeft: "10px", textAlign: "left" }}>
+          <h4 className="auctionItem-owner-title">Highest Bidder</h4>
+          <p className="auctionItem-owner">{props.highestBidder.substring(0, 18) + "..."}</p>
+        </Col>
+        <Col lg="5" style={{ textAlign: "right" }}>
+          <h4 className="auctionItem-owner-title">Highest Bid</h4>
+          <p className="auctionItem-owner">{props.highestBid}</p>
+        </Col>
+      </Row>
       <ToastContainer />
     </div>
   );
