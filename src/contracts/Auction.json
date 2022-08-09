@@ -480,11 +480,6 @@
       },
       {
         "internalType": "address",
-        "name": "whitelistedBuyer",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
         "name": "nftRecipient",
         "type": "address"
       },
@@ -502,6 +497,11 @@
         "internalType": "uint32",
         "name": "royalty",
         "type": "uint32"
+      },
+      {
+        "internalType": "bool",
+        "name": "nftTranfered",
+        "type": "bool"
       }
     ],
     "stateMutability": "view",

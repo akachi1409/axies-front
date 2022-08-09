@@ -23,6 +23,8 @@ function AuctionComp() {
   const [prices, setPrices] = useState([]);
   const [highestPrices, setHighestPrices] = useState([])
   const [highestBidders, setHighestBidder] = useState([])
+  const [auctionEnds, setAuctionEnds] = useState([])
+  const [sellers, setSellers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false)
 
@@ -84,6 +86,8 @@ function AuctionComp() {
       let tempPrices = [];
       let tempHighestPrices = [];
       let tempHighestBidders = [];
+      let tempSellers = [];
+      let tempEnds = []
       for (let i = 0; i < length; i++) {
         // console.log("--", data.auctionId[i])
         const url = await getURL(data.auctionId[i])
@@ -91,7 +95,7 @@ function AuctionComp() {
         const result = await getNFTs(url.split("https://gateway.pinata.cloud/ipfs/")[1])
         // console.log("result", result)
         let price = await getPrice(data.auctionAddress[i], data.auctionId[i]);
-        // console.log("price", price)
+        console.log("price", price)
         tempPrices.push(
           blockchain.web3.utils.fromWei(price.buyNowPrice, "ether")
         );
@@ -101,6 +105,13 @@ function AuctionComp() {
         tempHighestBidders.push(
           price.nftHighestBidder
         )
+        tempSellers.push(
+          price.nftSeller
+        )
+        tempEnds.push(
+          price.auctionEnd
+        )
+
         // console.log(nft);
         tempItems.push({ 
           "image": result.data.image,
@@ -109,12 +120,14 @@ function AuctionComp() {
           "tokenId": data.auctionId[i],
           "akachiNFT": "true"
         });
-        console.log("---", tempItems);
+        // console.log("---", tempItems);
       }
       setHighestBidder(tempHighestBidders)
       setHighestPrices(tempHighestPrices)
       setPrices(tempPrices);
       setItems(tempItems);
+      setSellers(tempSellers)
+      setAuctionEnds(tempEnds)
       setFlag(!flag);
       setLoading(false);
     } catch (err) {
@@ -144,12 +157,12 @@ function AuctionComp() {
                 <AuctionItem
                   title={item.title}
                   net={item.net}
-                  // owner={item.owner}
                   image={item.image}
                   price={prices[index]}
                   highestBid={highestPrices[index]}
                   highestBidder={highestBidders[index]}
-                  // ownerAddress = {item.owner.address}
+                  seller = {sellers[index]}
+                  auctionEnd = {auctionEnds[index]}
                   tokenId= {item.tokenId} 
                   contract = {item.contract}
                 />
