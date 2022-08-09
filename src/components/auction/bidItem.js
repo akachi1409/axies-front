@@ -140,6 +140,7 @@ function BidItem(props) {
         console.log(err);
       })
       .then(() => {
+        notify("Akachi Token is approved.")
         console.log("success");
       });
       blockchain.akachiNFT.methods
@@ -149,6 +150,7 @@ function BidItem(props) {
         console.log(err);
       })
       .then(() => {
+        notify("NFT is approved")
         console.log("success");
       });
     blockchain.smartContract.methods
@@ -158,6 +160,8 @@ function BidItem(props) {
         console.log(err);
       })
       .then(() => {
+        notify("Please wait for a while, you will be redirected to My NFT section.")
+        navigate("/mynft")
         console.log("success");
       });
   } 
