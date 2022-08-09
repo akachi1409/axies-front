@@ -25,7 +25,7 @@ function BidItem(props) {
   const [buyNow, setBuyNow] = useState(0);
   const [minPrice, setMinPrice] = useState(0);
   const [bidPrice, setBidPrice] = useState(0);
-  const [auctionEnd, setAuctionEnd] = useState(0)
+  // const [auctionEnd, setAuctionEnd] = useState(0)
 
   const notify = (msg) => toast(msg);
 
