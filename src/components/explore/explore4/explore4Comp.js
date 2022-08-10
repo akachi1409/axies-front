@@ -19,6 +19,7 @@ function Explore4Comp(){
   const blockchain = useSelector((state) => state.blockchain);
   const [firstLoad, setFirstLoad] = useState(true);
   const [nfts, setNfts] = useState([])
+  const [loading, setLoading] = useState(false);
 
   const notify = (msg) => toast(msg);
   const getURL = (i) =>{
@@ -46,6 +47,7 @@ function Explore4Comp(){
   useEffect(()=>{
     async function getData(){
       if (firstLoad) {
+        setLoading(true);
         if (blockchain.account === null) {
           notify("You should connect wallet to create item!")
           await delay(2000);
@@ -71,6 +73,7 @@ function Explore4Comp(){
         }
         setNfts(temp);
         setFirstLoad(false)
+        setLoading(false);
       }
     }
     getData();
@@ -83,6 +86,11 @@ function Explore4Comp(){
           <h2 className="explore4Comp-title">Last 15 Legacies</h2>
           <div className="bottomBar"></div>
         </div>
+        {loading && (
+          <div className="auctionComp-loading">
+            <ReactLoading type="bars" color="#fff" />
+          </div>
+        )}
         <Row>
           {nfts.map((item, index) => {
             return (

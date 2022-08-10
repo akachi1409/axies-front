@@ -1,98 +1,93 @@
-.explore4Item-layout{
-    border-width: 1px;
-    border-style: solid;
-    border-color: transparent transparent rgb(21, 27, 34);
-
-    width: 100%;
-    font-weight: 600;
-    padding: 16px;
-    border: 1px solid #EBEBEB;
-    color: rgb(229, 232, 235);
-    text-align: left;
-    display: flex;
+.explore1Item-layout{
+    margin: 1em;
+    padding: 1em;
     cursor: pointer;
+
+    width: fit-content;
+    background: rgba(255, 255, 255, 0.07);
+    border: 0.2px solid rgba(255, 255, 255, 0.41);
+    box-shadow: 0px 21px 20px rgba(0, 0, 0, 0.23);
+    border-radius: 10px;
 }
 
-.explore4Item-layout .explore4Item-index{
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    margin-right: 8px;
+/* .explore1Item-layout .explore1Item-box{
+    background-color: #7A798A;
+    border-radius: 10px;
+    height: 300px;
+} */
+
+.explore1Item-layout .explore1Item-img-layout{
+    width: 260px;
+    height: 260px;
 }
-
-.explore4Item-layout .explore4Item-index .explore4Item-span{
-    font-weight: 600;
-    font-size: 16px;
-    color: white;
-}
-
-.explore4Item-layout .explore4Item-img-layout{
-    display: flex;
-    margin-left: 8px;
-    margin-right: 8px;
-    border: 1px solid rgb(21, 27, 34);
-    border-radius: 50%;
-
-    height: 50px;
-    width: 50px;
-}
-
-.explore4Item-layout .explore4Item-des-layout{
-    align-self: stretch;
-    flex: 1 1 auto;
-    flex-flow: column;
-    -webkit-box-pack: center;
-    justify-content: center;
-    margin-right: 16px;
-    order: 3;
-    overflow: hidden;
-    font-size: 16px;
-    align-items: flex-start;
-    display: flex;
-}
-
-.explore4Item-layout .explore4Item-des-layout .explore4Item-des-title{
-    font-weight: 600;
-    font-size: 14px;
-    color: rgb(255, 255, 255);
+.explore1Item-layout .explore1Item-img-layout .explore1Item-img{
+    height: 100%;
     width: 100%;
 }
 
-.explore4Item-layout .explore4Item-des-layout .explore4Item-des-text{
-    font-weight: 500;
-    font-size: 12px;
-    color: rgb(138, 147, 155);
-}
-
-.explore4Item-layout .explore4Item-price-layout{
-    align-self: stretch;
+.explore1Item-layout .explore1Item-box .explore1Item-like{
+    position: relative;
+    left: 70%;
+    top: 30px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
     display: flex;
-    flex: 0 0 auto;
-    flex-flow: column;
-    -webkit-box-pack: center;
-    justify-content: center;
-    max-width: 40%;
-    order: 4;
-    overflow: hidden;
-    text-align: right;
+    flex-wrap: wrap;
+    padding: 0.5em;
+    width: fit-content;
 }
 
-.explore4Item-layout .explore4Item-price-layout .explore4Item-price-lay{
-    display: flex;
-    align-items: flex-end;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-
-.explore4Item-layout .explore4Item-price-layout .explore4Item-price-lay .explore4Item-price-per{
-    font-weight: 400;
-    font-size: 14px;
-    /* color: rgb(235, 87, 87); */
+.explore1Item-layout .explore1Item-title{
+    font-size: 15px;
+    line-height: 24px;
     color: white;
 }
+.explore1Item-layout .explore1Item-text{
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
 
-.explore4Item-layout .explore4Item-price-layout .explore4Item-price{
+    color: rgba(255, 255, 255, 0.46);
+}
+.explore1Item-layout .explore1Item-net{
+    border-radius: 10px;
+    color: white;
+    background-color: #5142FC;
+}
+
+.explore1Item-layout .explore1Item-owner-title{
+    color: #8A8AA0;
+    font-size: 13px;
+    line-height: 20px;
+    margin-bottom: 0px;
+}
+
+.explore1Item-layout .explore1Item-owner{
+    color: #EBEBEB;
+    font-size: 15px;
+    line-height: 22px;
+    margin-bottom: 0px;
+}
+
+.explore1Item-layout .explore1Item-bid{
+    border-radius:100px;
+    border: solid 1px #5142FC;
+    padding: 0.5em;
+    cursor: pointer;
+    color: white;
     display: flex;
-    align-items: center;
+    width: fit-content;
+}
+
+.explore1Item-layout .explore1Item-refresh{
+    padding-top: 0.5em;
+    cursor: pointer;
+    color: #8A8AA0;
+    font-size: 16px;
+    line-height: 26px;
+    display: flex;
+    width: fit-content;
 }
