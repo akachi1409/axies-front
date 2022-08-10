@@ -34,6 +34,10 @@ function LiveAuctoion() {
   const [flag, setFlag] = useState(true);
   const [items, setItems] = useState([]);
   const [prices, setPrices] = useState([]);
+  const [highestPrices, setHighestPrices] = useState([])
+  const [highestBidders, setHighestBidder] = useState([])
+  const [auctionEnds, setAuctionEnds] = useState([])
+  const [sellers, setSellers] = useState([]);
   const [firstLoad, setFirstLoad] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false)
@@ -77,6 +81,10 @@ function LiveAuctoion() {
       const length = data.auctionAddress.length;
       let tempItems = [];
       let tempPrices = [];
+      let tempHighestPrices = [];
+      let tempHighestBidders = [];
+      let tempSellers = [];
+      let tempEnds = []
       for (let i = 0; i < length; i++) {
         const url = await getURL(data.auctionId[i])
         const result = await getNFTs(url.split("https://gateway.pinata.cloud/ipfs/")[1])
@@ -84,6 +92,18 @@ function LiveAuctoion() {
         tempPrices.push(
           blockchain.web3.utils.fromWei(price.buyNowPrice, "ether")
         );
+        tempHighestPrices.push(
+          blockchain.web3.utils.fromWei(price.nftHighestBid, "ether")
+        )
+        tempHighestBidders.push(
+          price.nftHighestBidder
+        )
+        tempSellers.push(
+          price.nftSeller
+        )
+        tempEnds.push(
+          price.auctionEnd
+        )
         tempItems.push({ 
           "image": result.data.image,
           "title": result.data.name,
@@ -93,8 +113,12 @@ function LiveAuctoion() {
         });
         console.log("---", tempItems);
       }
+      setHighestBidder(tempHighestBidders)
+      setHighestPrices(tempHighestPrices)
       setPrices(tempPrices);
       setItems(tempItems);
+      setSellers(tempSellers)
+      setAuctionEnds(tempEnds)
       setFlag(!flag);
       setLoading(false);
     } catch (err) {
@@ -188,10 +212,12 @@ function LiveAuctoion() {
                     <AuctionItem
                       title={item.title}
                       net={item.net}
-                      // owner={item.owner}
                       image={item.image}
                       price={prices[index]}
-                      // ownerAddress = {item.owner.address}
+                      highestBid={highestPrices[index]}
+                      highestBidder={highestBidders[index]}
+                      seller = {sellers[index]}
+                      auctionEnd = {auctionEnds[index]}
                       tokenId={item.tokenId}
                       contract={item.contract}
                     />
