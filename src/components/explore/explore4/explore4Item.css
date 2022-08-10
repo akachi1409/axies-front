@@ -1,4 +1,4 @@
-.explore1Item-layout{
+.explore4Item-layout{
     margin: 1em;
     padding: 1em;
     cursor: pointer;
@@ -10,22 +10,22 @@
     border-radius: 10px;
 }
 
-/* .explore1Item-layout .explore1Item-box{
+/* .explore4Item-layout .explore4Item-box{
     background-color: #7A798A;
     border-radius: 10px;
     height: 300px;
 } */
 
-.explore1Item-layout .explore1Item-img-layout{
+.explore4Item-layout .explore4Item-img-layout{
     width: 260px;
     height: 260px;
 }
-.explore1Item-layout .explore1Item-img-layout .explore1Item-img{
+.explore4Item-layout .explore4Item-img-layout .explore4Item-img{
     height: 100%;
     width: 100%;
 }
 
-.explore1Item-layout .explore1Item-box .explore1Item-like{
+.explore4Item-layout .explore4Item-box .explore4Item-like{
     position: relative;
     left: 70%;
     top: 30px;
@@ -38,12 +38,12 @@
     width: fit-content;
 }
 
-.explore1Item-layout .explore1Item-title{
+.explore4Item-layout .explore4Item-title{
     font-size: 15px;
     line-height: 24px;
     color: white;
 }
-.explore1Item-layout .explore1Item-text{
+.explore4Item-layout .explore4Item-text{
     font-family: 'Lexend Deca';
     font-style: normal;
     font-weight: 400;
@@ -52,27 +52,27 @@
 
     color: rgba(255, 255, 255, 0.46);
 }
-.explore1Item-layout .explore1Item-net{
+.explore4Item-layout .explore4Item-net{
     border-radius: 10px;
     color: white;
     background-color: #5142FC;
 }
 
-.explore1Item-layout .explore1Item-owner-title{
+.explore4Item-layout .explore4Item-owner-title{
     color: #8A8AA0;
     font-size: 13px;
     line-height: 20px;
     margin-bottom: 0px;
 }
 
-.explore1Item-layout .explore1Item-owner{
+.explore4Item-layout .explore4Item-owner{
     color: #EBEBEB;
     font-size: 15px;
     line-height: 22px;
     margin-bottom: 0px;
 }
 
-.explore1Item-layout .explore1Item-bid{
+.explore4Item-layout .explore4Item-bid{
     border-radius:100px;
     border: solid 1px #5142FC;
     padding: 0.5em;
@@ -82,7 +82,7 @@
     width: fit-content;
 }
 
-.explore1Item-layout .explore1Item-refresh{
+.explore4Item-layout .explore4Item-refresh{
     padding-top: 0.5em;
     cursor: pointer;
     color: #8A8AA0;
