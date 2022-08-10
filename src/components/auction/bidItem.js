@@ -25,7 +25,10 @@ function BidItem(props) {
   const [buyNow, setBuyNow] = useState(0);
   const [minPrice, setMinPrice] = useState(0);
   const [bidPrice, setBidPrice] = useState(0);
-  // const [auctionEnd, setAuctionEnd] = useState(0)
+  const [auctionEnd, setAuctionEnd] = useState(0)
+  const [highestPrice, setHighestPrice] = useState(0);
+  const [highestBidder, setHighestBidder] = useState("");
+  const [seller, setSeller] = useState("")
 
   const notify = (msg) => toast(msg);
 
@@ -83,7 +86,10 @@ function BidItem(props) {
             setBuyNow(blockchain.web3.utils.fromWei(res.buyNowPrice, "ether"));
             setMinPrice(blockchain.web3.utils.fromWei(res.minPrice, "ether"));
             setBidPrice(blockchain.web3.utils.fromWei(res.minPrice, "ether"))
-            // setAuctionEnd(res.)
+            setAuctionEnd(res.auctionEnd)
+            setHighestPrice(blockchain.web3.utils.fromWei(res.nftHighestBid, "ether"))
+            setHighestBidder(res.nftHighestBidder)
+            setSeller(res.nftSeller);
           });
         setFirstLoad(false);
       }
@@ -176,12 +182,12 @@ function BidItem(props) {
             <Explore1Item
               title={data.title}
               image={data.image}
-              net="BSC"
               description={data.description}
-              // owner={owner}
-              price="Floor Price"
-              priceItem={minPrice + "AKM"}
-              bidding={false}
+              price={bidPrice}
+              highestBid={highestPrice}
+              highestBidder={highestBidder}
+              seller = {seller}
+              auctionEnd = {auctionEnd}
               navable={false}
               akachiNFT = {true}
             />

@@ -1,10 +1,7 @@
 import "./explore1Item.css";
 import { Row, Col } from "react-bootstrap";
 import React, {useState, useEffect} from "react"
-// import HeartImg from "../../../assets/explore/heart.png";
-// import UserImg from "../../../assets/explore/user.png";
-// import BagImg from "../../../assets/explore/bag.png";
-// import ReloadImg from "../../../assets/explore/reload.png";
+
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 function Explore1Item(props) {
@@ -18,7 +15,6 @@ function Explore1Item(props) {
 
   useEffect(() =>{
     async function getData() {
-      console.log("props", props)
       if (props.image === undefined || props.image === null){
         return;
       }
@@ -35,21 +31,12 @@ function Explore1Item(props) {
       <Row>
         <div className="explore1Item-img-layout">
             <img src={image} alt="" className="explore1Item-img"></img>
-          {/* {
-            props.akachiNFT === "false" && (
-              <img src={props.image} alt="" className="explore1Item-img"></img>
-            )
-          } */}
+
         </div>
       </Row>
 
       <Row style={{ marginTop: "1em", alignItems: "left" }}>
-        {/* <Col lg="9"> */}
         <h1 className="explore1Item-title">{props.title}</h1>
-        {/* </Col> */}
-        {/* <Col lg="3">
-          <div className="explore1Item-net">{props.net}</div>
-        </Col> */}
       </Row>
       <Row>
         <p className="explore1Item-text">
@@ -57,41 +44,47 @@ function Explore1Item(props) {
         </p>
       </Row>
       <Row style={{ marginTop: "1em", alignItems: "center" }}>
-        <Col lg="7" style={{ paddingLeft: "10px", textAlign: "left" }}>
-          {/* <h4 className="explore1Item-owner-title">{props.price}</h4> */}
-          <p className="explore1Item-owner">{props.price}</p>
+        <Col lg="9" style={{ paddingLeft: "10px", textAlign: "left" }}>
+          <h4 className="explore1Item-owner-title">seller</h4>
+          {
+          props.seller === undefined ?
+          (
+            <p className="explore1Item-owner"></p>
+          )
+          :
+          (
+            <p className="explore1Item-owner">{props.seller.substring(0, 18)+ "..."}</p>
+          ) 
+          }
+          
         </Col>
-        <Col lg="5" style={{ textAlign: "right" }}>
-          {/* <h4 className="explore1Item-owner-title">Floor Price</h4> */}
-          <p className="explore1Item-owner">{props.priceItem}</p>
+        <Col lg="3" style={{ textAlign: "right" }}>
+          <h4 className="explore1Item-owner-title">Floor Price</h4>
+          <p className="explore1Item-owner">{props.price}</p>
         </Col>
       </Row>
       <Row style={{ marginTop: "1em", alignItems: "center" }}>
         <Col lg="7" style={{ paddingLeft: "10px", textAlign: "left" }}>
           <h4 className="explore1Item-owner-title">Highest Bidder</h4>
-          <p className="explore1Item-owner">{props.highestBidder}</p>
+          <p className="explore1Item-owner">{props.highestBidder.substring(0, 18) + "..."}</p>
         </Col>
         <Col lg="5" style={{ textAlign: "right" }}>
           <h4 className="explore1Item-owner-title">Highest Bid</h4>
           <p className="explore1Item-owner">{props.highestBid}</p>
         </Col>
       </Row>
-      {/* {props.bidding && (
-        <Row style={{ marginTop: "1em" }}>
-          <Col lg="6">
-            <div className="explore1Item-bid">
-              <img src={BagImg} alt="" />
-              &nbsp; Place bid
-            </div>
-          </Col>
-          <Col lg="6">
-            <div className="explore1Item-refresh">
-              <img src={ReloadImg} alt="" />
-              &nbsp; View History
-            </div>
-          </Col>
-        </Row>
-      )} */}
+      <Row style={{ marginTop: "1em", alignItems: "center" }}>
+        <Col lg="5" style={{ paddingLeft: "10px", textAlign: "left" }}>
+          <h4 className="explore1Item-owner-title">Auction Ends In</h4>
+          {
+            props.auctionEnd === "0" ? (
+              <p className="explore1Item-owner">None</p>
+            ):(
+              <p className="explore1Item-owner">{new Date(1000*props.auctionEnd).toLocaleDateString("en-us")}</p>
+            )
+          }
+        </Col>
+      </Row>
     </div>
   );
 }
