@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import delay from "delay";
 import axios from "axios";
-// import FilterItem2 from "./fliterItem2";
+import ReactLoading from "react-loading";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 //Explore all the possible collections
