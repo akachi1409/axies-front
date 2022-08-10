@@ -95,9 +95,8 @@ function AuctionComp() {
         const result = await getNFTs(url.split("https://gateway.pinata.cloud/ipfs/")[1])
         // console.log("result", result)
         let price = await getPrice(data.auctionAddress[i], data.auctionId[i]);
-        console.log("price", price)
         tempPrices.push(
-          blockchain.web3.utils.fromWei(price.buyNowPrice, "ether")
+          blockchain.web3.utils.fromWei(price.minPrice, "ether")
         );
         tempHighestPrices.push(
           blockchain.web3.utils.fromWei(price.nftHighestBid, "ether")

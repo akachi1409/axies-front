@@ -77,7 +77,7 @@ function AuctionItem(props) {
           
         </Col>
         <Col lg="3" style={{ textAlign: "right" }}>
-          <h4 className="auctionItem-owner-title">AkachiToken</h4>
+          <h4 className="auctionItem-owner-title">Floor Price</h4>
           <p className="auctionItem-owner">{props.price}</p>
         </Col>
       </Row>

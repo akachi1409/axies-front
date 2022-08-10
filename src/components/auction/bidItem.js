@@ -29,6 +29,8 @@ function BidItem(props) {
   const [highestPrice, setHighestPrice] = useState(0);
   const [highestBidder, setHighestBidder] = useState("");
   const [seller, setSeller] = useState("")
+  const [bidIncrease, setBidIncrease ] = useState(0);
+  const [balance, setBalance] = useState(0)
 
   const notify = (msg) => toast(msg);
 
@@ -82,15 +84,26 @@ function BidItem(props) {
           .nftContractAuctions(props.contract, props.id)
           .call()
           .then((res)=>{
-            console.log("price:", res)
+            // console.log("price:", res)
             setBuyNow(blockchain.web3.utils.fromWei(res.buyNowPrice, "ether"));
             setMinPrice(blockchain.web3.utils.fromWei(res.minPrice, "ether"));
-            setBidPrice(blockchain.web3.utils.fromWei(res.minPrice, "ether"))
             setAuctionEnd(res.auctionEnd)
             setHighestPrice(blockchain.web3.utils.fromWei(res.nftHighestBid, "ether"))
             setHighestBidder(res.nftHighestBidder)
             setSeller(res.nftSeller);
+            setBidIncrease(res.bidIncreasePercentage);
           });
+          const akachiTokenContract = new Web3EthContract(
+            AkachiToken,
+            "0x8119841E9c4e2658B36817Cfe58dfDFDca043930"
+          );
+          akachiTokenContract.methods
+            .balanceOf(blockchain.account)
+            .call()
+            .then((res)=>{
+              console.log("res", res);
+              setBalance(res);
+            })
         setFirstLoad(false);
       }
     }
@@ -99,6 +112,10 @@ function BidItem(props) {
   }, [firstLoad]);// eslint-disable-next-line
 
   const onBuyNow = () => {
+    if ( balance < buyNow){
+      notify("You don't have enough Akachi Token to buy this NFT.")
+      return;
+    }
     const akachiTokenContract = new Web3EthContract(
       AkachiToken,
       "0x8119841E9c4e2658B36817Cfe58dfDFDca043930"
@@ -133,8 +150,21 @@ function BidItem(props) {
   };
 
   const onBid = () =>{
+    if (balance < bidPrice){
+      notify("You don't have enough Akachi Token to bid.")
+      return;
+    }
     if (bidPrice < minPrice){
       notify("Bid price should be over than min price.")
+      return;
+    }
+    var limitPrice = (highestPrice * (10000 + parseInt(bidIncrease)) )/10000;
+    var flag = false;
+    if (bidPrice > buyNow || bidPrice > limitPrice){
+      flag = true;
+    }
+    if (!flag){
+      notify("You should bid higher than the limit price.")
       return;
     }
     const akachiTokenContract = new Web3EthContract(
@@ -168,7 +198,7 @@ function BidItem(props) {
         console.log(err);
       })
       .then(() => {
-        notify("Please wait for a while, you will be redirected to My NFT section.")
+        notify("You have successfully bid, you will be redirected to My NFT section.")
         navigate("/mynft")
         console.log("success");
       });
@@ -183,7 +213,7 @@ function BidItem(props) {
               title={data.title}
               image={data.image}
               description={data.description}
-              price={bidPrice}
+              price={minPrice}
               highestBid={highestPrice}
               highestBidder={highestBidder}
               seller = {seller}
