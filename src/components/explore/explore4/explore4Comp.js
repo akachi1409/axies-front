@@ -10,7 +10,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 //Explore all the possible collections
-import Explore1Item from "../explore1/explore1Item";
+import Explore4Item from "../explore4/explore4Item";
 
 function Explore4Comp(){
 
@@ -87,15 +87,10 @@ function Explore4Comp(){
           {nfts.map((item, index) => {
             return (
               <Col lg="3" sm="4" key={index} style={{padding: "1em"}}>
-                <Explore1Item
+                <Explore4Item
                   title={item.title}
                   image={item.image}
                   description={item.description}
-                  net="BSC"
-                  // owner={owner}
-                  // price="Current Bid"
-                  // priceItem="4.89ETH"
-                  bidding={false}
                   navable={false}
                   akachiNFT= {true}
                 />

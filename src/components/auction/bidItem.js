@@ -127,7 +127,7 @@ function BidItem(props) {
         console.log(err);
       })
       .then(() => {
-        console.log("success");
+        notify("Akachi Token is approved.")
       });
     blockchain.akachiNFT.methods
       .setApprovalForAll(process.env.REACT_APP_AUCTION_NFT_CONTRACT, true)
@@ -136,7 +136,7 @@ function BidItem(props) {
         console.log(err);
       })
       .then(() => {
-        console.log("success");
+        notify("NFT is approved")
       });
     blockchain.smartContract.methods
       .makeBid(props.contract, props.id, blockchain.web3.utils.toWei(buyNow, "ether"))
@@ -145,7 +145,8 @@ function BidItem(props) {
         console.log(err);
       })
       .then(() => {
-        console.log("success");
+        notify("You have successfully buy this NFT, you will be redirected to My NFT section.")
+        navigate("/mynft")
       });
   };
 
@@ -199,8 +200,7 @@ function BidItem(props) {
       })
       .then(() => {
         notify("You have successfully bid, you will be redirected to My NFT section.")
-        navigate("/mynft")
-        console.log("success");
+        navigate("/auction")
       });
   } 
   return (

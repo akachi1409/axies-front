@@ -81,10 +81,9 @@ function CreateAuction(props) {
     if (props.contract === process.env.REACT_APP_AKACHI_NFT_CONTRACT){
        royalty = await blockchain.akachiNFT.methods.getTokenRoyal(props.id-1).call();
     }
-    console.log("---", creator, royalty, mode)
-    notify("Please wait for a while. The page will be redirected after creating the Auction.");
+    // console.log("---", creator, royalty, mode)
     if ( mode === 0){
-      console.log("---")
+      // console.log("---")
       blockchain.smartContract.methods
       .createDefaultNftAuction(
         props.contract, 
